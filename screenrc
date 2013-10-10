@@ -1,0 +1,15 @@
+hardstatus alwayslastline
+hardstatus string '%{= kg}[ %{G}%H %{g}][ %{=kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B}%m-%d %{W}%c %{g}]'
+
+defscrollback 5000
+
+activity "activity: window ~%"	# Message when activity occurs in a window
+
+startup_message off
+
+# the following lines create a split window with bash on top & bottom
+# screen -t test 0
+# split
+# focus down
+# screen -t test2 1   bash
+# focus up
