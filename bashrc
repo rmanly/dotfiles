@@ -37,7 +37,7 @@ PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin
 [[ -e $HOME/Dropbox/bin ]] && PATH=$PATH:$HOME/Dropbox/bin
 [[ -e /Volumes/Drobo/Dropbox/bin ]] && PATH=$PATH:/Volumes/Drobo/Dropbox/bin
 [[ -e /Applications/Server.app ]] && PATH=$PATH:/Applications/Server.app/Contents/ServerRoot/usr/sbin:/Applications/Server.app/Contents/ServerRoot/usr/bin
-[[ -e $HOME/anaconda/bin ]] && PATH=$HOME/anaconda/bin:$PATH
+[[ -e $HOME/anaconda/bin ]] && PATH=$PATH:$HOME/anaconda/bin
 
 export PATH
 
