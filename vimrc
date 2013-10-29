@@ -12,6 +12,9 @@ set wildmenu
 set wildmode=list:longest
 set wrapscan
 
+set textwidth=80
+set colorcolumn=+1
+
 nnoremap <up> <nop>
 nnoremap <down> <nop>
 nnoremap <left> <nop>
