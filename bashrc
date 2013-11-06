@@ -34,6 +34,7 @@ unset PATH
 PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin
 
 [[ -e /usr/local/git/bin ]] && PATH=/usr/local/git/bin:$PATH
+[[ -e /usr/local/munki ]] && PATH=/usr/local/munki:$PATH
 [[ -e $HOME/Dropbox/bin ]] && PATH=$PATH:$HOME/Dropbox/bin
 [[ -e /Volumes/Drobo/Dropbox/bin ]] && PATH=$PATH:/Volumes/Drobo/Dropbox/bin
 [[ -e /Applications/Server.app ]] && PATH=$PATH:/Applications/Server.app/Contents/ServerRoot/usr/sbin:/Applications/Server.app/Contents/ServerRoot/usr/bin
