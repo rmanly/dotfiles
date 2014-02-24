@@ -79,7 +79,7 @@ cd() {
 }
 
 md() {
-    /bin/mkdir -p $1 && builtin cd $1;
+    /bin/mkdir -p "$1" && builtin cd "$1";
 }
 
 box() {
