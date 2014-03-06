@@ -1,0 +1,14 @@
+# ignore Vim crap
+# from here
+# http://stackoverflow.com/questions/4824188/git-ignore-vim-temporary-files
+# linked to
+# https://github.com/github/gitignore/blob/master/Global/vim.gitignore
+# enabled with
+# git config --global core.excludesfile ~/.gitignore
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]
+*.un~
+Session.vim
+.netrwhist
+*~
+.DS_Store
