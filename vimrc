@@ -37,14 +37,16 @@ endif
 if has("autocmd")
     autocmd BufRead,BufNewFile *.json set filetype=json
     autocmd BufRead,BufNewFile *.mk set filetype=xml
+    autocmd BufRead,BufNewFile *.recipe set filetype=xml
+    autocmd BufRead,BufNewFile *.plist set filetype=xml
     
     "Syntax of these languages is fussy over tabs vs. spaces
     autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
-    autocmd FileType plist setlocal ts=2 sts=2 sw=2 noexpandtab
     autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
     " personal preferences
     autocmd FileType py setlocal textwidth=80 colorcolumn=+1
+    autocmd FileType sh setlocal textwidth=80 colorcolumn=+1
     autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
     autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
     autocmd FileType json setlocal ts=2 sts=2 sw=2 expandtab
