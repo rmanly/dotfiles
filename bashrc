@@ -65,15 +65,6 @@ alias grep='grep --colour=auto'
 if [[ $(uname) == Darwin ]]; then
     alias plb='/usr/libexec/PlistBuddy'
     alias ls='ls -G'
-    alias en0='ipconfig getifaddr en0'
-    alias en1='ipconfig getifaddr en1'
-    # fairly dirty way to get primary interface info.
-    # does not account for if all things are disabled or *other*
-    enp () {
-        networksetup -getinfo \
-            "$(networksetup -listallnetworkservices \
-            | awk 'NR == 2 { print; exit }')"
-    }
 else
     alias ls='ls --color'
 fi
