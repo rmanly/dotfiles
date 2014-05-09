@@ -46,7 +46,7 @@ if has("autocmd")
 
     " personal preferences
     autocmd FileType py setlocal textwidth=80 colorcolumn=+1
-    autocmd FileType sh setlocal textwidth=80 colorcolumn=+1
+    autocmd FileType python setlocal textwidth=80 colorcolumn=+1
     autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
     autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
     autocmd FileType json setlocal ts=2 sts=2 sw=2 expandtab
