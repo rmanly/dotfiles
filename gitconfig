@@ -7,3 +7,7 @@
 [core]
 	excludesfile = /Users/ryan/.gitignore
 	pager = less -r
+[credential]
+	help = osxkeychain
+[push]
+	default = simple
