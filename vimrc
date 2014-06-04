@@ -39,6 +39,7 @@ if has("autocmd")
     autocmd BufRead,BufNewFile *.mk set filetype=xml
     autocmd BufRead,BufNewFile *.recipe set filetype=xml
     autocmd BufRead,BufNewFile *.plist set filetype=xml
+    autocmd BufRead,BufNewFile *.mobileconfig set filetype=xml
     
     "Syntax of these languages is fussy over tabs vs. spaces
     autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab

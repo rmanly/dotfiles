@@ -53,7 +53,7 @@ else
     PS1='\[\033[00;32m\]\u@\h\[\033[00;34m\] \W \$\[\033[00m\] '
 fi
 
-export PS4='+$BASH_SOURCE:$LINENO:$FUNCNAME: '
+export PS4='+(${BASH_SOURCE}:${LINENO}): ${FUNCNAME[0]:+${FUNCNAME[0]}(): }'
 
 # ----------------------------------------------------------------------
 # ALIAS & OS-SPECIFIC FUNCTIONS
