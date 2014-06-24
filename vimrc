@@ -47,6 +47,7 @@ nnoremap <silent> <C-l> :noh<CR><C-l>
 
 syntax on
 set background=dark
+colorscheme solarized
 
 if has('gui_running')
   set guifont=SourceCodePro:h14
