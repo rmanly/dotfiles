@@ -27,6 +27,10 @@ set wildmenu
 set wildmode=list:longest
 set wrapscan
 
+let g:syntastic_check_on_open = 1
+let g:syntastic_error_symbol = '✗'
+let g:syntastic_warning_symbol = '⚠'
+
 nnoremap <up> <nop>
 nnoremap <down> <nop>
 nnoremap <left> <nop>
