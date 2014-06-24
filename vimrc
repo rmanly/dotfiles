@@ -51,7 +51,7 @@ set background=dark
 colorscheme solarized
 
 if has('gui_running')
-  set guifont=SourceCodePro:h14
+  set guifont=Source_Code_Pro:h14
 endif
 
 if has("autocmd")
