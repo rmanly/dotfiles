@@ -9,7 +9,6 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'davidhalter/jedi-vim'
 Plugin 'tpope/vim-fugitive'
 
 " All of your Plugins must be added before the following line
