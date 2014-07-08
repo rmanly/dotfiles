@@ -59,11 +59,9 @@ export PS4='+(${BASH_SOURCE}:${LINENO}): ${FUNCNAME[0]:+${FUNCNAME[0]}(): }'
 # ALIAS & OS-SPECIFIC FUNCTIONS
 # ----------------------------------------------------------------------
 
-alias c='clear'
 alias grep='grep --colour=auto'
 
 if [[ $(uname) == Darwin ]]; then
-    alias plb='/usr/libexec/PlistBuddy'
     alias ls='ls -G'
 else
     alias ls='ls --color'
