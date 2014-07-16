@@ -98,35 +98,35 @@ dirperm() {
     ls -led /;
 }
 
-pre () {
+pre() {
     for file in ./*; do
         mv -- "$file" "$1-${file#*/}";
     done
 }
 
-vboxip () {
+vboxip() {
     VBoxManage guestproperty get "$1" "/VirtualBox/GuestInfo/Net/0/V4/IP"
 }
 
-vboxhead () {
+vboxhead() {
     VBoxManage startvm "$1" --type headless
 }
 
-vboxstop () {
+vboxstop() {
     VboxManage controlvm "$1" poweroff
 }
 
-vboxnatssh () {
+vboxnatssh() {
     VBoxManage modifyvm "$1" --natpf1 "$1-ssh,tcp,,2222,,22" && \
         printf "%s\n" "Start the VM and ssh via localhost:2222" \
         "Remove rule with 'VBoxManage modifyvm $1 --natpf1 delete $1-ssh'"
 }
 
-ydl () {
+ydl() {
     /usr/local/bin/youtube-dl -ciw --restrict-filenames -o "$HOME/Downloads/%(uploader)s-%(title)s.%(ext)s" "$1"
 }
 
-ydlm () {
+ydlm() {
     /usr/local/bin/youtube-dl -ciw --restrict-filenames -x --audio-format "mp3" -o "$HOME/Dropbox/audio/%(uploader)s-%(title)s.%(ext)s" "$1"
 }
 
