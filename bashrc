@@ -71,6 +71,10 @@ fi
 # FUNCTIONS
 # ----------------------------------------------------------------------
 
+profix() {
+    /usr/bin/xmllint -format "$1" > "${1%.*}".plist
+}
+
 cd() {
     builtin cd "${@:-$HOME}" && /bin/ls -G;
 }
