@@ -130,6 +130,10 @@ ydlm () {
     /usr/local/bin/youtube-dl -ciw --restrict-filenames -x --audio-format "mp3" -o "$HOME/Dropbox/audio/%(uploader)s-%(title)s.%(ext)s" "$1"
 }
 
+ydluser() {
+    /usr/local/bin/youtube-dl -ciw --restrict-filenames -o "$HOME/Downloads/%(uploader)s/%(title)s.%(ext)s" ytuser:"$1"
+}
+
 # ----------------------------------------------------------------------
 # VIRTUALENV
 # ----------------------------------------------------------------------
