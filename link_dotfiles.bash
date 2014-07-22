@@ -1,5 +1,5 @@
 #!/bin/bash
 
-for foo in ./dotfiles/*; do
-    ln -s "${foo}" "$HOME/.${foo##*/}"
+for item in ./dotfiles/*; do
+    ln -s "${item}" "$HOME/.${foo##*/}"
 done
