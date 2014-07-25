@@ -130,6 +130,10 @@ ydlm() {
     /usr/local/bin/youtube-dl -ciw --restrict-filenames -x --audio-format "mp3" -o "$HOME/Dropbox/audio/%(uploader)s-%(title)s.%(ext)s" "$1"
 }
 
+ydlmk() {
+    /usr/local/bin/youtube-dl -ciwk --restrict-filenames -x --audio-format "mp3" -o "$HOME/Downloads/%(uploader)s-%(title)s.%(ext)s" "$1"
+}
+
 ydlu() {
     /usr/local/bin/youtube-dl -ciw --restrict-filenames -o "$HOME/Downloads/%(uploader)s/%(title)s.%(ext)s" ytuser:"$1"
 }
