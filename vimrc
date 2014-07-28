@@ -18,7 +18,6 @@ filetype plugin indent on    " required
 set backspace=indent,eol,start
 set encoding=utf-8
 set hls ic is
-set lines=40 columns=90
 set listchars=tab:▸\ ,eol:¬,trail:~
 set scrolloff=3
 set showcmd
@@ -52,6 +51,7 @@ set background=dark
 colorscheme solarized
 
 if has('gui_running')
+  set lines=40 columns=90
   set guifont=Source_Code_Pro:h14
 endif
 
