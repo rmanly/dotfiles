@@ -31,7 +31,7 @@ export LESS=FiX
 # ----------------------------------------------------------------------
 
 unset PATH
-PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin
+PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:/usr/X11/bin
 
 [[ -e /usr/local/git/bin ]] && PATH=/usr/local/git/bin:$PATH
 [[ -e /usr/local/munki ]] && PATH=/usr/local/munki:$PATH
