@@ -29,17 +29,12 @@ PROMPT="${punctuation}(${text_emph}%n${emph}@${text}%m${punctuation})(${emph}%j$
 # ALIAS
 # ----------------------------------------------------------------------
 
-alias c='clear'
-alias x='exit'
 alias sshv='ssh -vvv -o LogLevel=DEBUG3'
 alias ll='ls -la'
 
 if [[ $(uname) == Darwin ]]; then
 	alias ls='ls -G'
 	alias eject='diskutil eject'
-	alias en0='ipconfig getifaddr en0'
-	alias en1='ipconfig getifaddr en1'
-	alias reboot='sudo shutdown -r now'
 	rmattr() {
 		find . -depth 1 -print0 | xargs -0 xattr -d $1;
 	}
@@ -63,25 +58,8 @@ calc() {
 	awk "BEGIN{ print $* }";
 }
 
-lookup() {
-	nslookup $1 208.67.222.222;
-}
-
-myip() {
-	curl -s ip.appspot.com
-}
-
-check() {
-	# checks for a different page Loc in header
-	curl -sI $1 | sed -n 's/Location:.* //p';
-}
-
 pman () {
 	man -t "${1}" | open -f -a /Applications/Preview.app
-}
-
-excuse() {
-	telnet bofh.jeffballard.us 666;
 }
 
 box() {
