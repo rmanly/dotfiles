@@ -15,6 +15,7 @@ Plugin 'tpope/vim-fugitive'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+set autochdir
 set backspace=indent,eol,start
 set encoding=utf-8
 set hls ic is
