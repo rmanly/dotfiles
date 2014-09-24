@@ -10,6 +10,7 @@ shopt -s globstar
 shopt -s histappend
 shopt -s histreedit
 
+export EDITOR=/usr/bin/vim
 export GLOBIGNORE=.:..
 export HISTCONTROL=ignoreboth
 export HISTIGNORE='fg:bg:ls:pwd:cd ..:cd -:cd:jobs:set -x:ls -l:history:'
@@ -23,8 +24,8 @@ bind '\C-i':menu-complete
 # set to match highlight removal for vim
 bind '\C-l':clear-screen
 
-# quit if fits on one screen, case insensitive search, don't clear on quit
-export LESS=FiX
+# quit if fits on one screen, case insensitive search, don't clear on quit, highlight new line
+export LESS=FiWX
 
 # ----------------------------------------------------------------------
 # PATHS
@@ -64,6 +65,7 @@ alias grep='grep --colour=auto'
 if [[ $(uname) == Darwin ]]; then
     alias ls='ls -G'
     alias readmunki='/usr/bin/defaults read /Library/Preferences/ManagedInstalls'
+    export VISUAL=/usr/local/bin/mvim
     writemunki() {
         /usr/bin/sudo /usr/bin/defaults write /Library/Preferences/ManagedInstalls "$1" "$2"
     }
