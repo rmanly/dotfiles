@@ -17,7 +17,6 @@ export HISTIGNORE='fg:bg:ls:pwd:cd ..:cd -:cd:jobs:set -x:ls -l:history:'
 export HISTSIZE=2500
 export HISTTIMEFORMAT="%m-%d-%y %T "
 export PROMPT_COMMAND='history -a; history -r'
-export PYTHONSTARTUP="$HOME/.pythonrc"
 
 # http://cnswww.cns.cwru.edu/php/chet/readline/readline.html#SEC13
 # zsh style tab completions...kinda
