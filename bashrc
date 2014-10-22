@@ -65,7 +65,6 @@ alias grep='grep --colour=auto'
 if [[ $(uname) == Darwin ]]; then
     alias ls='ls -G'
     alias readmunki='/usr/bin/defaults read /Library/Preferences/ManagedInstalls'
-    export VISUAL=/usr/local/bin/mvim
     writemunki() {
         /usr/bin/sudo /usr/bin/defaults write /Library/Preferences/ManagedInstalls "$1" "$2"
     }
