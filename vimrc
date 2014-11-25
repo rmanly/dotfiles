@@ -57,11 +57,12 @@ if has('gui_running')
 endif
 
 if has("autocmd")
-    autocmd BufRead,BufNewFile *.json set filetype=json
-    autocmd BufRead,BufNewFile *.mk set filetype=xml
-    autocmd BufRead,BufNewFile *.recipe set filetype=xml
-    autocmd BufRead,BufNewFile *.plist set filetype=xml
-    autocmd BufRead,BufNewFile *.mobileconfig set filetype=xml
+    autocmd BufNew,BufNewFile,BufRead *.json set filetype=json
+    autocmd BufNew,BufNewFile,BufRead *.mk set filetype=xml
+    autocmd BufNew,BufNewFile,BufRead *.mobileconfig set filetype=xml
+    autocmd BufNew,BufNewFile,BufRead *.plist set filetype=xml
+    autocmd BufNew,BufNewFile,BufRead *.recipe set filetype=xml
+    autocmd BufNew,BufNewFile,BufRead Makefile set filetype=make
     
     "Syntax of these languages is fussy over tabs vs. spaces
     autocmd FileType make setlocal ts=8 sts=0 sw=8 noexpandtab
