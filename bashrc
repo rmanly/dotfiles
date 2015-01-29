@@ -134,6 +134,10 @@ ydl() {
     /usr/local/bin/youtube-dl -ciw --restrict-filenames -o "$HOME/Downloads/%(uploader)s-%(title)s.%(ext)s" "$1"
 }
 
+ydla() {
+    /usr/local/bin/youtube-dl -ciw --restrict-filenames -a "$1" -o "$HOME/Downloads/%(uploader)s-%(title)s.%(ext)s"
+}
+
 ydlm() {
     /usr/local/bin/youtube-dl -ciw --restrict-filenames -x --audio-format "mp3" -o "$HOME/Dropbox/audio/%(uploader)s-%(title)s.%(ext)s" "$1"
 }
