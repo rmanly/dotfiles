@@ -15,7 +15,7 @@ export GLOBIGNORE=.:..
 export HISTCONTROL=ignoreboth
 export HISTIGNORE='fg:bg:ls:pwd:cd ..:cd -:cd:jobs:set -x:ls -l:history:'
 export HISTSIZE=2500
-export HISTTIMEFORMAT="%m-%d-%y %T "
+export HISTTIMEFORMAT="%Y-%m-%d %T "
 export PROMPT_COMMAND='history -a; history -r'
 
 # http://cnswww.cns.cwru.edu/php/chet/readline/readline.html#SEC13
@@ -65,27 +65,29 @@ alias grep='grep --colour=auto'
 if [[ $(uname) == Darwin ]]; then
     alias ls='ls -G'
     alias readmunki='/usr/bin/defaults read /Library/Preferences/ManagedInstalls'
+
+    profix() {
+        /usr/bin/xmllint -format "$1" > "${1%.*}".plist
+    }
+
+    cd() {
+        builtin cd "${@:-$HOME}" && /bin/ls -G;
+    }
+
     writemunki() {
         /usr/bin/sudo /usr/bin/defaults write /Library/Preferences/ManagedInstalls "$1" "$2"
     }
-    writemymunki() {
-        /usr/bin/sudo /usr/bin/defaults write /Library/Preferences/ManagedInstalls ClientIdentifier "clients/AIR-ML-RMANLY"
-    }
 else
     alias ls='ls --color'
+
+    cd() {
+        builtin cd "${@:-$HOME}" && /bin/ls --color;
+    }
 fi
 
 # ----------------------------------------------------------------------
 # FUNCTIONS
 # ----------------------------------------------------------------------
-
-profix() {
-    /usr/bin/xmllint -format "$1" > "${1%.*}".plist
-}
-
-cd() {
-    builtin cd "${@:-$HOME}" && /bin/ls -G;
-}
 
 md() {
     /bin/mkdir -p "$1" && builtin cd "$1";
