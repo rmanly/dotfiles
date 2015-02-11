@@ -15,6 +15,11 @@ Plugin 'tpope/vim-fugitive'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+" trying out something new because .swx files are annoying me in munki repo
+" http://stackoverflow.com/questions/821902/disabling-swap-files-creation-in-vim
+set directory=~/.vim/swap//
+set undodir=~/.vim/undo//
+
 set autochdir
 set backspace=indent,eol,start
 set encoding=utf-8
