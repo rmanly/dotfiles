@@ -13,3 +13,5 @@ Session.vim
 *~
 .DS_Store
 *.pyc
+*.pkg
+*.mpkg
