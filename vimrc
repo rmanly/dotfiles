@@ -19,6 +19,7 @@ filetype plugin indent on    " required
 " http://stackoverflow.com/questions/821902/disabling-swap-files-creation-in-vim
 set directory=~/.vim/swap//
 set undodir=~/.vim/undo//
+set backupdir=~/.vim/backup//
 
 set autochdir
 set backspace=indent,eol,start
