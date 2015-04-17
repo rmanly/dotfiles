@@ -17,9 +17,9 @@ filetype plugin indent on    " required
 
 " trying out something new because .swx files are annoying me in munki repo
 " http://stackoverflow.com/questions/821902/disabling-swap-files-creation-in-vim
-set directory=~/.vim/swap//
-set undodir=~/.vim/undo//
-set backupdir=~/.vim/backup//
+set directory=~/.vim/swap//,~/tmp//,/tmp//,.
+set undodir=~/.vim/undo//,~/tmp//,/tmp//,.
+set backupdir=~/.vim/backup//,~/tmp//,.
 
 set autochdir
 set backspace=indent,eol,start
