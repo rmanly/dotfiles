@@ -66,12 +66,20 @@ if [[ $(uname) == Darwin ]]; then
     alias ls='ls -G'
     alias readmunki='/usr/bin/defaults read /Library/Preferences/ManagedInstalls'
 
-    profix() {
-        /usr/bin/xmllint -format "$1" > "${1%.*}".plist
-    }
-
     cd() {
         builtin cd "${@:-$HOME}" && /bin/ls -G;
+    }
+
+    files() {
+        /usr/sbin/pkgutil --files "$1"
+    }
+
+    forget() {
+        /usr/sbin/pkgutil --forget "$1"
+    }
+
+    profix() {
+        /usr/bin/xmllint -format "$1" > "${1%.*}".plist
     }
 
     writemunki() {
