@@ -141,28 +141,29 @@ vboxnatssh() {
 }
 
 ydl() {
-    /usr/local/bin/youtube-dl -ciw --restrict-filenames -o "$HOME/Downloads/%(uploader)s-%(title)s.%(ext)s" "$1"
+    /usr/local/bin/youtube-dl -ciw -f best --restrict-filenames -o "$HOME/Downloads/%(uploader)s-%(title)s.%(ext)s" "$1"
 }
 
 ydla() {
-    /usr/local/bin/youtube-dl -ciw --restrict-filenames -a "$1" -o "$HOME/Downloads/%(uploader)s-%(title)s.%(ext)s"
+    /usr/local/bin/youtube-dl -ciw -f best --restrict-filenames -a "$1" -o "$HOME/Downloads/%(uploader)s-%(title)s.%(ext)s"
 }
 
 ydlm() {
-    /usr/local/bin/youtube-dl -ciw --restrict-filenames -x --audio-format "mp3" -o "$HOME/Dropbox/audio/%(uploader)s-%(title)s.%(ext)s" "$1"
+    /usr/local/bin/youtube-dl -ciw -f best --restrict-filenames -x --audio-format "mp3" -o "$HOME/Dropbox/audio/%(uploader)s-%(title)s.%(ext)s" "$1"
 }
 
 ydlpl() {
-    /bin/mkdir -p "$2"
-    /usr/local/bin/youtube-dl -ciw --restrict-filenames -o "$2/%(playlist_index)s-%(title)s.%(ext)s" "$1"
+    /bin/mkdir -p "$HOME/Downloads/$2"
+    /usr/local/bin/youtube-dl -ciw -f best --restrict-filenames -o "$HOME/Downloads/$2/%(playlist_index)s-%(title)s.%(ext)s" "$1"
 }
 
 ydlmk() {
-    /usr/local/bin/youtube-dl -ciwk --restrict-filenames -x --audio-format "mp3" -o "$HOME/Downloads/%(uploader)s-%(title)s.%(ext)s" "$1"
+    /usr/local/bin/youtube-dl -ciwk -f best --restrict-filenames -x --audio-format "mp3" -o "$HOME/Downloads/%(uploader)s-%(title)s.%(ext)s" "$1"
 }
 
 ydlu() {
-    /usr/local/bin/youtube-dl -ciw --restrict-filenames -o "$HOME/Downloads/%(uploader)s/%(title)s.%(ext)s" ytuser:"$1"
+    /bin/mkdir -p "$HOME/Downloads/$1"
+    /usr/local/bin/youtube-dl -ciw -f best --restrict-filenames -o "$HOME/Downloads/$1/%(uploader)s/%(title)s.%(ext)s" ytuser:"$1"
 }
 
 # ----------------------------------------------------------------------
