@@ -10,6 +10,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'tpope/vim-fugitive'
+Plugin 'darfink/vim-plist'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -66,7 +67,7 @@ if has("autocmd")
     autocmd BufNew,BufNewFile,BufRead *.json set filetype=json
     autocmd BufNew,BufNewFile,BufRead *.mk set filetype=xml
     autocmd BufNew,BufNewFile,BufRead *.mobileconfig set filetype=xml
-    autocmd BufNew,BufNewFile,BufRead *.plist set filetype=xml
+    " autocmd BufNew,BufNewFile,BufRead *.plist set filetype=xml
     autocmd BufNew,BufNewFile,BufRead *.recipe set filetype=xml
     autocmd BufNew,BufNewFile,BufRead Makefile set filetype=make
     autocmd BufNew,BufNewFile,BufRead luggage.local set filetype=make
