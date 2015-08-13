@@ -141,14 +141,22 @@ vboxnatssh() {
 }
 
 ydl() {
+    /usr/local/bin/youtube-dl -ciw -f best --restrict-filenames -o "$HOME/Downloads/%(title)s.%(ext)s" "$1"
+}
+
+ydlasmr() {
     /usr/local/bin/youtube-dl -ciw -f best --restrict-filenames -o "$HOME/Downloads/%(uploader)s-%(title)s.%(ext)s" "$1"
 }
 
 ydla() {
-    /usr/local/bin/youtube-dl -ciw -f best --restrict-filenames -a "$1" -o "$HOME/Downloads/%(uploader)s-%(title)s.%(ext)s"
+    /usr/local/bin/youtube-dl -ciw -f best --restrict-filenames -a "$1" -o "$HOME/Downloads/%(title)s.%(ext)s"
 }
 
 ydlm() {
+    /usr/local/bin/youtube-dl -ciw -f best --restrict-filenames -x --audio-format "mp3" -o "$HOME/Dropbox/audio/%(title)s.%(ext)s" "$1"
+}
+
+ydlmasmr() {
     /usr/local/bin/youtube-dl -ciw -f best --restrict-filenames -x --audio-format "mp3" -o "$HOME/Dropbox/audio/%(uploader)s-%(title)s.%(ext)s" "$1"
 }
 
@@ -158,6 +166,10 @@ ydlpl() {
 }
 
 ydlmk() {
+    /usr/local/bin/youtube-dl -ciwk -f best --restrict-filenames -x --audio-format "mp3" -o "$HOME/Downloads/%(title)s.%(ext)s" "$1"
+}
+
+ydlmkasmr() {
     /usr/local/bin/youtube-dl -ciwk -f best --restrict-filenames -x --audio-format "mp3" -o "$HOME/Downloads/%(uploader)s-%(title)s.%(ext)s" "$1"
 }
 
