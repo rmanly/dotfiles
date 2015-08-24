@@ -53,6 +53,9 @@ nnoremap k gk
 
 nnoremap <silent> <C-l> :noh<CR><C-l>
 
+" requires entry for a munki pkginfo file
+nmap ,rq o<key>requires</key><CR><array><CR><string></string><CR></array><ESC>kf>a
+
 syntax on
 set background=dark
 colorscheme solarized
