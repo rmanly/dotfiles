@@ -55,6 +55,8 @@ nnoremap <silent> <C-l> :noh<CR><C-l>
 
 " requires entry for a munki pkginfo file
 nmap ,rq o<key>requires</key><CR><array><CR><string></string><CR></array><ESC>kf>a
+nmap ,rx o<key>requires</key><CR><array><CR><string>Xerox_Print_Driver</string><CR></array><ESC>
+nmap ,rh o<key>requires</key><CR><array><CR><string>HewlettPackardPrinterDrivers</string><CR></array><ESC>
 
 syntax on
 set background=dark
