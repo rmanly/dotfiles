@@ -117,8 +117,8 @@ dirperm() {
 }
 
 pre() {
-    for file in ./*; do
-        mv -- "$file" "$1-${file#*/}";
+    for filename in ./*; do
+        mv -- "$filename" "$1-${filename#*/}";
     done
 }
 
