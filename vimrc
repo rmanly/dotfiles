@@ -75,6 +75,7 @@ if has("autocmd")
     autocmd BufNew,BufNewFile,BufRead *.recipe set filetype=xml
     autocmd BufNew,BufNewFile,BufRead Makefile set filetype=make
     autocmd BufNew,BufNewFile,BufRead luggage.local set filetype=make
+    autocmd BufNew,BufNewFile,BufRead Vagrantfile set filetype=json
     
     "Syntax of these languages is fussy over tabs vs. spaces
     autocmd FileType make setlocal ts=8 sts=0 sw=8 noexpandtab

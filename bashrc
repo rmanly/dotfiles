@@ -33,15 +33,16 @@ export LESS=FiWX
 # ----------------------------------------------------------------------
 
 unset PATH
-PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:/usr/X11/bin
+PATH=/usr/local/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/sbin:/usr/X11/bin
 
-[[ -e /usr/local/git/bin ]] && PATH=/usr/local/git/bin:$PATH
-[[ -e /usr/local/munki ]] && PATH=/usr/local/munki:$PATH
-[[ -e /Library/Frameworks/Python.framework/Versions/3.4/bin ]] && PATH=$PATH:/Library/Frameworks/Python.framework/Versions/3.4/bin
 [[ -e $HOME/Dropbox/bin ]] && PATH=$PATH:$HOME/Dropbox/bin
-[[ -e /Volumes/Drobo/Dropbox/bin ]] && PATH=$PATH:/Volumes/Drobo/Dropbox/bin
-[[ -e /Applications/Server.app ]] && PATH=$PATH:/Applications/Server.app/Contents/ServerRoot/usr/sbin:/Applications/Server.app/Contents/ServerRoot/usr/bin
 [[ -e $HOME/anaconda/bin ]] && PATH=$PATH:$HOME/anaconda/bin
+[[ -e /Applications/Server.app ]] && PATH=$PATH:/Applications/Server.app/Contents/ServerRoot/usr/sbin:/Applications/Server.app/Contents/ServerRoot/usr/bin
+[[ -e /Library/Frameworks/Python.framework/Versions/3.4/bin ]] && PATH=$PATH:/Library/Frameworks/Python.framework/Versions/3.4/bin
+[[ -e /Volumes/Drobo/Dropbox/bin ]] && PATH=$PATH:/Volumes/Drobo/Dropbox/bin
+[[ -e /usr/local/git/bin ]] && PATH=/usr/local/git/bin:$PATH
+[[ -e /usr/local/go/bin ]] && PATH=/usr/local/go/bin:$PATH
+[[ -e /usr/local/munki ]] && PATH=/usr/local/munki:$PATH
 
 export PATH
 
