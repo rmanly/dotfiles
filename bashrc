@@ -50,10 +50,14 @@ export PATH
 # PROMPT
 # ----------------------------------------------------------------------
 
-if [[ ${EUID} == 0 ]] ; then
-    PS1='\[\033[01;31m\]\h\[\033[01;34m\] \W \$\[\033[00m\] '
+if [[ -e $HOME/.bash_prompt ]]; then
+    source $HOME/.bash_prompt
 else
-    PS1='\[\033[00;32m\]\u@\h\[\033[00;34m\] \W \$\[\033[00m\] '
+    if [[ ${EUID} == 0 ]] ; then
+        PS1='\[\033[01;31m\]\h\[\033[01;34m\] \W \$\[\033[00m\] '
+    else
+        PS1='\[\033[00;32m\]\u@\h\[\033[00;34m\] \W \$\[\033[00m\] '
+    fi
 fi
 
 export PS4='+(${BASH_SOURCE}:${LINENO}): ${FUNCNAME[0]:+${FUNCNAME[0]}(): }'
