@@ -1,14 +1,17 @@
 set -o vi
 
 shopt -s cdspell
-shopt -s checkjobs
 shopt -s checkwinsize
 shopt -s cmdhist
 shopt -s extglob
 shopt -s failglob
-shopt -s globstar
 shopt -s histappend
 shopt -s histreedit
+
+if [[ ${BASH_VERSINFO[0]} -ge 4 ]]; then
+    shopt -s checkjobs
+    shopt -s globstar
+fi
 
 export EDITOR=/usr/bin/vim
 export GLOBIGNORE=.:..
