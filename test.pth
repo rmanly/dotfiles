@@ -1,0 +1,6 @@
+# give python.org or anaconda's versions of python 2.7 access
+# to some Apple stuff for use in iPython or Jupyter notebooks etc.
+# put in here:
+# /Users/ryan/.local/lib/python2.7/site-packages/
+/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python
+/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/PyObjC
