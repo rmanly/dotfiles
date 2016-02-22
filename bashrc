@@ -192,3 +192,10 @@ ydlu() {
 
 # export WORKON_HOME="$HOME/virtual_py"
 # source $(which virtualenvwrapper.sh)
+
+
+# ----------------------------------------------------------------------
+# OTHER
+# ----------------------------------------------------------------------
+
+[[ -e $HOME/.bash_private ]] && source $HOME/.bash_private
