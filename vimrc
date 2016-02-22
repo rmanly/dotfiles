@@ -41,13 +41,14 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 " my own tweaks
 let g:syntastic_error_symbol = '✗'
 let g:syntastic_warning_symbol = '⚠'
 let g:syntastic_aggregate_errors = 1
+" 2 won't auto-open every time I write if I :lclose the list
+let g:syntastic_auto_loc_list = 2
 
 nnoremap <up> <nop>
 nnoremap <down> <nop>
