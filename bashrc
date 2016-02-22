@@ -78,14 +78,6 @@ if [[ $(uname) == Darwin ]]; then
         builtin cd "${@:-$HOME}" && /bin/ls -G;
     }
 
-    files() {
-        /usr/sbin/pkgutil --files "$1"
-    }
-
-    forget() {
-        /usr/sbin/pkgutil --forget "$1"
-    }
-
     profix() {
         /usr/bin/xmllint -format "$1" > "${1%.*}".plist
     }
