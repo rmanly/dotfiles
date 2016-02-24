@@ -1,0 +1,8 @@
+#include ".Xresources.d/Xresources.dark"
+
+xterm.geometry: 80x25
+xterm*scrollBar: false
+
+xterm*xftAntialias: true
+xterm*cjkWidth:false  
+xterm*faceName: Source Code Pro:antialias=True:pixelsize=16
