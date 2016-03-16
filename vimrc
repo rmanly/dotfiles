@@ -103,4 +103,8 @@ if has("autocmd")
 
     " remove auto-commenting for all filetypes
     autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
+    " make and load views for custom folding
+    autocmd BufWinLeave *.* mkview
+    autocmd BufWinEnter *.* silent loadview
 endif
