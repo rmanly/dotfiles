@@ -73,8 +73,8 @@ set background=dark
 colorscheme solarized
 
 if has('gui_running')
-  set lines=40 columns=90
-  set guifont=Source_Code_Pro:h14
+    set lines=40 columns=90
+    set guifont=Source_Code_Pro:h14
 endif
 
 if has("autocmd")
@@ -86,7 +86,7 @@ if has("autocmd")
     autocmd BufNew,BufNewFile,BufRead Makefile set filetype=make
     autocmd BufNew,BufNewFile,BufRead luggage.local set filetype=make
     autocmd BufNew,BufNewFile,BufRead Vagrantfile set filetype=json
-    
+
     "Syntax of these languages is fussy over tabs vs. spaces
     autocmd FileType make setlocal ts=8 sts=0 sw=8 noexpandtab
     autocmd FileType yaml setlocal ts=2 sts=0 sw=2 expandtab
