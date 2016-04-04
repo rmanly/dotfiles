@@ -145,7 +145,7 @@ ydl() {
 }
 
 ydlasmr() {
-    /usr/local/bin/youtube-dl -ciw -f best --restrict-filenames -o "$HOME/Downloads/%(uploader)s-%(title)s.%(ext)s" "$1"
+    /usr/local/bin/youtube-dl -ciw -f best --restrict-filenames -o "$HOME/Downloads/ASMR/%(uploader)s-%(title)s.%(ext)s" "$1"
 }
 
 ydla() {
@@ -157,7 +157,7 @@ ydlm() {
 }
 
 ydlmasmr() {
-    /usr/local/bin/youtube-dl -ciw -f best --restrict-filenames -x --audio-format "mp3" -o "$HOME/Dropbox/audio/%(uploader)s-%(title)s.%(ext)s" "$1"
+    /usr/local/bin/youtube-dl -ciw -f best --restrict-filenames -x --audio-format "mp3" -o "$HOME/Dropbox/audio/ASMR/%(uploader)s-%(title)s.%(ext)s" "$1"
 }
 
 ydlpl() {
@@ -170,7 +170,7 @@ ydlmk() {
 }
 
 ydlmkasmr() {
-    /usr/local/bin/youtube-dl -ciwk -f best --restrict-filenames -x --audio-format "mp3" -o "$HOME/Downloads/%(uploader)s-%(title)s.%(ext)s" "$1"
+    /usr/local/bin/youtube-dl -ciwk -f best --restrict-filenames -x --audio-format "mp3" -o "$HOME/Downloads/ASMR/%(uploader)s-%(title)s.%(ext)s" "$1"
 }
 
 ydlu() {
