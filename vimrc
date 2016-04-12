@@ -104,6 +104,7 @@ if has("autocmd")
     autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
     " make and load views for custom folding
+    " loadview isnt actually working...
     autocmd BufWinLeave *.* mkview
     autocmd BufWinEnter *.* silent loadview
 endif
