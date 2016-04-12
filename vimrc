@@ -65,8 +65,11 @@ nnoremap k gk
 nnoremap <silent> <C-l> :noh<CR><C-l>
 
 syntax on
+" Prompt's themes have issues with solarized…gah!
+let g:solarized_termcolors=256
 set background=dark
 colorscheme solarized
+call togglebg#map("")
 
 if has('gui_running')
     set lines=40 columns=90
