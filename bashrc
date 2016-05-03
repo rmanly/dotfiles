@@ -123,6 +123,12 @@ pre() {
     done
 }
 
+s128() {
+    filename="${1##*/}"
+    name="${filename%.*}"
+    sips -s format png --resampleHeight 128 "$1" --out $HOME/Desktop/"${name}-128.png"
+}
+
 vboxip() {
     VBoxManage guestproperty get "$1" "/VirtualBox/GuestInfo/Net/0/V4/IP"
 }
