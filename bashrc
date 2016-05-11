@@ -160,7 +160,7 @@ ydla() {
 }
 
 ydlm() {
-    /usr/local/bin/youtube-dl -ciw -f best --restrict-filenames -x --audio-format "mp3" -o "$HOME/Dropbox/audio/%(title)s.%(ext)s" "$1"
+    /usr/local/bin/youtube-dl -ciw -f best --restrict-filenames -x --audio-format "mp3" -o "$HOME/Downloads/audio/%(title)s.%(ext)s" "$1"
 }
 
 ydlmasmr() {
