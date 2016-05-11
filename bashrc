@@ -168,7 +168,6 @@ ydlmasmr() {
 }
 
 ydlpl() {
-    /bin/mkdir -p "$HOME/Downloads/$2"
     /usr/local/bin/youtube-dl -ciw -f best --restrict-filenames -o "$HOME/Downloads/$2/%(playlist_index)s-%(title)s.%(ext)s" "$1"
 }
 
@@ -181,7 +180,6 @@ ydlmkasmr() {
 }
 
 ydlu() {
-    /bin/mkdir -p "$HOME/Downloads/$1"
     /usr/local/bin/youtube-dl -ciw -f best --restrict-filenames -o "$HOME/Downloads/$1/%(uploader)s/%(title)s.%(ext)s" ytuser:"$1"
 }
 
