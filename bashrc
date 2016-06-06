@@ -14,10 +14,9 @@ if [[ ${BASH_VERSINFO[0]} -ge 4 ]]; then
 fi
 
 export EDITOR=/usr/bin/vim
-export GLOBIGNORE=.:..
 export GREP_OPTIONS='--color=auto'
-export HISTCONTROL=ignoreboth
-export HISTIGNORE='fg:bg:ls:pwd:cd ..:cd -:cd:jobs:set -x:ls -l:history:open ./:'
+export HISTCONTROL=ignorespace:erasedups
+export HISTIGNORE='fg:bg:ls:pwd:cd ..:cd -:cd:jobs:set -x:ls -l:history:'
 export HISTSIZE=2500
 export HISTTIMEFORMAT="%Y-%m-%d %T "
 export PROMPT_COMMAND='history -a; history -r'
