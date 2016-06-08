@@ -78,6 +78,14 @@ if [[ $(uname) == Darwin ]]; then
         builtin cd "${@:-$HOME}" && /bin/ls -G;
     }
 
+    ncl() {
+        port=9999
+        /usr/sbin/ipconfig getifaddr en4 2> /dev/null;
+        /usr/sbin/ipconfig getifaddr en0 2> /dev/null;
+        printf "%s\n" "Port: ${1:-$port}" "----"
+        /usr/bin/nc -l "${1:-$port}";
+    }
+
     profix() {
         /usr/bin/xmllint -format "$1" > "${1%.*}".plist
     }
