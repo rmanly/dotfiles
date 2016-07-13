@@ -72,16 +72,21 @@ export PS4='+(${BASH_SOURCE}:${LINENO}): ${FUNCNAME[0]:+${FUNCNAME[0]}(): }'
 
 if [[ $(uname) == Darwin ]]; then
     alias ls='ls -G'
+    alias ll='ls -G -la'
     alias readmunki='/usr/bin/defaults read /Library/Preferences/ManagedInstalls'
 
     cd() {
         builtin cd "${@:-$HOME}" && /bin/ls -G;
     }
 
+    ip() {
+        /usr/sbin/networksetup -getinfo "Thunderbolt Ethernet" | awk '/^IP /{ print $3 }';
+        /usr/sbin/ipconfig getifaddr en0 2> /dev/null;
+    }
+
     ncl() {
         port=9999
-        /usr/sbin/ipconfig getifaddr en4 2> /dev/null;
-        /usr/sbin/ipconfig getifaddr en0 2> /dev/null;
+        ip;
         printf "%s\n" "Port: ${1:-$port}" "----"
         /usr/bin/nc -l "${1:-$port}";
     }
