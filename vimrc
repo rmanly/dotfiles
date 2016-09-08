@@ -80,7 +80,7 @@ if has("autocmd")
     autocmd BufNew,BufNewFile,BufRead *.json set filetype=json
     autocmd BufNew,BufNewFile,BufRead *.mk set filetype=xml
     autocmd BufNew,BufNewFile,BufRead *.mobileconfig set filetype=xml
-    " autocmd BufNew,BufNewFile,BufRead *.plist set filetype=xml
+    autocmd BufNew,BufNewFile,BufRead *.pkginfo set filetype=xml
     autocmd BufNew,BufNewFile,BufRead *.recipe set filetype=xml
     autocmd BufNew,BufNewFile,BufRead Makefile set filetype=make
     autocmd BufNew,BufNewFile,BufRead luggage.local set filetype=make
