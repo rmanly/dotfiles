@@ -46,6 +46,7 @@ PATH=/usr/local/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/sbin:/usr/X11/bin
 [[ -e /usr/local/git/bin ]] && PATH=/usr/local/git/bin:$PATH
 [[ -e /usr/local/go/bin ]] && PATH=/usr/local/go/bin:$PATH
 [[ -e /usr/local/munki ]] && PATH=/usr/local/munki:$PATH
+[[ -e /usr/local/vfuse ]] && PATH=/usr/local/vfuse:$PATH
 
 export PATH
 
