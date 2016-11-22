@@ -142,58 +142,36 @@ s128() {
     sips -s format png --resampleHeight 128 "$1" --out $HOME/Desktop/"${name}-128.png"
 }
 
-vboxip() {
-    VBoxManage guestproperty get "$1" "/VirtualBox/GuestInfo/Net/0/V4/IP"
-}
-
-vboxhead() {
-    VBoxManage startvm "$1" --type headless
-}
-
-vboxstop() {
-    VboxManage controlvm "$1" poweroff
-}
-
-vboxnatssh() {
-    VBoxManage modifyvm "$1" --natpf1 "$1-ssh,tcp,,2222,,22" && \
-        printf "%s\n" "Start the VM and ssh via localhost:2222" \
-        "Remove rule with 'VBoxManage modifyvm $1 --natpf1 delete $1-ssh'"
-}
-
 ydl() {
-    /usr/local/bin/youtube-dl -ciw -f best --restrict-filenames -o "$HOME/Downloads/%(title)s.%(ext)s" "$1"
+    /usr/local/bin/youtube-dl -iw -f best --restrict-filenames -o "$HOME/Downloads/%(title)s.%(ext)s" "$1"
 }
 
 ydlasmr() {
-    /usr/local/bin/youtube-dl -ciw -f best --restrict-filenames -o "$HOME/Downloads/ASMR/%(uploader)s-%(title)s.%(ext)s" "$1"
+    /usr/local/bin/youtube-dl -iw -f best --restrict-filenames -o "$HOME/Downloads/ASMR/%(uploader)s-%(title)s.%(ext)s" "$1"
 }
 
 ydla() {
-    /usr/local/bin/youtube-dl -ciw -f best --restrict-filenames -a "$1" -o "$HOME/Downloads/%(title)s.%(ext)s"
+    /usr/local/bin/youtube-dl -iw -f best --restrict-filenames -a "$1" -o "$HOME/Downloads/%(title)s.%(ext)s"
 }
 
 ydlm() {
-    /usr/local/bin/youtube-dl -ciw -f best --restrict-filenames -x --audio-format "mp3" -o "$HOME/Downloads/audio/%(title)s.%(ext)s" "$1"
+    /usr/local/bin/youtube-dl -iw -f best --restrict-filenames -x --audio-format "mp3" -o "$HOME/Downloads/audio/%(title)s.%(ext)s" "$1"
 }
 
 ydlmasmr() {
-    /usr/local/bin/youtube-dl -ciw -f best --restrict-filenames -x --audio-format "mp3" -o "$HOME/Dropbox/audio/ASMR/%(uploader)s-%(title)s.%(ext)s" "$1"
+    /usr/local/bin/youtube-dl -iw -f best --restrict-filenames -x --audio-format "mp3" -o "$HOME/Dropbox/audio/ASMR/%(uploader)s-%(title)s.%(ext)s" "$1"
 }
 
 ydlpl() {
-    /usr/local/bin/youtube-dl -ciw -f best --restrict-filenames -o "$HOME/Downloads/$2/%(playlist_index)s-%(title)s.%(ext)s" "$1"
+    /usr/local/bin/youtube-dl -iw -f best --restrict-filenames -o "$HOME/Downloads/$2/%(playlist_index)s-%(title)s.%(ext)s" "$1"
 }
 
 ydlmk() {
-    /usr/local/bin/youtube-dl -ciwk -f best --restrict-filenames -x --audio-format "mp3" -o "$HOME/Downloads/%(title)s.%(ext)s" "$1"
+    /usr/local/bin/youtube-dl -iwk -f best --restrict-filenames -x --audio-format "mp3" -o "$HOME/Downloads/%(title)s.%(ext)s" "$1"
 }
 
 ydlmkasmr() {
-    /usr/local/bin/youtube-dl -ciwk -f best --restrict-filenames -x --audio-format "mp3" -o "$HOME/Downloads/ASMR/%(uploader)s-%(title)s.%(ext)s" "$1"
-}
-
-ydlu() {
-    /usr/local/bin/youtube-dl -ciw -f best --restrict-filenames -o "$HOME/Downloads/$1/%(uploader)s/%(title)s.%(ext)s" ytuser:"$1"
+    /usr/local/bin/youtube-dl -iwk -f best --restrict-filenames -x --audio-format "mp3" -o "$HOME/Downloads/ASMR/%(uploader)s-%(title)s.%(ext)s" "$1"
 }
 
 # ----------------------------------------------------------------------
