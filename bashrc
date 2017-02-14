@@ -31,6 +31,7 @@ bind '\C-l':clear-screen
 # quit if fits on one screen, case insensitive search, don't clear on quit, highlight new line
 export LESS=FiWX
 
+
 # ----------------------------------------------------------------------
 # PATHS
 # ----------------------------------------------------------------------
@@ -50,6 +51,7 @@ PATH=/usr/local/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/sbin:/usr/X11/bin
 
 export PATH
 
+
 # ----------------------------------------------------------------------
 # PROMPT
 # ----------------------------------------------------------------------
@@ -66,10 +68,10 @@ fi
 
 export PS4='+(${BASH_SOURCE}:${LINENO}): ${FUNCNAME[0]:+${FUNCNAME[0]}(): }'
 
+
 # ----------------------------------------------------------------------
 # ALIAS & OS-SPECIFIC FUNCTIONS
 # ----------------------------------------------------------------------
-
 
 if [[ $(uname) == Darwin ]]; then
     alias ls='ls -G'
@@ -107,6 +109,7 @@ else
     }
 fi
 
+
 # ----------------------------------------------------------------------
 # FUNCTIONS
 # ----------------------------------------------------------------------
@@ -143,36 +146,33 @@ s128() {
 }
 
 ydl() {
-    /usr/local/bin/youtube-dl -iw -f best --restrict-filenames -o "$HOME/Downloads/%(title)s.%(ext)s" "$1"
+    /usr/local/bin/youtube-dl -i --restrict-filenames -o "$HOME/Desktop/ydl/%(title)s.%(ext)s" "$1"
 }
 
 ydlasmr() {
-    /usr/local/bin/youtube-dl -iw -f best --restrict-filenames -o "$HOME/Downloads/ASMR/%(uploader)s-%(title)s.%(ext)s" "$1"
+    /usr/local/bin/youtube-dl -i -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]' --restrict-filenames -o "$HOME/Desktop/ydl/ASMR/%(uploader)s-%(title)s.%(ext)s" "$1"
 }
 
 ydla() {
-    /usr/local/bin/youtube-dl -iw -f best --restrict-filenames -a "$1" -o "$HOME/Downloads/%(title)s.%(ext)s"
+    /usr/local/bin/youtube-dl -i --restrict-filenames -a "$1" -o "$HOME/Desktop/ydl/%(title)s.%(ext)s"
 }
 
 ydlm() {
-    /usr/local/bin/youtube-dl -iw -f best --restrict-filenames -x --audio-format "mp3" -o "$HOME/Downloads/audio/%(title)s.%(ext)s" "$1"
+    /usr/local/bin/youtube-dl -i --restrict-filenames -x --audio-format "mp3" -o "$HOME/Desktop/ydl/audio/%(title)s.%(ext)s" "$1"
 }
 
 ydlmasmr() {
-    /usr/local/bin/youtube-dl -iw -f best --restrict-filenames -x --audio-format "mp3" -o "$HOME/Dropbox/audio/ASMR/%(uploader)s-%(title)s.%(ext)s" "$1"
+    /usr/local/bin/youtube-dl -i --restrict-filenames -x --audio-format "mp3" -o "$HOME/Desktop/ydl/audio/ASMR/%(uploader)s-%(title)s.%(ext)s" "$1"
 }
 
 ydlpl() {
-    /usr/local/bin/youtube-dl -iw -f best --restrict-filenames -o "$HOME/Downloads/$2/%(playlist_index)s-%(title)s.%(ext)s" "$1"
+    /usr/local/bin/youtube-dl -i --restrict-filenames -o "$HOME/Desktop/ydl/$2/%(playlist_index)s-%(title)s.%(ext)s" "$1"
 }
 
-ydlmk() {
-    /usr/local/bin/youtube-dl -iwk -f best --restrict-filenames -x --audio-format "mp3" -o "$HOME/Downloads/%(title)s.%(ext)s" "$1"
+ydlu() {
+    /usr/local/bin/youtube-dl -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]' -i -o "$HOME/Desktop/ydl/%(uploader)s/%(upload_date)s-%(title)s.%(ext)s" "$1"
 }
 
-ydlmkasmr() {
-    /usr/local/bin/youtube-dl -iwk -f best --restrict-filenames -x --audio-format "mp3" -o "$HOME/Downloads/ASMR/%(uploader)s-%(title)s.%(ext)s" "$1"
-}
 
 # ----------------------------------------------------------------------
 # VIRTUALENV
