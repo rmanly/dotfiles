@@ -17,7 +17,8 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 
 " allows you to % move between many other types of structures XML tags etc.
-packadd! matchit
+" packadd! matchit
+runtime macros/matchit.vim
 
 " trying out something new because .swx files are annoying me in munki repo
 " http://stackoverflow.com/questions/821902/disabling-swap-files-creation-in-vim
