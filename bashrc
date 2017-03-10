@@ -89,8 +89,9 @@ if [[ $(uname) == Darwin ]]; then
 
     ncl() {
         port=9999
-        ip;
-        printf "%s\n" "Port: ${1:-$port}" "----"
+        ip=$(ip);
+        printf "%s\n" "Use the following command to connect to this computer." 
+        box "nc ${ip} ${1:-$port}" -
         /usr/bin/nc -l "${1:-$port}";
     }
 
@@ -146,7 +147,7 @@ s128() {
 }
 
 ydl() {
-    /usr/local/bin/youtube-dl -i --restrict-filenames -o "$HOME/Desktop/ydl/%(title)s.%(ext)s" "$1"
+    /usr/local/bin/youtube-dl -i -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]' --restrict-filenames -o "$HOME/Desktop/ydl/%(title)s.%(ext)s" "$1"
 }
 
 ydlasmr() {
