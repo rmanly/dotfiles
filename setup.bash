@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env bash -x
 
 if [[ -d $HOME/src/dotfiles/.git ]]; then
     git --git-dir=$HOME/src/dotfiles/.git fetch --all
