@@ -16,8 +16,12 @@ fi
 
 [[ -e $HOME/.bashrc ]] && /bin/rm $HOME/.bashrc
 [[ -e $HOME/.bash_profile ]] && /bin/rm $HOME/.bash_profile
+[[ -e $HOME/.bash_prompt ]] && /bin/rm $HOME/.bash_prompt
 [[ -e $HOME/.vimrc ]] && /bin/rm $HOME/.vimrc
 
 /bin/ln -s $HOME/src/dotfiles/bashrc $HOME/.bashrc
 /bin/ln -s $HOME/src/dotfiles/bash_profile $HOME/.bash_profile
+/bin/ln -s $HOME/src/dotfiles/bash_profile $HOME/.bash_prompt
 /bin/ln -s $HOME/src/dotfiles/vimrc $HOME/.vimrc
+
+echo "Don't forget to source bashrc!"
