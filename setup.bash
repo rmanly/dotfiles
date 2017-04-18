@@ -1,15 +1,15 @@
 #!/usr/bin/env bash -x
 
 if [[ -d $HOME/src/dotfiles/.git ]]; then
-    git --git-dir=$HOME/src/dotfiles/.git fetch --all
-    git --git-dir=$HOME/src/dotfiles/.git reset --hard origin/master
+    git --git-dir=$HOME/src/dotfiles/.git --work-tree=$HOME/src/dotfiles fetch --all
+    git --git-dir=$HOME/src/dotfiles/.git --work-tree=$HOME/src/dotfiles reset --hard origin/master
 else
     git clone https://github.com/rmanly/dotfiles.git $HOME/src/dotfiles
 fi
 
 if [[ -d $HOME/.vim/bundle/Vundle.vim/.git ]]; then
-    git --git-dir=$HOME/.vim/bundle/Vundle.vim/.git fetch --all
-    git --git-dir=$HOME/.vim/bundle/Vundle.vim/.git reset --hard origin/master
+    git --git-dir=$HOME/.vim/bundle/Vundle.vim/.git --work-tree=$HOME/.vim/bundle/Vundle.vim fetch --all
+    git --git-dir=$HOME/.vim/bundle/Vundle.vim/.git --work-tree=$HOME/.vim/bundle/Vundle.vim reset --hard origin/master
 else
     git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
 fi
