@@ -7,13 +7,6 @@ else
     git clone https://github.com/rmanly/dotfiles.git $HOME/src/dotfiles
 fi
 
-if [[ -d $HOME/.vim/bundle/Vundle.vim/.git ]]; then
-    git --git-dir=$HOME/.vim/bundle/Vundle.vim/.git --work-tree=$HOME/.vim/bundle/Vundle.vim fetch --all
-    git --git-dir=$HOME/.vim/bundle/Vundle.vim/.git --work-tree=$HOME/.vim/bundle/Vundle.vim reset --hard origin/master
-else
-    git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
-fi
-
 [[ -e $HOME/.bashrc ]] && /bin/rm $HOME/.bashrc
 [[ -e $HOME/.bash_profile ]] && /bin/rm $HOME/.bash_profile
 [[ -e $HOME/.bash_prompt ]] && /bin/rm $HOME/.bash_prompt
