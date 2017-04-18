@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
 
 if [[ -d $HOME/src/dotfiles/.git ]]; then
-    cd $HOME/src/dotfiles
-    git fetch --all
-    git reset --hard origin/master
+    git --git-dir=$HOME/src/dotfiles/.git fetch --all
+    git --git-dir=$HOME/src/dotfiles/.git reset --hard origin/master
 else
     git clone https://github.com/rmanly/dotfiles.git $HOME/src/dotfiles
 fi
