@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 if [[ -d $HOME/src/dotfiles/.git ]]; then
-    cd $HOME/src/dotfiles/.git
+    cd $HOME/src/dotfiles
     git fetch --all
     git reset --hard origin/master
 else
