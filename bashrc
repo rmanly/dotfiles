@@ -77,6 +77,7 @@ if [[ $(uname) == Darwin ]]; then
     alias ls='ls -G'
     alias ll='ls -G -la'
     alias readmunki='/usr/bin/defaults read /Library/Preferences/ManagedInstalls'
+    alias sha256='/usr/bin/shasum -a 256'
 
     cd() {
         builtin cd "${@:-$HOME}" && /bin/ls -G;
