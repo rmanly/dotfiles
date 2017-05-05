@@ -49,6 +49,11 @@ PATH=/usr/local/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/sbin:/usr/X11/bin
 [[ -e /usr/local/munki ]] && PATH=/usr/local/munki:$PATH
 [[ -e /usr/local/vfuse ]] && PATH=/usr/local/vfuse:$PATH
 
+# making this a real if statement for when there are more paths to add
+if [[ $(uname -r) =~ Microsoft$ ]]; then
+    [[ -e /mnt/c/Program\ Files/Docker/Docker/resources/bin ]] && PATH=$PATH:/mnt/c/Program\ Files/Docker/Docker/resources/bin
+fi
+
 export PATH
 
 
