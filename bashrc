@@ -45,14 +45,14 @@ PATH=/usr/local/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/sbin:/usr/X11/bin
 [[ -e /Library/Frameworks/Python.framework/Versions/3.5/bin ]] && PATH=$PATH:/Library/Frameworks/Python.framework/Versions/3.5/bin
 [[ -e /Volumes/Drobo/Dropbox/bin ]] && PATH=$PATH:/Volumes/Drobo/Dropbox/bin
 [[ -e /usr/local/git/bin ]] && PATH=/usr/local/git/bin:$PATH
-[[ -e /usr/local/go/bin ]] && PATH=/usr/local/go/bin:$PATH
-[[ -e /usr/local/munki ]] && PATH=/usr/local/munki:$PATH
-[[ -e /usr/local/vfuse ]] && PATH=/usr/local/vfuse:$PATH
+[[ -e /usr/local/go/bin ]] && PATH=$PATH:/usr/local/go/bin
+[[ -e /usr/local/munki ]] && PATH=$PATH:/usr/local/munki
+[[ -e /usr/local/vfuse ]] && PATH=$PATH:/usr/local/vfuse
 
 # making this a real if statement for when there are more paths to add
 if [[ $(uname -r) =~ Microsoft$ ]]; then
-    [[ -e /mnt/c/Program\ Files/Docker/Docker/resources/bin ]] && PATH=$PATH:/mnt/c/Program\ Files/Docker/Docker/resources/bin
     [[ -e $HOME/anaconda3 ]] && PATH=$PATH:$HOME/anaconda3/bin
+    [[ -e /mnt/c/Program\ Files/Docker/Docker/resources/bin ]] && PATH=$PATH:/mnt/c/Program\ Files/Docker/Docker/resources/bin
 fi
 
 export PATH
