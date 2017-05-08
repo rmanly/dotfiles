@@ -37,17 +37,25 @@ export LESS=FiWX
 # ----------------------------------------------------------------------
 
 unset PATH
-PATH=/usr/local/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/sbin:/usr/X11/bin
+PATH=/usr/local/sbin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/X11/bin
 
-[[ -e $HOME/Dropbox/bin ]] && PATH=$PATH:$HOME/Dropbox/bin
-[[ -e $HOME/anaconda/bin ]] && PATH=$PATH:$HOME/anaconda/bin
+if [[ -e $HOME/Dropbox/bin ]]; then
+    PATH=$PATH:$HOME/Dropbox/bin
+elif [[ -e /Volumes/Drobo/Dropbox/bin ]]; then
+    PATH=$PATH:/Volumes/Drobo/Dropbox/bin
+fi
+
+if [[ -e $HOME/anaconda/bin ]]; then
+    PATH=$PATH:$HOME/anaconda/bin
+elif [[ -e /Library/Frameworks/Python.framework/Versions/3.6/bin ]]; then
+    PATH=$PATH:/Library/Frameworks/Python.framework/Versions/3.6/bin
+fi
+
 [[ -e /Applications/Server.app ]] && PATH=$PATH:/Applications/Server.app/Contents/ServerRoot/usr/sbin:/Applications/Server.app/Contents/ServerRoot/usr/bin
-[[ -e /Library/Frameworks/Python.framework/Versions/3.5/bin ]] && PATH=$PATH:/Library/Frameworks/Python.framework/Versions/3.5/bin
-[[ -e /Volumes/Drobo/Dropbox/bin ]] && PATH=$PATH:/Volumes/Drobo/Dropbox/bin
-[[ -e /usr/local/git/bin ]] && PATH=/usr/local/git/bin:$PATH
-[[ -e /usr/local/go/bin ]] && PATH=$PATH:/usr/local/go/bin
 [[ -e /usr/local/munki ]] && PATH=$PATH:/usr/local/munki
+[[ -e /usr/local/go/bin ]] && PATH=$PATH:/usr/local/go/bin
 [[ -e /usr/local/vfuse ]] && PATH=$PATH:/usr/local/vfuse
+[[ -e /usr/local/git/bin ]] && PATH=/usr/local/git/bin:$PATH
 
 # making this a real if statement for when there are more paths to add
 if [[ $(uname -r) =~ Microsoft$ ]]; then
