@@ -168,7 +168,7 @@ ydlmasmr() {
 }
 
 ydlpl() {
-    /usr/local/bin/youtube-dl -i --restrict-filenames -o "$HOME/Desktop/ydl/$2/%(playlist_index)s-%(title)s.%(ext)s" "$1"
+    /usr/local/bin/youtube-dl -i -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]' --restrict-filenames -o "$HOME/Desktop/ydl/%(playlist_title)s/%(playlist_index)s-%(title)s.%(ext)s"
 }
 
 ydlu() {
