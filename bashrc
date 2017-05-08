@@ -52,7 +52,7 @@ PATH=/usr/local/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/sbin:/usr/X11/bin
 # making this a real if statement for when there are more paths to add
 if [[ $(uname -r) =~ Microsoft$ ]]; then
     [[ -e /mnt/c/Program\ Files/Docker/Docker/resources/bin ]] && PATH=$PATH:/mnt/c/Program\ Files/Docker/Docker/resources/bin
-    [[ -e $HOME/anaconda3 ]] && PATH=$PATH:/home/ryan/anaconda3/bin
+    [[ -e $HOME/anaconda3 ]] && PATH=$PATH:$HOME/anaconda3/bin
 fi
 
 export PATH
