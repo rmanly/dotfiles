@@ -16,5 +16,7 @@ fi
 /bin/ln -s $HOME/src/dotfiles/bash_profile $HOME/.bash_profile
 /bin/ln -s $HOME/src/dotfiles/bash_prompt $HOME/.bash_prompt
 /bin/ln -s $HOME/src/dotfiles/vimrc $HOME/.vimrc
+/bin/ln -s $HOME/src/dotfiles/gitconfig $HOME/.gitconfig
+/bin/ln -s $HOME/src/dotfiles/gitignore $HOME/.gitignore
 
 echo "Don't forget to source bashrc!"
