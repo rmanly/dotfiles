@@ -1,6 +1,6 @@
 [user]
-	name = Ryan Manly
-	email = ryan.manly@gmail.com
+	name = 
+	email = 
 [filter "media"]
 	clean = git-media-clean %f
 	smudge = git-media-smudge %f
@@ -19,3 +19,5 @@
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
+[commit]
+	template = /Users/ryan/.stCommitMsg
