@@ -46,9 +46,9 @@ elif [[ -e /Volumes/Drobo/Dropbox/bin ]]; then
 fi
 
 if [[ -e $HOME/anaconda3/bin ]]; then
-    PATH=$HOME/anaconda3/bin:$PATH
+    PATH=$PATH:$HOME/anaconda3/bin
 elif [[ -e /Library/Frameworks/Python.framework/Versions/3.6/bin ]]; then
-    PATH=/Library/Frameworks/Python.framework/Versions/3.6/bin:$PATH
+    PATH=$PATH:/Library/Frameworks/Python.framework/Versions/3.6/bin
 fi
 
 [[ -e /Applications/Server.app ]] && PATH=$PATH:/Applications/Server.app/Contents/ServerRoot/usr/sbin:/Applications/Server.app/Contents/ServerRoot/usr/bin
