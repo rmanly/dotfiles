@@ -98,8 +98,15 @@ if [[ $(uname) == Darwin ]]; then
     }
 
     ip() {
-        /usr/sbin/networksetup -getinfo "Thunderbolt Ethernet" | awk '/^IP /{ print $3 }';
-        /usr/sbin/ipconfig getifaddr en0 2> /dev/null;
+        devices=($(networksetup -listnetworkserviceorder | awk -F': ' '/Port/{ gsub(/\)$/,""); print $3 }'))
+
+        for iface in "${devices[@]}"; do
+            if ! ipconfig getifaddr "$iface"; then
+                continue
+            else
+                break
+            fi
+        done
     }
 
     ncl() {
