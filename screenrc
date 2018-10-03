@@ -1,3 +1,5 @@
+# https://www.gnu.org/software/screen/manual/screen.html
+
 # Message when activity occurs in a window
 # NOTE: must enable monitoring with 'C-a M'
 activity "activity: window ~%"
