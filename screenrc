@@ -1,15 +1,13 @@
+activity "activity: window ~%"	# Message when activity occurs in a window
+autodetach on
+defscrollback 30000
+startup_message off
+
 hardstatus alwayslastline
 hardstatus string '%{= kg}[ %{G}%H %{g}][ %{=kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B}%Y-%m-%d %{W}%c %{g}]'
 
-defscrollback 30000
-
-autodetach on
-
-activity "activity: window ~%"	# Message when activity occurs in a window
-
-startup_message off
-
 screen -t local 0
+
 # the following lines create a split window with bash on top & bottom
 # screen -t test 0
 # split
