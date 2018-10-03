@@ -1,5 +1,5 @@
 # Message when activity occurs in a window
-# must enable monitoring with 'C-a M'
+# NOTE: must enable monitoring with 'C-a M'
 activity "activity: window ~%"
 autodetach on
 defscrollback 30000
@@ -9,6 +9,9 @@ hardstatus alwayslastline
 hardstatus string '%{= kg}[ %{G}%H %{g}][ %{=kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B}%Y-%m-%d %{W}%c %{g}]'
 
 screen -t local 0
+
+# NOTE: 'C-a H' is logging toggle
+# color codes in log show properly in `cat` and `less -R`
 
 # the following lines create a split window with bash on top & bottom
 # screen -t test 0
