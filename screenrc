@@ -1,4 +1,6 @@
-activity "activity: window ~%"	# Message when activity occurs in a window
+# Message when activity occurs in a window
+# must enable monitoring with 'C-a M'
+activity "activity: window ~%"
 autodetach on
 defscrollback 30000
 startup_message off
