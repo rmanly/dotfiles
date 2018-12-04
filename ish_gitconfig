@@ -1,13 +1,6 @@
 [user]
 	name = Ryan Manly
 	email = ryan.manly@gmail.com
-[filter "media"]
-	clean = git-media-clean %f
-	smudge = git-media-smudge %f
 [core]
 	excludesfile = /root/.gitignore
 	pager = less -r
-[credential]
-	help = osxkeychain
-[push]
-	default = simple
