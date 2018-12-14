@@ -1,0 +1,6 @@
+[user]
+	name = Ryan Manly
+	email = ryan.manly@gmail.com
+[core]
+	excludesfile = /root/.gitignore
+	pager = less -r
