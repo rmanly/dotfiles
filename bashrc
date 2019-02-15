@@ -169,11 +169,11 @@ s128() {
 }
 
 ydl() {
-    /usr/local/bin/youtube-dl -i -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]' -o "$HOME/Downloads/ydl/%(title)s.%(ext)s" "$1"
+    /usr/local/bin/youtube-dl -i -o "$HOME/Downloads/ydl/%(title)s.%(ext)s" "$1"
 }
 
 ydlasmr() {
-    /usr/local/bin/youtube-dl -i -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]' -o "$HOME/Downloads/ydl/ASMR/%(uploader)s-%(title)s.%(ext)s" "$1"
+    /usr/local/bin/youtube-dl -i -o "$HOME/Downloads/ydl/ASMR/%(uploader)s-%(title)s.%(ext)s" "$1"
 }
 
 ydla() {
