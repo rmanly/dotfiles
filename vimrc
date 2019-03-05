@@ -38,6 +38,7 @@ filetype plugin indent on    " required
 " packadd! matchit
 runtime macros/matchit.vim
 
+" custom dirs for swap etc. mostly to keep .swx files from being created on mounted shares
 " http://stackoverflow.com/questions/821902/disabling-swap-files-creation-in-vim
 if !isdirectory($HOME."/.vim/swap")
     call mkdir($HOME."/.vim/swap", "p")
@@ -59,6 +60,7 @@ set backspace=indent,eol,start
 set encoding=utf-8
 set hls ic is
 set listchars=tab:▸\ ,eol:¬,trail:~
+set nofsync
 set scrolloff=3
 set showcmd
 set showmatch
