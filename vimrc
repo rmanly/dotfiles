@@ -38,10 +38,20 @@ filetype plugin indent on    " required
 " packadd! matchit
 runtime macros/matchit.vim
 
-" trying out something new because .swx files are annoying me in munki repo
 " http://stackoverflow.com/questions/821902/disabling-swap-files-creation-in-vim
+if !isdirectory($HOME."/.vim/swap")
+    call mkdir($HOME."/.vim/swap", "p")
+endif
 set directory=~/.vim/swap//,~/tmp//,/tmp//,.
+
+if !isdirectory($HOME."/.vim/undo")
+    call mkdir($HOME."/.vim/undo", "p")
+endif
 set undodir=~/.vim/undo//,~/tmp//,/tmp//,.
+
+if !isdirectory($HOME."/.vim/backup")
+    call mkdir($HOME."/.vim/backup", "p")
+endif
 set backupdir=~/.vim/backup//,~/tmp//,.
 
 set autochdir
