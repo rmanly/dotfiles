@@ -31,6 +31,8 @@ bind '\C-l':clear-screen
 # quit if fits on one screen, case insensitive search, don't clear on quit, highlight new line
 export LESS=FiWX
 
+[[ -d /Volumes/Ministack/.vagrant.d ]] && export VAGRANT_HOME=/Volumes/Ministack/.vagrant.d
+
 
 # ----------------------------------------------------------------------
 # PATHS
@@ -92,6 +94,7 @@ if [[ $(uname) == Darwin ]]; then
     alias ll='ls -G -la'
     alias readmunki='/usr/bin/defaults read /Library/Preferences/ManagedInstalls'
     alias sha256='/usr/bin/shasum -a 256'
+    alias snapshot='/usr/bin/tmutil snapshot'
 
     cd() {
         builtin cd "${@:-$HOME}" && /bin/ls -G;
