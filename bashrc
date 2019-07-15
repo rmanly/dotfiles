@@ -124,6 +124,11 @@ if [[ $(uname) == Darwin ]]; then
         /usr/bin/xmllint -format "$1" > "${1%.*}".plist
     }
 
+    recover() {
+        box "TYPE THIS!"
+        printf "%s\n" 'sudo nvram "recovery-boot-mode=unused"'
+    }
+
     writemunki() {
         /usr/bin/sudo /usr/bin/defaults write /Library/Preferences/ManagedInstalls "$1" "$2"
     }
