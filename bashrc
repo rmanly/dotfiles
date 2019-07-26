@@ -169,7 +169,7 @@ s128() {
 }
 
 ydl() {
-    /usr/local/bin/youtube-dl -i -o "$HOME/Downloads/ydl/%(title)s.%(ext)s" "$1"
+    /usr/local/bin/youtube-dl -i -o "$HOME/Downloads/ydl/%(uploader)s-%(title)s.%(ext)s" "$1"
 }
 
 ydlasmr() {
