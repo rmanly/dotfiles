@@ -1,8 +1,7 @@
-HISTFILE=~/.zsh_history
+HISTFILE=${ZDOTDIR:-$HOME}/.zsh_history
 HISTSIZE=1000
 SAVEHIST=1000
-#setopt auto_pushd pushd_ignore_dups 
-setopt correct_all auto_cd hist_ignore_dups append_history share_history
+setopt correct_all auto_cd hist_ignore_all_dups append_history share_history
 unsetopt beep
 
 autoload -Uz compinit
@@ -11,19 +10,21 @@ compinit
 autoload -Uz colors && colors
 
 #keep man pages on screen after quit
-export LESS='FiX'
+export LESS='FiWX'
 
 # ----------------------------------------------------------------------
 # PROMPT
 # ----------------------------------------------------------------------
 
-local text="%{$fg_no_bold[green]%}"
-local text_emph="%{$fg_bold[green]%}"
-local punctuation="%{$fg_bold[grey]%}"
-local emph="%{$fg_bold[white]%}"
-local final="%{$reset_color%}"
+local yellow="%{$fg_no_bold[yellow]%}"
+local green="%{$fg_no_bold[green]%}"
+local white="%{$fg_no_bold[white]%}"
+local reset="%{$reset_color%}"
 
-PROMPT="${punctuation}(${text_emph}%n${emph}@${text}%m${punctuation})(${emph}%j${text} job[s]${punctuation})-(${emph}%#${punctuation}:%!${text}:%~${punctuation})-${final} "
+# name at host
+# PROMPT=""$'\n'"${yellow}%n${reset} at ${yellow}%m${reset}: ${green}%~"$'\n'"${white}%#${reset} "
+
+PROMPT=""$'\n'"${yellow}%n${reset}: ${green}%~"$'\n'"${white}%#${reset} "
 
 # ----------------------------------------------------------------------
 # ALIAS
