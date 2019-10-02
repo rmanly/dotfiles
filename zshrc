@@ -10,7 +10,8 @@ compinit
 autoload -Uz colors && colors
 
 #keep man pages on screen after quit
-export LESS='FiWX'
+#TODO: fix this for git log
+export LESS=FiWX
 
 # ----------------------------------------------------------------------
 # PROMPT
