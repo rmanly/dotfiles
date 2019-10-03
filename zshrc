@@ -16,15 +16,28 @@ export GREP_OPTIONS='--color=auto'
 # PROMPT
 # ----------------------------------------------------------------------
 
-local yellow="%{$fg_no_bold[yellow]%}"
 local green="%{$fg_no_bold[green]%}"
-local white="%{$fg_no_bold[white]%}"
+local orange="%F{166}"
+local red="%{$fg_no_bold[red]%}"
 local reset="%{$reset_color%}"
+local white="%{$fg_no_bold[white]%}"
+local yellow="%{$fg_no_bold[yellow]%}"
 
-# name at host
-# PROMPT=""$'\n'"${yellow}%n${reset} at ${yellow}%m${reset}: ${green}%~"$'\n'"${white}%#${reset} "
+# Highlight the user name when logged in as root.
+if [[ "${USER}" == "root" ]]; then
+	userStyle="${red}";
+else
+	userStyle="${orange}";
+fi;
 
-PROMPT=""$'\n'"${yellow}%n${reset}: ${green}%~"$'\n'"${white}%#${reset} "
+# Highlight the hostname when connected via SSH.
+if [[ "${SSH_TTY}" ]]; then
+	hostStyle="${red}";
+else
+	hostStyle="${yellow}";
+fi;
+
+PROMPT=""$'\n'"${userStyle}%n ${white}at ${hostStyle}%m${white}: ${green}%~"$'\n'"${white}%#${reset} "
 
 # ----------------------------------------------------------------------
 # ALIAS
