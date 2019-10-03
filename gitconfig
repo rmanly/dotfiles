@@ -11,13 +11,5 @@
 	help = osxkeychain
 [push]
 	default = simple
-[mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
-[difftool]
-	prompt = false
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[commit]
-	template = /Users/ryan/.stCommitMsg
+# [difftool]
+# 	prompt = false
