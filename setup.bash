@@ -11,6 +11,7 @@ fi
 [[ -e $HOME/.bash_profile ]] && /bin/rm $HOME/.bash_profile
 [[ -e $HOME/.bash_prompt ]] && /bin/rm $HOME/.bash_prompt
 [[ -e $HOME/.vimrc ]] && /bin/rm $HOME/.vimrc
+[[ -e $HOME/.zshrc ]] && /bin/rm $HOME/.zshrc
 
 /bin/ln -s $HOME/src/dotfiles/bash_profile $HOME/.bash_profile
 /bin/ln -s $HOME/src/dotfiles/bash_prompt $HOME/.bash_prompt
@@ -19,5 +20,6 @@ fi
 /bin/ln -s $HOME/src/dotfiles/gitignore $HOME/.gitignore
 /bin/ln -s $HOME/src/dotfiles/inputrc $HOME/.inputrc
 /bin/ln -s $HOME/src/dotfiles/vimrc $HOME/.vimrc
+/bin/ln -s $HOME/src/dotfiles/zshrc $HOME/.zshrc
 
-echo "Don't forget to source bashrc!"
+echo "Don't forget to source your shell rc!"
