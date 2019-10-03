@@ -30,9 +30,6 @@ PROMPT=""$'\n'"${yellow}%n${reset}: ${green}%~"$'\n'"${white}%#${reset} "
 # ALIAS
 # ----------------------------------------------------------------------
 
-alias sshv='ssh -vvv -o LogLevel=DEBUG3'
-alias ll='ls -la'
-
 if [[ $(uname) == Darwin ]]; then
 	alias ls='ls -G'
 	alias eject='diskutil eject'
