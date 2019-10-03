@@ -20,7 +20,6 @@ export HISTIGNORE='fg:bg:ls:pwd:cd ..:cd -:cd:jobs:set -x:ls -l:history:'
 export HISTSIZE=2500
 export HISTTIMEFORMAT="%Y-%m-%d %T "
 export PROMPT_COMMAND='history -a; history -r'
-export PROMPT_DIRTRIM=2
 
 # http://cnswww.cns.cwru.edu/php/chet/readline/readline.html#SEC13
 # zsh style tab completions...kinda
