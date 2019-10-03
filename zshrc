@@ -64,5 +64,5 @@ dirperm() {
 		ls -led "$dir";
 		dir=${dir%/*};
 	done;
-ls -led /;
+    ls -led /;
 }
