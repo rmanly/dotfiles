@@ -52,16 +52,10 @@ md() {
 	mkdir -p $1 && cd $1;
 }
 
-calc() {
-	awk "BEGIN{ print $* }";
-}
-
-pman () {
-	man -t "${1}" | open -f -a /Applications/Preview.app
-}
-
 box() {
-	c=${2-=}; l=$c$c${1//?/$c}$c$c; echo -e "$l\n$c $1 $c\n$l"; unset c l;
+	c=${2-=}; l=$c$c${1//?/$c}$c$c;
+    echo -e "$l\n$c $1 $c\n$l";
+    unset c l;
 }
 
 dirperm() {
