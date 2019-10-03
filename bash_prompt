@@ -97,6 +97,8 @@ else
 fi;
 
 # Highlight the hostname when connected via SSH.
+# A limitation I found here sudo doesn't keep
+# ENV vars and so ssh_tty isn't set after a sudo -s
 if [[ "${SSH_TTY}" ]]; then
 	hostStyle="${bold}${red}";
 else
