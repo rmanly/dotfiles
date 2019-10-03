@@ -16,30 +16,23 @@ export GREP_OPTIONS='--color=auto'
 # PROMPT
 # ----------------------------------------------------------------------
 
-local green="%{$fg_no_bold[green]%}"
-local orange="%F{166}"
-local red="%{$fg_no_bold[red]%}"
-local reset="%{$reset_color%}"
-local white="%{$fg_no_bold[white]%}"
-local yellow="%{$fg_no_bold[yellow]%}"
-
 # Highlight the user name when logged in as root.
 if [[ "${USER}" == "root" ]]; then
-	userStyle="${red}";
+	userStyle='%F{red}';
 else
-	userStyle="${orange}";
+	userStyle='%F{166}';
 fi;
 
 # Highlight the hostname when connected via SSH.
 # A limitation I found here sudo doesn't keep
 # ENV vars and so ssh_tty isn't set after a sudo -s
 if [[ "${SSH_TTY}" ]]; then
-	hostStyle="${red}";
+	hostStyle='%F{red}';
 else
-	hostStyle="${yellow}";
+	hostStyle='%F{yellow}';
 fi;
 
-PROMPT=""$'\n'"${userStyle}%n ${white}at ${hostStyle}%m${white}: ${green}%~"$'\n'"${white}%#${reset} "
+PROMPT=""$'\n'"${userStyle}%n%f %F{white}at%f ${hostStyle}%m%f%F{white}:%f %F{green}%~%f"$'\n'"%F{white}%#%f "
 
 # ----------------------------------------------------------------------
 # ALIAS
@@ -83,6 +76,10 @@ if [[ $(uname) == Darwin ]]; then
     recover() {
         box "TYPE THIS!"
         printf "%s\n" 'sudo nvram "recovery-boot-mode=unused"'
+    }
+
+    rmds() {
+        /usr/bin/find . -name \.DS_Store -delete
     }
 
     writemunki() {
