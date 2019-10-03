@@ -1,16 +1,16 @@
 HISTFILE=${ZDOTDIR:-$HOME}/.zsh_history
-HISTSIZE=1000
+HISTSIZE=2500
 SAVEHIST=1000
 setopt correct_all auto_cd hist_ignore_all_dups append_history share_history
 unsetopt beep
 
-autoload -Uz compinit
-compinit
-
+autoload -Uz compinit && compinit
 autoload -Uz colors && colors
 
-#keep man pages on screen after quit
+# quit if fits on one screen, case insensitive search, don't clear on quit, highlight new line
 export LESS=FiWX
+export GREP_OPTIONS='--color=auto'
+[[ -d /Volumes/Ministack/.vagrant.d ]] && export VAGRANT_HOME=/Volumes/Ministack/.vagrant.d
 
 # ----------------------------------------------------------------------
 # PROMPT
