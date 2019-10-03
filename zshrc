@@ -31,22 +31,59 @@ PROMPT=""$'\n'"${yellow}%n${reset}: ${green}%~"$'\n'"${white}%#${reset} "
 # ----------------------------------------------------------------------
 
 if [[ $(uname) == Darwin ]]; then
-	alias ls='ls -G'
-	alias eject='diskutil eject'
-	rmattr() {
-		find . -depth 1 -print0 | xargs -0 xattr -d $1;
-	}
+    alias ls='ls -G'
+    alias ll='ls -G -la'
+    alias readmunki='/usr/bin/defaults read /Library/Preferences/ManagedInstalls'
+    alias sha256='/usr/bin/shasum -a 256'
+    alias snapshot='/usr/bin/tmutil snapshot'
+
+    cd() {
+        builtin cd "${@:-$HOME}" && /bin/ls -G;
+    }
+
+    ip() {
+        devices=($(networksetup -listnetworkserviceorder | awk -F': ' '/Port/{ gsub(/\)$/,""); print $3 }'))
+
+        for iface in "${devices[@]}"; do
+            if ! ipconfig getifaddr "$iface"; then
+                continue
+            else
+                break
+            fi
+        done
+    }
+
+    ncl() {
+        port=9999
+        ip=$(ip);
+        printf "%s\n" "Use the following command to connect to this computer." 
+        box "nc ${ip} ${1:-$port}" -
+        /usr/bin/nc -l "${1:-$port}";
+    }
+
+    profix() {
+        /usr/bin/xmllint -format "$1" > "${1%.*}".plist
+    }
+
+    recover() {
+        box "TYPE THIS!"
+        printf "%s\n" 'sudo nvram "recovery-boot-mode=unused"'
+    }
+
+    writemunki() {
+        /usr/bin/sudo /usr/bin/defaults write /Library/Preferences/ManagedInstalls "$1" "$2"
+    }
 else
-	alias ls='ls --color'
+    alias ls='ls --color'
+
+    cd() {
+        builtin cd "${@:-$HOME}" && /bin/ls --color;
+    }
 fi
 
 # ----------------------------------------------------------------------
 # FUNCTIONS
 # ----------------------------------------------------------------------
-
-cd() {
-	builtin cd "${@:-$HOME}" && ls;
-}
 
 md() {
 	mkdir -p $1 && cd $1;
