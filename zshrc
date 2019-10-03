@@ -66,3 +66,47 @@ dirperm() {
 	done;
     ls -led /;
 }
+
+pre() {
+    for filename in ./*; do
+        mv -- "$filename" "$1-${filename#*/}";
+    done
+}
+
+s128() {
+    filename="${1##*/}";
+    name="${filename%.*}";
+    sips -s format png --resampleHeight 128 "$1" --out $HOME/Desktop/"${name}-128.png";
+}
+
+ydl() {
+    /usr/local/bin/youtube-dl -i -o "$HOME/Downloads/ydl/%(uploader)s-%(title)s.%(ext)s" "$1"
+}
+
+ydlasmr() {
+    /usr/local/bin/youtube-dl -i -o "$HOME/Downloads/ydl/ASMR/%(uploader)s-%(title)s.%(ext)s" "$1"
+}
+
+ydla() {
+    /usr/local/bin/youtube-dl -i -a "$1" -o "$HOME/Downloads/ydl/%(title)s.%(ext)s"
+}
+
+ydlm() {
+    /usr/local/bin/youtube-dl -i -x --audio-format "mp3" -o "$HOME/Downloads/ydl/audio/%(title)s.%(ext)s" "$1"
+}
+
+ydlmk() {
+    /usr/local/bin/youtube-dl -i -k -x --audio-format "mp3" -o "$HOME/Downloads/ydl/audio/%(title)s.%(ext)s" "$1"
+}
+
+ydlmasmr() {
+    /usr/local/bin/youtube-dl -i -x --audio-format "mp3" -o "$HOME/Downloads/ydl/audio/ASMR/%(uploader)s-%(title)s.%(ext)s" "$1"
+}
+
+ydlpl() {
+    /usr/local/bin/youtube-dl -i -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]' -o "$HOME/Downloads/ydl/%(playlist_title)s/%(playlist_index)s-%(title)s.%(ext)s"
+}
+
+ydlu() {
+    /usr/local/bin/youtube-dl -i -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]' -o "$HOME/Downloads/ydl/%(uploader)s/%(upload_date)s-%(title)s.%(ext)s" "$1"
+}
