@@ -193,6 +193,14 @@ zle -N prepend-sudo
 
 bindkey -M vicmd s prepend-sudo
 
+# https://github.com/rothgar/mastering-zsh/blob/master/docs/usage/line_movement.md
+# add emacs style search and line movement as well
+bindkey '^r' history-incremental-search-backward
+bindkey '^a' beginning-of-line
+bindkey '^e' end-of-line
+# Also fix annoying vi backspace
+bindkey '^?' backward-delete-char
+
 # Get output from last command with ctrl+q,ctrl+l
 # zmodload -i zsh/parameter
 # 
