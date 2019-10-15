@@ -3,7 +3,7 @@ bindkey -v
 HISTFILE=${ZDOTDIR:-$HOME}/.zsh_history
 HISTSIZE=2500
 SAVEHIST=1000
-setopt correct_all auto_cd hist_ignore_all_dups append_history share_history
+setopt correct_all auto_cd hist_ignore_all_dups append_history share_history hist_ignore_space
 unsetopt beep
 
 autoload -Uz compinit && compinit
