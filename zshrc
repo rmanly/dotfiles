@@ -194,11 +194,11 @@ zle -N prepend-sudo
 bindkey -M vicmd s prepend-sudo
 
 # Get output from last command with ctrl+q,ctrl+l
-zmodload -i zsh/parameter
-
-insert-last-command-output() {
-  LBUFFER+="$(eval $history[$((HISTCMD-1))])"
-}
-zle -N insert-last-command-output
-
-bindkey "^Q^L" insert-last-command-output
+# zmodload -i zsh/parameter
+# 
+# insert-last-command-output() {
+#   LBUFFER+="$(eval $history[$((HISTCMD-1))])"
+# }
+# zle -N insert-last-command-output
+# 
+# bindkey "^Q^L" insert-last-command-output
