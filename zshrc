@@ -47,8 +47,9 @@ if [[ $(uname) == Darwin ]]; then
     alias sha256='/usr/bin/shasum -a 256'
     alias snapshot='/usr/bin/tmutil snapshot'
 
-    cd() {
-        builtin cd "${@:-$HOME}" && /bin/ls -G;
+    chpwd() {
+        emulate -L zsh;
+        /bin/ls -G;
     }
 
     ip() {
@@ -210,3 +211,7 @@ bindkey '^?' backward-delete-char
 # zle -N insert-last-command-output
 # 
 # bindkey "^Q^L" insert-last-command-output
+
+# TODO:
+# investigate this
+# https://github.com/rothgar/mastering-zsh/blob/master/docs/usage/line_movement.md#yank-current-command-and-paste
