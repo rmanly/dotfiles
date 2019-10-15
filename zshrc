@@ -161,3 +161,44 @@ ydlpl() {
 ydlu() {
     /usr/local/bin/youtube-dl -i -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]' -o "$HOME/Downloads/ydl/%(uploader)s/%(upload_date)s-%(title)s.%(ext)s" "$1"
 }
+
+
+# ----------------------------------------------------------------------
+# Vi-Mode Testing
+# ----------------------------------------------------------------------
+
+# http://stratus3d.com/blog/2017/10/26/better-vi-mode-in-zshell/
+# Better searching in command mode
+bindkey -M vicmd '?' history-incremental-search-backward
+bindkey -M vicmd '/' history-incremental-search-forward
+
+# Beginning search with arrow keys
+bindkey "^[OA" up-line-or-beginning-search
+bindkey "^[OB" down-line-or-beginning-search
+bindkey -M vicmd "k" up-line-or-beginning-search
+bindkey -M vicmd "j" down-line-or-beginning-search
+
+# `v` is already mapped to visual mode, so we need to use a different key to
+# open Vim
+bindkey -M vicmd "^V" edit-command-line
+
+# https://github.com/rothgar/mastering-zsh/blob/master/docs/helpers/widgets.md
+# Prepend sudo to a command and put your cursor back to the previous location with esc,s
+function prepend-sudo {
+  if [[ $BUFFER != "sudo "* ]]; then
+    BUFFER="sudo $BUFFER"; CURSOR+=5
+  fi
+}
+zle -N prepend-sudo
+
+bindkey -M vicmd s prepend-sudo
+
+# Get output from last command with ctrl+q,ctrl+l
+zmodload -i zsh/parameter
+
+insert-last-command-output() {
+  LBUFFER+="$(eval $history[$((HISTCMD-1))])"
+}
+zle -N insert-last-command-output
+
+bindkey "^Q^L" insert-last-command-output
