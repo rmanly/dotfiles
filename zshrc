@@ -1,3 +1,5 @@
+bindkey -v
+
 HISTFILE=${ZDOTDIR:-$HOME}/.zsh_history
 HISTSIZE=2500
 SAVEHIST=1000
