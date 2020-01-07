@@ -3,7 +3,9 @@ bindkey -v
 HISTFILE=${ZDOTDIR:-$HOME}/.zsh_history
 HISTSIZE=2500
 SAVEHIST=1000
-setopt correct_all auto_cd hist_ignore_all_dups append_history share_history hist_ignore_space
+CORRECT_IGNORE_FILE='.*'
+
+setopt correct_all auto_cd hist_ignore_all_dups append_history share_history hist_ignore_space brace_ccl
 unsetopt beep
 
 autoload -Uz compinit && compinit
@@ -39,6 +41,9 @@ PROMPT=""$'\n'"${userStyle}%n%f %F{white}at%f ${hostStyle}%m%f%F{white}:%f %F{gr
 # ----------------------------------------------------------------------
 # ALIAS
 # ----------------------------------------------------------------------
+
+alias -s pkginfo=vim
+alias -s plist=vim
 
 if [[ $(uname) == Darwin ]]; then
     alias ls='ls -G'
@@ -143,8 +148,16 @@ ydla() {
     /usr/local/bin/youtube-dl -i -a "$1" -o "$HOME/Downloads/ydl/%(title)s.%(ext)s"
 }
 
+ydle() {
+    /usr/local/bin/youtube-dl -i -o "/Volumes/slim/ydl/%(uploader)s-%(title)s.%(ext)s" "$1"
+}
+
 ydlm() {
     /usr/local/bin/youtube-dl -i -x --audio-format "mp3" -o "$HOME/Downloads/ydl/audio/%(title)s.%(ext)s" "$1"
+}
+
+ydlme() {
+    /usr/local/bin/youtube-dl -i -x --audio-format "mp3" -o "Volumes/slim/ydl/audio/%(title)s.%(ext)s" "$1"
 }
 
 ydlmk() {
@@ -156,11 +169,19 @@ ydlmasmr() {
 }
 
 ydlpl() {
-    /usr/local/bin/youtube-dl -i -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]' -o "$HOME/Downloads/ydl/%(playlist_title)s/%(playlist_index)s-%(title)s.%(ext)s"
+    /usr/local/bin/youtube-dl -i -o "/$HOME/Downloads/ydl/%(playlist_title)s/%(title)s.%(ext)s" "$1"
+}
+
+ydlpli() {
+    /usr/local/bin/youtube-dl -i -o "$HOME/Downloads/ydl/%(playlist_title)s/%(playlist_index)s-%(title)s.%(ext)s" "$1"
 }
 
 ydlu() {
-    /usr/local/bin/youtube-dl -i -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]' -o "$HOME/Downloads/ydl/%(uploader)s/%(upload_date)s-%(title)s.%(ext)s" "$1"
+    /usr/local/bin/youtube-dl -i -o "$HOME/Downloads/ydl/%(uploader)s/%(upload_date)s-%(title)s.%(ext)s" "$1"
+}
+
+ydlue() {
+    /usr/local/bin/youtube-dl -i -o "/Volumes/slim/ydl/%(uploader)s/%(upload_date)s-%(title)s.%(ext)s" "$1"
 }
 
 
