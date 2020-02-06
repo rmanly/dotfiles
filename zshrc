@@ -176,6 +176,10 @@ ydlpli() {
     /usr/local/bin/youtube-dl -i -o "$HOME/Downloads/ydl/%(playlist_title)s/%(playlist_index)s-%(title)s.%(ext)s" "$1"
 }
 
+ydlt() {
+    /usr/local/bin/youtube-dl -i -a "$1" -o "$HOME/Downloads/ydl/%(title)s-%(webpage_url_basename)s.mp4"
+}
+
 ydlu() {
     /usr/local/bin/youtube-dl -i -o "$HOME/Downloads/ydl/%(uploader)s/%(upload_date)s-%(title)s.%(ext)s" "$1"
 }
