@@ -41,6 +41,8 @@ PROMPT=""$'\n'"${userStyle}%n%f %F{white}at%f ${hostStyle}%m%f%F{white}:%f %F{gr
 # ----------------------------------------------------------------------
 
 if [[ $(uname) == Darwin ]]; then
+    alias chimeon='nvram StartupMute=%00'
+    alias chimeoff='nvram StartupMute=%01'
     alias ls='ls -G'
     alias ll='ls -G -la'
     alias readmunki='/usr/bin/defaults read /Library/Preferences/ManagedInstalls'
