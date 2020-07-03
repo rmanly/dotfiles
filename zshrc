@@ -13,7 +13,6 @@ autoload -Uz colors && colors
 
 # quit if fits on one screen, case insensitive search, don't clear on quit, highlight new line
 export LESS=FiWX
-export GREP_OPTIONS='--color=auto'
 [[ -d /Volumes/Ministack/.vagrant.d ]] && export VAGRANT_HOME=/Volumes/Ministack/.vagrant.d
 
 # ----------------------------------------------------------------------
@@ -44,6 +43,7 @@ PROMPT=""$'\n'"${userStyle}%n%f %F{white}at%f ${hostStyle}%m%f%F{white}:%f %F{gr
 
 alias -s pkginfo=vim
 alias -s plist=vim
+alias grep='grep --color=auto'
 
 if [[ $(uname) == Darwin ]]; then
     alias chimeon='nvram StartupMute=%00'
@@ -194,6 +194,10 @@ ydlue() {
 # ----------------------------------------------------------------------
 # Vi-Mode Testing
 # ----------------------------------------------------------------------
+
+# fix for error on Ubuntu when typing up & down arrow for the history bindings below
+[[ ! -f ~/.zshenv || -z $(grep DEBIAN_PREVENT_KEYBOARD_CHANGES ~/.zshenv) ]] &&
+	print "DEBIAN_PREVENT_KEYBOARD_CHANGES=yes" >> ~/.zshenv
 
 # http://stratus3d.com/blog/2017/10/26/better-vi-mode-in-zshell/
 # Better searching in command mode
