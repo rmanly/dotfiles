@@ -22,4 +22,4 @@ fi
 /bin/ln -s $HOME/src/dotfiles/vimrc $HOME/.vimrc
 /bin/ln -s $HOME/src/dotfiles/zshrc $HOME/.zshrc
 
-printf "%s\n" "Don't forget to source your shell rc!" "You may want to do the following as well:" "sudo ln -s /Applications/MacVim.app/Contents/bin/mvim /usr/local/bin/mvim"
+printf "%s\n" "Don't forget to source your shell rc!"
