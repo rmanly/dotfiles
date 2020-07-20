@@ -33,34 +33,6 @@ export LESS=FiWX
 
 
 # ----------------------------------------------------------------------
-# PATHS
-# ----------------------------------------------------------------------
-
-unset PATH
-PATH=/usr/local/sbin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/X11/bin
-
-if [[ -e $HOME/anaconda3/bin ]]; then
-    PATH=$PATH:$HOME/anaconda3/bin
-elif [[ -e /Library/Frameworks/Python.framework/Versions/3.6/bin ]]; then
-    PATH=$PATH:/Library/Frameworks/Python.framework/Versions/3.6/bin
-fi
-
-[[ -e /Applications/Server.app ]] && PATH=$PATH:/Applications/Server.app/Contents/ServerRoot/usr/sbin:/Applications/Server.app/Contents/ServerRoot/usr/bin
-[[ -e /usr/local/munki ]] && PATH=$PATH:/usr/local/munki
-[[ -e /usr/local/go/bin ]] && PATH=$PATH:/usr/local/go/bin
-[[ -e /usr/local/vfuse ]] && PATH=$PATH:/usr/local/vfuse
-[[ -e /usr/local/git/bin ]] && PATH=/usr/local/git/bin:$PATH
-
-# making this a real if statement for when there are more paths to add
-if [[ $(uname -r) =~ Microsoft$ ]]; then
-    [[ -e $HOME/anaconda3 ]] && PATH=$PATH:$HOME/anaconda3/bin
-    [[ -e /mnt/c/Program\ Files/Docker/Docker/resources/bin ]] && PATH=$PATH:/mnt/c/Program\ Files/Docker/Docker/resources/bin
-fi
-
-export PATH
-
-
-# ----------------------------------------------------------------------
 # PROMPT
 # ----------------------------------------------------------------------
 
