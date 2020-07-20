@@ -14,7 +14,6 @@ if [[ ${BASH_VERSINFO[0]} -ge 4 ]]; then
 fi
 
 export EDITOR=/usr/bin/vim
-export GREP_OPTIONS='--color=auto'
 export HISTCONTROL=ignorespace:erasedups
 export HISTIGNORE='fg:bg:ls:pwd:cd ..:cd -:cd:jobs:set -x:ls -l:history:'
 export HISTSIZE=2500
@@ -39,12 +38,6 @@ export LESS=FiWX
 
 unset PATH
 PATH=/usr/local/sbin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/X11/bin
-
-if [[ -e $HOME/Dropbox/bin ]]; then
-    PATH=$PATH:$HOME/Dropbox/bin
-elif [[ -e /Volumes/Drobo/Dropbox/bin ]]; then
-    PATH=$PATH:/Volumes/Drobo/Dropbox/bin
-fi
 
 if [[ -e $HOME/anaconda3/bin ]]; then
     PATH=$PATH:$HOME/anaconda3/bin
@@ -87,6 +80,8 @@ export PS4='+(${BASH_SOURCE}:${LINENO}): ${FUNCNAME[0]:+${FUNCNAME[0]}(): }'
 # ----------------------------------------------------------------------
 # ALIAS & OS-SPECIFIC FUNCTIONS
 # ----------------------------------------------------------------------
+
+alias grep='grep --color=auto'
 
 if [[ $(uname) == Darwin ]]; then
     alias ls='ls -G'
