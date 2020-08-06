@@ -14,7 +14,6 @@ if [[ ${BASH_VERSINFO[0]} -ge 4 ]]; then
 fi
 
 export EDITOR=/usr/bin/vim
-export GREP_OPTIONS='--color=auto'
 export HISTCONTROL=ignorespace:erasedups
 export HISTIGNORE='fg:bg:ls:pwd:cd ..:cd -:cd:jobs:set -x:ls -l:history:'
 export HISTSIZE=2500
@@ -31,40 +30,6 @@ bind '\C-l':clear-screen
 export LESS=FiWX
 
 [[ -d /Volumes/Ministack/.vagrant.d ]] && export VAGRANT_HOME=/Volumes/Ministack/.vagrant.d
-
-
-# ----------------------------------------------------------------------
-# PATHS
-# ----------------------------------------------------------------------
-
-unset PATH
-PATH=/usr/local/sbin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/X11/bin
-
-if [[ -e $HOME/Dropbox/bin ]]; then
-    PATH=$PATH:$HOME/Dropbox/bin
-elif [[ -e /Volumes/Drobo/Dropbox/bin ]]; then
-    PATH=$PATH:/Volumes/Drobo/Dropbox/bin
-fi
-
-if [[ -e $HOME/anaconda3/bin ]]; then
-    PATH=$PATH:$HOME/anaconda3/bin
-elif [[ -e /Library/Frameworks/Python.framework/Versions/3.6/bin ]]; then
-    PATH=$PATH:/Library/Frameworks/Python.framework/Versions/3.6/bin
-fi
-
-[[ -e /Applications/Server.app ]] && PATH=$PATH:/Applications/Server.app/Contents/ServerRoot/usr/sbin:/Applications/Server.app/Contents/ServerRoot/usr/bin
-[[ -e /usr/local/munki ]] && PATH=$PATH:/usr/local/munki
-[[ -e /usr/local/go/bin ]] && PATH=$PATH:/usr/local/go/bin
-[[ -e /usr/local/vfuse ]] && PATH=$PATH:/usr/local/vfuse
-[[ -e /usr/local/git/bin ]] && PATH=/usr/local/git/bin:$PATH
-
-# making this a real if statement for when there are more paths to add
-if [[ $(uname -r) =~ Microsoft$ ]]; then
-    [[ -e $HOME/anaconda3 ]] && PATH=$PATH:$HOME/anaconda3/bin
-    [[ -e /mnt/c/Program\ Files/Docker/Docker/resources/bin ]] && PATH=$PATH:/mnt/c/Program\ Files/Docker/Docker/resources/bin
-fi
-
-export PATH
 
 
 # ----------------------------------------------------------------------
@@ -87,6 +52,8 @@ export PS4='+(${BASH_SOURCE}:${LINENO}): ${FUNCNAME[0]:+${FUNCNAME[0]}(): }'
 # ----------------------------------------------------------------------
 # ALIAS & OS-SPECIFIC FUNCTIONS
 # ----------------------------------------------------------------------
+
+alias grep='grep --color=auto'
 
 if [[ $(uname) == Darwin ]]; then
     alias ls='ls -G'
