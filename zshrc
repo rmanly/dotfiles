@@ -206,6 +206,7 @@ bindkey -M vicmd '?' history-incremental-search-forward
 
 # `v` is already mapped to visual mode, so we need to use a different key to
 # open Vim
+autoload edit-command-line; zle -N edit-command-line
 bindkey -M vicmd "^V" edit-command-line
 
 # https://github.com/rothgar/mastering-zsh/blob/master/docs/helpers/widgets.md
