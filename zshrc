@@ -174,6 +174,10 @@ ydlpl() {
     /usr/local/bin/youtube-dl -i -o "/$HOME/Downloads/ydl/%(playlist_title)s/%(title)s.%(ext)s" "$1"
 }
 
+ydlplm() {
+    /usr/local/bin/youtube-dl -i -x --audio-format "mp3" -o "/$HOME/Downloads/ydl/%(playlist_title)s/%(title)s.%(ext)s" "$1"
+}
+
 ydlpli() {
     /usr/local/bin/youtube-dl -i -o "$HOME/Downloads/ydl/%(playlist_title)s/%(playlist_index)s-%(title)s.%(ext)s" "$1"
 }
