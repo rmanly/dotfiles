@@ -150,16 +150,8 @@ ydla() {
     /usr/local/bin/youtube-dl -i -a "$1" -o "$HOME/Downloads/ydl/%(title)s.%(ext)s"
 }
 
-ydle() {
-    /usr/local/bin/youtube-dl -i -o "/Volumes/slim/ydl/%(uploader)s-%(title)s.%(ext)s" "$1"
-}
-
 ydlm() {
     /usr/local/bin/youtube-dl -i -x --audio-format "mp3" -o "$HOME/Downloads/ydl/audio/%(title)s.%(ext)s" "$1"
-}
-
-ydlme() {
-    /usr/local/bin/youtube-dl -i -x --audio-format "mp3" -o "Volumes/slim/ydl/audio/%(title)s.%(ext)s" "$1"
 }
 
 ydlmk() {
@@ -174,24 +166,12 @@ ydlpl() {
     /usr/local/bin/youtube-dl -i -o "/$HOME/Downloads/ydl/%(playlist_title)s/%(title)s.%(ext)s" "$1"
 }
 
-ydlplm() {
-    /usr/local/bin/youtube-dl -i -x --audio-format "mp3" -o "/$HOME/Downloads/ydl/%(playlist_title)s/%(title)s.%(ext)s" "$1"
-}
-
 ydlpli() {
     /usr/local/bin/youtube-dl -i -o "$HOME/Downloads/ydl/%(playlist_title)s/%(playlist_index)s-%(title)s.%(ext)s" "$1"
 }
 
-ydlt() {
-    /usr/local/bin/youtube-dl -i -a "$1" -o "$HOME/Downloads/ydl/%(title)s-%(webpage_url_basename)s.mp4"
-}
-
 ydlu() {
     /usr/local/bin/youtube-dl -i -o "$HOME/Downloads/ydl/%(uploader)s/%(upload_date)s-%(title)s.%(ext)s" "$1"
-}
-
-ydlue() {
-    /usr/local/bin/youtube-dl -i -o "/Volumes/slim/ydl/%(uploader)s/%(upload_date)s-%(title)s.%(ext)s" "$1"
 }
 
 
