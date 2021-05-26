@@ -139,7 +139,8 @@ s128() {
 }
 
 ydl() {
-    /usr/local/bin/youtube-dl -i -o "$HOME/Downloads/ydl/%(uploader)s-%(title)s.%(ext)s" "$1"
+    today=$(/bin/date +'%Y-%m-%d')
+    /usr/local/bin/youtube-dl -i -o "$HOME/Downloads/ydl $today/%(uploader)s-%(title)s.%(ext)s" "$1"
 }
 
 ydlasmr() {
@@ -151,7 +152,8 @@ ydla() {
 }
 
 ydlm() {
-    /usr/local/bin/youtube-dl -i -x --audio-format "mp3" -o "$HOME/Downloads/ydl/audio/%(title)s.%(ext)s" "$1"
+    today=$(/bin/date +'%Y-%m-%d')
+    /usr/local/bin/youtube-dl -i -x --audio-format "mp3" -o "$HOME/Downloads/ydl $today/audio/%(title)s.%(ext)s" "$1"
 }
 
 ydlmk() {
@@ -159,7 +161,8 @@ ydlmk() {
 }
 
 ydlmasmr() {
-    /usr/local/bin/youtube-dl -i -x --audio-format "mp3" -o "$HOME/Downloads/ydl/audio/ASMR/%(uploader)s-%(title)s.%(ext)s" "$1"
+    today=$(/bin/date +'%Y-%m-%d')
+    /usr/local/bin/youtube-dl -i -x --audio-format "mp3" -o "$HOME/Downloads/ydl $today/audio/ASMR/%(uploader)s-%(title)s.%(ext)s" "$1"
 }
 
 ydlpl() {
