@@ -5,7 +5,7 @@ HISTSIZE=2500
 SAVEHIST=1000
 CORRECT_IGNORE_FILE='.*'
 
-setopt correct_all auto_cd hist_ignore_all_dups append_history share_history hist_ignore_space brace_ccl
+setopt append_history auto_cd auto_pushd brace_ccl correct_all hist_ignore_all_dups hist_ignore_space share_history
 unsetopt beep
 
 autoload -Uz compinit && compinit
