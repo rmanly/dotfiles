@@ -13,3 +13,5 @@
 	default = simple
 # [difftool]
 # 	prompt = false
+[pull]
+	ff = only
