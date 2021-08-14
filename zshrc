@@ -1,11 +1,12 @@
 bindkey -v
 
-HISTFILE=${ZDOTDIR:-$HOME}/.zsh_history
-HISTSIZE=2500
-SAVEHIST=1000
 CORRECT_IGNORE_FILE='.*'
+DIRSTACKSIZE=4
+HISTFILE=${ZDOTDIR:-$HOME}/.zsh_history
+HISTSIZE=10500
+SAVEHIST=10000
 
-setopt correct_all auto_cd hist_ignore_all_dups append_history share_history hist_ignore_space brace_ccl
+setopt append_history auto_cd auto_pushd brace_ccl correct_all extended_history hist_expire_dups_first hist_find_no_dups hist_ignore_space hist_no_store hist_reduce_blanks pushd_ignore_dups share_history
 unsetopt beep
 
 autoload -Uz compinit && compinit
@@ -139,7 +140,8 @@ s128() {
 }
 
 ydl() {
-    /usr/local/bin/youtube-dl -i -o "$HOME/Downloads/ydl/%(uploader)s-%(title)s.%(ext)s" "$1"
+    today=$(/bin/date +'%Y-%m-%d')
+    /usr/local/bin/youtube-dl -i -o "$HOME/Downloads/ydl $today/%(uploader)s-%(title)s.%(ext)s" "$1"
 }
 
 ydlasmr() {
@@ -151,7 +153,8 @@ ydla() {
 }
 
 ydlm() {
-    /usr/local/bin/youtube-dl -i -x --audio-format "mp3" -o "$HOME/Downloads/ydl/audio/%(title)s.%(ext)s" "$1"
+    today=$(/bin/date +'%Y-%m-%d')
+    /usr/local/bin/youtube-dl -i -x --audio-format "mp3" -o "$HOME/Downloads/ydl $today/audio/%(title)s.%(ext)s" "$1"
 }
 
 ydlmk() {
@@ -159,7 +162,8 @@ ydlmk() {
 }
 
 ydlmasmr() {
-    /usr/local/bin/youtube-dl -i -x --audio-format "mp3" -o "$HOME/Downloads/ydl/audio/ASMR/%(uploader)s-%(title)s.%(ext)s" "$1"
+    today=$(/bin/date +'%Y-%m-%d')
+    /usr/local/bin/youtube-dl -i -x --audio-format "mp3" -o "$HOME/Downloads/ydl $today/audio/ASMR/%(uploader)s-%(title)s.%(ext)s" "$1"
 }
 
 ydlpl() {
