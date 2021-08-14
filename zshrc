@@ -1,11 +1,12 @@
 bindkey -v
 
-HISTFILE=${ZDOTDIR:-$HOME}/.zsh_history
-HISTSIZE=2500
-SAVEHIST=1000
 CORRECT_IGNORE_FILE='.*'
+DIRSTACKSIZE=4
+HISTFILE=${ZDOTDIR:-$HOME}/.zsh_history
+HISTSIZE=10500
+SAVEHIST=10000
 
-setopt append_history auto_cd auto_pushd brace_ccl correct_all hist_ignore_all_dups hist_ignore_space share_history
+setopt append_history auto_cd auto_pushd brace_ccl correct_all extended_history hist_expire_dups_first hist_find_no_dups hist_ignore_space hist_no_store hist_reduce_blanks pushd_ignore_dups share_history
 unsetopt beep
 
 autoload -Uz compinit && compinit
