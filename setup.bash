@@ -22,4 +22,10 @@ fi
 /bin/ln -s $HOME/src/dotfiles/vimrc $HOME/.vimrc
 /bin/ln -s $HOME/src/dotfiles/zshrc $HOME/.zshrc
 
+if [[ $(uname) == Darwin ]]; then
+    /usr/bin/defaults write com.apple.Safari AutoOpenSafeDownloads -boolean NO
+    /usr/bin/defaults write com.apple.finder _FXShowPosixPathInTitle -bool TRUE
+    /usr/bin/killall Finder
+fi
+
 printf "%s\n" "Don't forget to source your shell rc!"
