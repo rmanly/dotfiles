@@ -141,41 +141,49 @@ s128() {
 
 ydl() {
     today=$(/bin/date +'%Y-%m-%d')
-    /usr/local/bin/youtube-dl -i -o "$HOME/Downloads/ydl $today/%(uploader)s-%(title)s.%(ext)s" "$1"
+    /usr/local/bin/yt-dlp -o "$HOME/Downloads/ydl $today/%(uploader)s-%(title)s.%(ext)s" "$1"
 }
 
 ydlasmr() {
-    /usr/local/bin/youtube-dl -i -o "$HOME/Downloads/ydl/ASMR/%(uploader)s-%(title)s.%(ext)s" "$1"
+    today=$(/bin/date +'%Y-%m-%d')
+    /usr/local/bin/yt-dlp -o "$HOME/Downloads/ydl $today/ASMR/%(uploader)s-%(title)s.%(ext)s" "$1"
 }
 
 ydla() {
-    /usr/local/bin/youtube-dl -i -a "$1" -o "$HOME/Downloads/ydl/%(title)s.%(ext)s"
+    today=$(/bin/date +'%Y-%m-%d')
+    /usr/local/bin/yt-dlp -a "$1" -o "$HOME/Downloads/ydl $today/%(title)s.%(ext)s"
 }
 
 ydlm() {
     today=$(/bin/date +'%Y-%m-%d')
-    /usr/local/bin/youtube-dl -i -x --audio-format "mp3" -o "$HOME/Downloads/ydl $today/audio/%(title)s.%(ext)s" "$1"
+    /usr/local/bin/yt-dlp -f m4a/aac/bestaudio -o "$HOME/Downloads/ydl $today/audio/%(title)s.%(ext)s" "$1"
 }
 
 ydlmk() {
-    /usr/local/bin/youtube-dl -i -k -x --audio-format "mp3" -o "$HOME/Downloads/ydl/audio/%(title)s.%(ext)s" "$1"
+    today=$(/bin/date +'%Y-%m-%d')
+    # download multiple formats using ',' default and audio in preferred order
+    /usr/local/bin/yt-dlp -f "bestvideo*+bestaudio/best,m4a/aac/bestaudio" -o "$HOME/Downloads/ydl $today/audio/%(title)s.%(ext)s" "$1"
 }
 
 ydlmasmr() {
     today=$(/bin/date +'%Y-%m-%d')
-    /usr/local/bin/youtube-dl -i -x --audio-format "mp3" -o "$HOME/Downloads/ydl $today/audio/ASMR/%(uploader)s-%(title)s.%(ext)s" "$1"
+    /usr/local/bin/yt-dlp -f m4a/aac/bestaudio -o "$HOME/Downloads/ydl $today/audio/ASMR/%(uploader)s-%(title)s.%(ext)s" "$1"
 }
 
 ydlpl() {
-    /usr/local/bin/youtube-dl -i -o "/$HOME/Downloads/ydl/%(playlist_title)s/%(title)s.%(ext)s" "$1"
+    today=$(/bin/date +'%Y-%m-%d')
+    /usr/local/bin/yt-dlp -o "/$HOME/Downloads/ydl $today/%(playlist_title)s/%(title)s.%(ext)s" "$1"
 }
 
 ydlpli() {
-    /usr/local/bin/youtube-dl -i -o "$HOME/Downloads/ydl/%(playlist_title)s/%(playlist_index)s-%(title)s.%(ext)s" "$1"
+    # Prefix playlist index with " - " separator, but only if it is available
+    today=$(/bin/date +'%Y-%m-%d')
+    /usr/local/bin/yt-dlp -o "$HOME/Downloads/ydl $today/%(playlist_title)s/%(playlist_index|)s%(playlist_index& - |)s-%(title)s.%(ext)s" "$1"
 }
 
 ydlu() {
-    /usr/local/bin/youtube-dl -i -o "$HOME/Downloads/ydl/%(uploader)s/%(upload_date)s-%(title)s.%(ext)s" "$1"
+    today=$(/bin/date +'%Y-%m-%d')
+    /usr/local/bin/yt-dlp -o "$HOME/Downloads/ydl $today/%(uploader)s/%(release_date>%Y-%m-%d,upload_date>%Y-%m-%d|Unknown)s-%(title)s.%(ext)s" "$1"
 }
 
 
@@ -187,10 +195,10 @@ ydlu() {
 [[ ! -f ~/.zshenv || -z $(grep DEBIAN_PREVENT_KEYBOARD_CHANGES ~/.zshenv) ]] &&
 	print "DEBIAN_PREVENT_KEYBOARD_CHANGES=yes" >> ~/.zshenv
 
-# http://stratus3d.com/blog/2017/10/26/better-vi-mode-in-zshell/
+# http://stratus3d.com/blog/2017/10/26/better-vi-moden-zshell/
 # Better searching in command mode
-bindkey -M vicmd '/' history-incremental-search-backward
-bindkey -M vicmd '?' history-incremental-search-forward
+bindkey -M vicmd '/' historyncremental-search-backward
+bindkey -M vicmd '?' historyncremental-search-forward
 
 # `v` is already mapped to visual mode, so we need to use a different key to
 # open Vim
@@ -210,7 +218,7 @@ bindkey -M vicmd s prepend-sudo
 
 # https://github.com/rothgar/mastering-zsh/blob/master/docs/usage/line_movement.md
 # add emacs style search and line movement as well
-bindkey '^r' history-incremental-search-backward
+bindkey '^r' historyncremental-search-backward
 bindkey '^a' beginning-of-line
 bindkey '^e' end-of-line
 # Also fix annoying vi backspace
