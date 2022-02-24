@@ -156,18 +156,18 @@ ydla() {
 
 ydlm() {
     today=$(/bin/date +'%Y-%m-%d')
-    /usr/local/bin/yt-dlp -f m4a/aac/bestaudio -o "$HOME/Downloads/ydl $today/audio/%(title)s.%(ext)s" "$1"
+    /usr/local/bin/yt-dlp -f "m4a/aac/bestaudio" -o "$HOME/Downloads/ydl $today/audio/%(title)s.%(ext)s" "$1"
 }
 
 ydlmk() {
     today=$(/bin/date +'%Y-%m-%d')
-    # download multiple formats using ',' default and audio in preferred order
+    # download multiple formats using ',' default method and then audio in preferred order
     /usr/local/bin/yt-dlp -f "bestvideo*+bestaudio/best,m4a/aac/bestaudio" -o "$HOME/Downloads/ydl $today/audio/%(title)s.%(ext)s" "$1"
 }
 
 ydlmasmr() {
     today=$(/bin/date +'%Y-%m-%d')
-    /usr/local/bin/yt-dlp -f m4a/aac/bestaudio -o "$HOME/Downloads/ydl $today/audio/ASMR/%(uploader)s-%(title)s.%(ext)s" "$1"
+    /usr/local/bin/yt-dlp -f "m4a/aac/bestaudio" -o "$HOME/Downloads/ydl $today/audio/ASMR/%(uploader)s-%(title)s.%(ext)s" "$1"
 }
 
 ydlpl() {
