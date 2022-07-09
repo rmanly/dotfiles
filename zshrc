@@ -151,18 +151,19 @@ ydlasmr() {
 
 ydla() {
     today=$(/bin/date +'%Y-%m-%d')
-    /usr/local/bin/yt-dlp -a "$1" -o "$HOME/Downloads/ydl $today/%(title)s.%(ext)s"
+    /usr/local/bin/yt-dlp -a "$1" -o "$HOME/Downloads/ydl $today/%(uploader)s-%(title)s.%(ext)s"
 }
 
 ydlm() {
     today=$(/bin/date +'%Y-%m-%d')
-    /usr/local/bin/yt-dlp -f "m4a/aac/bestaudio" -o "$HOME/Downloads/ydl $today/audio/%(title)s.%(ext)s" "$1"
+    /usr/local/bin/yt-dlp -f "m4a/aac/bestaudio" -o "$HOME/Downloads/ydl $today/audio/%(uploader)s-%(title)s.%(ext)s" "$1"
 }
 
 ydlmk() {
     today=$(/bin/date +'%Y-%m-%d')
-    # download multiple formats using ',' default method and then audio in preferred order
-    /usr/local/bin/yt-dlp -f "bestvideo*+bestaudio/best,m4a/aac/bestaudio" -o "$HOME/Downloads/ydl $today/audio/%(title)s.%(ext)s" "$1"
+    # download multiple formats using ',' default method and then audio in preferred order -- UPDATE: doesnt work if no format available
+    # /usr/local/bin/yt-dlp -f "bestvideo*+bestaudio/best,m4a/aac/bestaudio" -o "$HOME/Downloads/ydl $today/audio/%(title)s.%(ext)s" "$1"
+    /usr/local/bin/yt-dlp -x -k -o "$HOME/Downloads/ydl $today/audio/%(uploader)s-%(title)s.%(ext)s" "$1"
 }
 
 ydlmasmr() {
@@ -172,7 +173,7 @@ ydlmasmr() {
 
 ydlpl() {
     today=$(/bin/date +'%Y-%m-%d')
-    /usr/local/bin/yt-dlp -o "/$HOME/Downloads/ydl $today/%(playlist_title)s/%(title)s.%(ext)s" "$1"
+    /usr/local/bin/yt-dlp -o "/$HOME/Downloads/ydl $today/%(playlist_title)s/%(uploader)s-%(title)s.%(ext)s" "$1"
 }
 
 ydlpli() {
@@ -197,8 +198,8 @@ ydlu() {
 
 # http://stratus3d.com/blog/2017/10/26/better-vi-moden-zshell/
 # Better searching in command mode
-bindkey -M vicmd '/' historyncremental-search-backward
-bindkey -M vicmd '?' historyncremental-search-forward
+bindkey -M vicmd '/' historyincremental-search-backward
+bindkey -M vicmd '?' historyincremental-search-forward
 
 # `v` is already mapped to visual mode, so we need to use a different key to
 # open Vim
@@ -218,7 +219,7 @@ bindkey -M vicmd s prepend-sudo
 
 # https://github.com/rothgar/mastering-zsh/blob/master/docs/usage/line_movement.md
 # add emacs style search and line movement as well
-bindkey '^r' historyncremental-search-backward
+bindkey '^r' historyincremental-search-backward
 bindkey '^a' beginning-of-line
 bindkey '^e' end-of-line
 # Also fix annoying vi backspace
