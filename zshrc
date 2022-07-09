@@ -198,8 +198,8 @@ ydlu() {
 
 # http://stratus3d.com/blog/2017/10/26/better-vi-moden-zshell/
 # Better searching in command mode
-bindkey -M vicmd '/' historyincremental-search-backward
-bindkey -M vicmd '?' historyincremental-search-forward
+bindkey -M vicmd '/' history-incremental-search-backward
+bindkey -M vicmd '?' history-incremental-search-forward
 
 # `v` is already mapped to visual mode, so we need to use a different key to
 # open Vim
@@ -219,7 +219,7 @@ bindkey -M vicmd s prepend-sudo
 
 # https://github.com/rothgar/mastering-zsh/blob/master/docs/usage/line_movement.md
 # add emacs style search and line movement as well
-bindkey '^r' historyincremental-search-backward
+bindkey '^r' history-incremental-search-backward
 bindkey '^a' beginning-of-line
 bindkey '^e' end-of-line
 # Also fix annoying vi backspace
