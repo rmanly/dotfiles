@@ -151,23 +151,24 @@ ydlasmr() {
 
 ydla() {
     today=$(/bin/date +'%Y-%m-%d')
-    /usr/local/bin/yt-dlp -a "$1" -o "$HOME/Downloads/ydl $today/%(title)s.%(ext)s"
+    /usr/local/bin/yt-dlp -a "$1" -o "$HOME/Downloads/ydl $today/%(uploader)s-%(title)s.%(ext)s"
 }
 
 ydlm() {
     today=$(/bin/date +'%Y-%m-%d')
-    /usr/local/bin/yt-dlp -f "m4a/aac/bestaudio" -o "$HOME/Downloads/ydl $today/audio/%(title)s.%(ext)s" "$1"
+    /usr/local/bin/yt-dlp -f "m4a/aac/bestaudio" --embed-thumbnail -o "$HOME/Downloads/ydl $today/audio/%(uploader)s-%(title)s.%(ext)s" "$1"
 }
 
 ydlmk() {
     today=$(/bin/date +'%Y-%m-%d')
-    # download multiple formats using ',' default method and then audio in preferred order
-    /usr/local/bin/yt-dlp -f "bestvideo*+bestaudio/best,m4a/aac/bestaudio" -o "$HOME/Downloads/ydl $today/audio/%(title)s.%(ext)s" "$1"
+    # download multiple formats using ',' default method and then audio in preferred order -- UPDATE: doesnt work if no format available
+    # /usr/local/bin/yt-dlp -f "bestvideo*+bestaudio/best,m4a/aac/bestaudio" -o "$HOME/Downloads/ydl $today/audio/%(title)s.%(ext)s" "$1"
+    /usr/local/bin/yt-dlp -x -k --embed-thumbnail -o "$HOME/Downloads/ydl $today/audio/%(uploader)s-%(title)s.%(ext)s" "$1"
 }
 
 ydlmasmr() {
     today=$(/bin/date +'%Y-%m-%d')
-    /usr/local/bin/yt-dlp -f "m4a/aac/bestaudio" -o "$HOME/Downloads/ydl $today/audio/ASMR/%(uploader)s-%(title)s.%(ext)s" "$1"
+    /usr/local/bin/yt-dlp -f "m4a/aac/bestaudio" --embed-thumbnail -o "$HOME/Downloads/ydl $today/audio/ASMR/%(uploader)s-%(title)s.%(ext)s" "$1"
 }
 
 ydlpl() {
