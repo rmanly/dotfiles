@@ -172,13 +172,12 @@ ydlmasmr() {
 
 ydlpl() {
     today=$(/bin/date +'%Y-%m-%d')
-    /usr/local/bin/yt-dlp -o "/$HOME/Downloads/ydl $today/%(playlist_title)s/%(title)s.%(ext)s" "$1"
+    /usr/local/bin/yt-dlp -o "$HOME/Downloads/ydl $today/%(uploader)s/%(playlist)s/%(playlist_index|)s%(playlist_index& - |)s%(title)s.%(ext)s" "$1"
 }
 
-ydlpli() {
-    # Prefix playlist index with " - " separator, but only if it is available
+ydlpla() {
     today=$(/bin/date +'%Y-%m-%d')
-    /usr/local/bin/yt-dlp -o "$HOME/Downloads/ydl $today/%(playlist_title)s/%(playlist_index|)s%(playlist_index& - |)s-%(title)s.%(ext)s" "$1"
+    /usr/local/bin/yt-dlp -o "$HOME/Downloads/ydl $today/%(uploader)s/%(playlist)s/%(playlist_index|)s%(playlist_index& - |)s%(title)s.%(ext)s" -a "$1"
 }
 
 ydlu() {
