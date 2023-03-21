@@ -36,7 +36,7 @@ else
 	hostStyle='%F{yellow}';
 fi;
 
-PROMPT=""$'\n'"${userStyle}%n%f %F{white}at%f ${hostStyle}%m%f%F{white}:%f %F{green}%~%f"$'\n'"%F{white}%#%f "
+PROMPT=""$'\n'"${userStyle}%n%f %F{white}at%f ${hostStyle}%m%f%F{white}:%f %F{green}%~%f"$'\n'"%F{gray}%*%f %F{white}%#%f "
 
 # ----------------------------------------------------------------------
 # ALIAS
