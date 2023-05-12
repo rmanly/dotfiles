@@ -151,7 +151,12 @@ ydla() {
 
 ydlm() {
     today=$(/bin/date +'%Y-%m-%d')
-    /usr/local/bin/yt-dlp -f "m4a/aac/bestaudio" --embed-thumbnail -o "$HOME/Downloads/ydl $today/audio/%(uploader)s-%(title)s.%(ext)s" "$1"
+    /usr/local/bin/yt-dlp -f "m4a/aac/bestaudio" --embed-metadata --embed-thumbnail -o "$HOME/Downloads/ydl $today/audio/%(uploader)s-%(title)s.%(ext)s" "$1"
+}
+
+ydlmch() {
+    today=$(/bin/date +'%Y-%m-%d')
+    /usr/local/bin/yt-dlp -f "m4a/aac/bestaudio" --output-na-placeholder "" --embed-thumbnail --embed-metadata --split-chapters -o "$HOME/Downloads/ydl $today/audio/%(title)s/%(chapter)s.%(ext)s" -o chapter:"$HOME/Downloads/ydl $today/audio/%(title)s/%(section_number)03d - %(section_title)s.%(ext)s" "$1"
 }
 
 ydlmk() {
