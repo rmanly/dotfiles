@@ -162,13 +162,11 @@ ydlmk() {
 }
 
 ydlpl() {
-    today=$(/bin/date +'%Y-%m-%d')
-    /usr/local/bin/yt-dlp -o "$HOME/Downloads/ydl $today/%(uploader)s/%(playlist)s/%(playlist_index|)s%(playlist_index& - |)s%(title)s.%(ext)s" "$1"
+    /usr/local/bin/yt-dlp -f "22/bv*[ext=mp4]+ba[ext=m4a]/b[ext=mp4]/bv*+ba/b" --embed-thumbnail --embed-chapters -o "$HOME/Downloads/%(uploader)s/%(playlist)s/%(upload_date)s-%(playlist_index)s-%(title)s.%(ext)s" "$1"
 }
 
 ydlpla() {
-    today=$(/bin/date +'%Y-%m-%d')
-    /usr/local/bin/yt-dlp -o "$HOME/Downloads/ydl $today/%(uploader)s/%(playlist)s/%(playlist_index|)s%(playlist_index& - |)s%(title)s.%(ext)s" -a "$1"
+    /usr/local/bin/yt-dlp -f "22/bv*[ext=mp4]+ba[ext=m4a]/b[ext=mp4]/bv*+ba/b" --embed-thumbnail --embed-chapters -o "$HOME/Downloads/%(uploader)s/%(playlist)s/%(upload_date)s-%(playlist_index)s-%(title)s.%(ext)s" -a "$1"
 }
 
 ydlu() {
