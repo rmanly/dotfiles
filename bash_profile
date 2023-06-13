@@ -5,3 +5,5 @@ fi
 if [[ -f $HOME/.bash_private ]]; then
     source $HOME/.bash_private ]]
 fi
+
+alias gam="/Users/ryan/bin/gamadv-xtd3/gam"

@@ -216,3 +216,5 @@ bindkey '^a' beginning-of-line
 bindkey '^e' end-of-line
 # Also fix annoying vi backspace
 bindkey '^?' backward-delete-char
+
+alias gam="/Users/ryan/bin/gamadv-xtd3/gam"
