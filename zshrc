@@ -141,7 +141,7 @@ s128() {
 
 ydl() {
     today=$(/bin/date +'%Y-%m-%d')
-    /usr/local/bin/yt-dlp -o "$HOME/Downloads/ydl $today/%(uploader)s-%(title)s.%(ext)s" "$1"
+    /usr/local/bin/yt-dlp -f "22/bv*[ext=mp4]+ba[ext=m4a]/b[ext=mp4]/bv*+ba/b" --embed-thumbnail --embed-chapters -o "$HOME/Downloads/ydl $today/%(uploader)s-%(title)s.%(ext)s" "$1"
 }
 
 ydla() {
