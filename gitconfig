@@ -5,7 +5,7 @@
 	clean = git-media-clean %f
 	smudge = git-media-smudge %f
 [core]
-	excludesfile = /Users/ryan/.gitignore
+	excludesfile = ~/.gitignore
 	pager = less -r
 [credential]
 	help = osxkeychain
