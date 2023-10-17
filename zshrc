@@ -146,7 +146,7 @@ ydl() {
 
 ydla() {
     today=$(/bin/date +'%Y-%m-%d')
-    /usr/local/bin/yt-dlp -f "22/bv*[ext=mp4]+ba[ext=m4a]/b[ext=mp4]/bv*+ba/b" --embed-thumbnail --embed-chapters -a "$1" -o "$HOME/Downloads/ydl $today/%(uploader)s-%(title)s.%(ext)s"
+    /usr/local/bin/yt-dlp -f "22/bv*[ext=mp4]+ba[ext=m4a]/b[ext=mp4]/bv*+ba/b" --embed-thumbnail --embed-chapters--output-na-placeholder ""  -a "$1" -o "$HOME/Downloads/ydl $today/%(uploader)s-%(title)s.%(ext)s"
 }
 
 ydlm() {
