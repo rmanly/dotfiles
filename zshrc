@@ -37,7 +37,26 @@ else
 	hostStyle='%F{yellow}';
 fi;
 
-PROMPT=""$'\n'"${userStyle}%n%f %F{white}at%f ${hostStyle}%m%f%F{white}:%f %F{green}%~%f"$'\n'"%F{gray}%*%f %F{white}%#%f "
+# PROMPT=""$'\n'"${userStyle}%n%f %F{white}at%f ${hostStyle}%m%f%F{white}:%f %F{green}%~%f"$'\n'"%F{gray}%*%f %F{white}%#%f "
+
+# Try a GPT4 suggestion
+# Define a function to update the prompt
+update_conda_prompt() {
+    if [ ! -z "$CONDA_DEFAULT_ENV" ]; then
+        # Set the Conda part of the prompt
+        local conda_prompt_part="($CONDA_DEFAULT_ENV) "
+    else
+        # Reset if not in a Conda environment
+        local conda_prompt_part=""
+    fi
+
+    # Update PS1 with the Conda information
+    PS1=""$'\n'"${userStyle}%n%f %F{white}at%f ${hostStyle}%m%f%F{white}:%f %F{green}%~%f"$'\n'"${conda_prompt_part}%F{gray}%*%f %F{white}%#%f "
+}
+
+# Call update_conda_prompt before each command prompt
+autoload -U add-zsh-hook
+add-zsh-hook precmd update_conda_prompt
 
 # ----------------------------------------------------------------------
 # ALIAS
