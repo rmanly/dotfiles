@@ -42,11 +42,11 @@ fi;
 # Try a GPT4 suggestion
 # Define a function to update the prompt
 update_conda_prompt() {
-    if [ ! -z "$CONDA_DEFAULT_ENV" ]; then
-        # Set the Conda part of the prompt
+    if [ ! -z "$CONDA_DEFAULT_ENV" ] && [ "$CONDA_DEFAULT_ENV" != "base" ]; then
+        # Set the Conda part of the prompt if not in the base environment
         local conda_prompt_part="($CONDA_DEFAULT_ENV) "
     else
-        # Reset if not in a Conda environment
+        # Reset if not in a Conda environment or in the base environment
         local conda_prompt_part=""
     fi
 
