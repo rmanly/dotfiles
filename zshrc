@@ -39,12 +39,6 @@ fi;
 
 PROMPT=""$'\n'"${userStyle}%n%f %F{white}at%f ${hostStyle}%m%f%F{white}:%f %F{green}%~%f"$'\n'"%F{gray}%*%f %F{white}%#%f "
 
-# Add conda environment to prompt
-if [ ! -z "$CONDA_DEFAULT_ENV" ]
-then
-    PS1+="($CONDA_DEFAULT_ENV) "
-fi
-
 # ----------------------------------------------------------------------
 # ALIAS
 # ----------------------------------------------------------------------
