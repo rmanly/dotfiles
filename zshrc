@@ -160,42 +160,66 @@ s128() {
 
 ydl() {
     today=$(/bin/date +'%Y-%m-%d')
-    /usr/local/bin/yt-dlp -f "22/bv*[ext=mp4]+ba[ext=m4a]/HD/hd/b[ext=mp4]/bv*+ba/b" --embed-thumbnail --embed-chapters --output-na-placeholder "" -o "$HOME/Downloads/ydl $today/%(uploader)s-%(title)s.%(ext)s" "$1"
+    /usr/local/bin/yt-dlp -f "22/bv*[ext=mp4]+ba[ext=m4a]/HD/hd/b[ext=mp4]/bv*+ba/b" \
+        --embed-thumbnail --embed-chapters --output-na-placeholder "" \
+        --replace-in-metadata "title,uploader,playlist" "[\/:\\\"|]" "" \
+        -o "$HOME/Downloads/ydl $today/%(uploader)s-%(title)s.%(ext)s" "$1"
 }
 
 ydla() {
     today=$(/bin/date +'%Y-%m-%d')
-    /usr/local/bin/yt-dlp -f "22/bv*[ext=mp4]+ba[ext=m4a]/HD/hd/b[ext=mp4]/bv*+ba/b" --embed-thumbnail --embed-chapters --output-na-placeholder ""  -a "$1" -o "$HOME/Downloads/ydl $today/%(uploader)s-%(title)s.%(ext)s"
+    /usr/local/bin/yt-dlp -f "22/bv*[ext=mp4]+ba[ext=m4a]/HD/hd/b[ext=mp4]/bv*+ba/b" \
+        --embed-thumbnail --embed-chapters --output-na-placeholder "" \
+        --replace-in-metadata "title,uploader,playlist" "[\/:\\\"|]" "" \
+        -a "$1" -o "$HOME/Downloads/ydl $today/%(uploader)s-%(title)s.%(ext)s"
 }
 
 ydlm() {
     today=$(/bin/date +'%Y-%m-%d')
-    /usr/local/bin/yt-dlp -f "m4a/aac/bestaudio" --embed-metadata --embed-thumbnail -o "$HOME/Downloads/ydl $today/audio/%(uploader)s-%(title)s.%(ext)s" "$1"
+    /usr/local/bin/yt-dlp -f "m4a/aac/bestaudio" \
+        --embed-metadata --embed-thumbnail \
+        --replace-in-metadata "title,uploader,playlist" "[\/:\\\"|]" "" \
+        -o "$HOME/Downloads/ydl $today/audio/%(uploader)s-%(title)s.%(ext)s" "$1"
 }
 
 ydlmch() {
     today=$(/bin/date +'%Y-%m-%d')
-    /usr/local/bin/yt-dlp -f "m4a/aac/bestaudio" --output-na-placeholder "" --embed-thumbnail --split-chapters -o "$HOME/Downloads/ydl $today/audio/%(title)s/%(chapter)s.%(ext)s" -o chapter:"$HOME/Downloads/ydl $today/audio/%(title)s/%(section_number)03d - %(section_title)s.%(ext)s" "$1"
+    /usr/local/bin/yt-dlp -f "m4a/aac/bestaudio" \
+        --output-na-placeholder "" --embed-thumbnail --split-chapters \
+        -o "$HOME/Downloads/ydl $today/audio/%(title)s/%(chapter)s.%(ext)s" \
+        -o chapter:"$HOME/Downloads/ydl $today/audio/%(title)s/%(section_number)03d - %(section_title)s.%(ext)s" "$1"
 }
 
 ydlmk() {
     today=$(/bin/date +'%Y-%m-%d')
     # download multiple formats using ',' default method and then audio in preferred order -- UPDATE: doesnt work if no format available
     # /usr/local/bin/yt-dlp -f "bestvideo*+bestaudio/best,m4a/aac/bestaudio" -o "$HOME/Downloads/ydl $today/audio/%(title)s.%(ext)s" "$1"
-    /usr/local/bin/yt-dlp -f "22/bv*[ext=mp4]+ba[ext=m4a]/HD/hd/b[ext=mp4]/bv*+ba/b" -x -k --embed-thumbnail --output-na-placeholder "" -o "$HOME/Downloads/ydl $today/audio/%(uploader)s-%(title)s.%(ext)s" "$1"
+    /usr/local/bin/yt-dlp -f "22/bv*[ext=mp4]+ba[ext=m4a]/HD/hd/b[ext=mp4]/bv*+ba/b" \
+        -x -k --embed-thumbnail \
+        --output-na-placeholder "" \
+        -o "$HOME/Downloads/ydl $today/audio/%(uploader)s-%(title)s.%(ext)s" "$1"
 }
 
 ydlpl() {
-    /usr/local/bin/yt-dlp -f "22/bv*[ext=mp4]+ba[ext=m4a]/HD/hd/b[ext=mp4]/bv*+ba/b" --embed-thumbnail --embed-chapters --output-na-placeholder "" -o "$HOME/Downloads/%(uploader)s/%(playlist)s/%(upload_date)s-%(playlist_index)s-%(title)s.%(ext)s" "$1"
+    /usr/local/bin/yt-dlp -f "22/bv*[ext=mp4]+ba[ext=m4a]/HD/hd/b[ext=mp4]/bv*+ba/b" \
+        --embed-thumbnail --embed-chapters \
+        --output-na-placeholder "" \
+        -o "$HOME/Downloads/%(uploader)s/%(playlist)s/%(upload_date)s-%(playlist_index)s-%(title)s.%(ext)s" "$1"
 }
 
 ydlpla() {
-    /usr/local/bin/yt-dlp -f "22/bv*[ext=mp4]+ba[ext=m4a]/HD/hd/b[ext=mp4]/bv*+ba/b" --embed-thumbnail --embed-chapters --output-na-placeholder "" -o "$HOME/Downloads/%(uploader)s/%(playlist)s/%(upload_date)s-%(playlist_index)s-%(title)s.%(ext)s" -a "$1"
+    /usr/local/bin/yt-dlp -f "22/bv*[ext=mp4]+ba[ext=m4a]/HD/hd/b[ext=mp4]/bv*+ba/b" \
+        --embed-thumbnail --embed-chapters \
+        --output-na-placeholder "" \
+        -o "$HOME/Downloads/%(uploader)s/%(playlist)s/%(upload_date)s-%(playlist_index)s-%(title)s.%(ext)s" -a "$1"
 }
 
 ydlu() {
     today=$(/bin/date +'%Y-%m-%d')
-    /usr/local/bin/yt-dlp -f "22/bv*[ext=mp4]+ba[ext=m4a]/HD/hd/b[ext=mp4]/bv*+ba/b" --embed-thumbnail --embed-chapters --output-na-placeholder "" -o "$HOME/Downloads/ydl $today/%(uploader)s/%(release_date>%Y-%m-%d,upload_date>%Y-%m-%d|Unknown)s-%(title)s.%(ext)s" "$1"
+    /usr/local/bin/yt-dlp -f "22/bv*[ext=mp4]+ba[ext=m4a]/HD/hd/b[ext=mp4]/bv*+ba/b" \
+        --embed-thumbnail --embed-chapters \
+        --output-na-placeholder "" \
+        -o "$HOME/Downloads/ydl $today/%(uploader)s/%(release_date>%Y-%m-%d,upload_date>%Y-%m-%d|Unknown)s-%(title)s.%(ext)s" "$1"
 }
 
 
