@@ -37,26 +37,7 @@ else
 	hostStyle='%F{yellow}';
 fi;
 
-# PROMPT=""$'\n'"${userStyle}%n%f %F{white}at%f ${hostStyle}%m%f%F{white}:%f %F{green}%~%f"$'\n'"%F{gray}%*%f %F{white}%#%f "
-
-# Try a GPT4 suggestion
-# Define a function to update the prompt
-update_conda_prompt() {
-    if [ ! -z "$CONDA_DEFAULT_ENV" ] && [ "$CONDA_DEFAULT_ENV" != "base" ]; then
-        # Set the Conda part of the prompt if not in the base environment
-        local conda_prompt_part="($CONDA_DEFAULT_ENV) "
-    else
-        # Reset if not in a Conda environment or in the base environment
-        local conda_prompt_part=""
-    fi
-
-    # Update PS1 with the Conda information
-    PS1=""$'\n'"${userStyle}%n%f %F{white}at%f ${hostStyle}%m%f%F{white}:%f %F{green}%~%f"$'\n'"${conda_prompt_part}%F{gray}%*%f %F{white}%#%f "
-}
-
-# Call update_conda_prompt before each command prompt
-autoload -U add-zsh-hook
-add-zsh-hook precmd update_conda_prompt
+PS1=""$'\n'"${userStyle}%n%f %F{white}at%f ${hostStyle}%m%f%F{white}:%f %F{green}%~%f"$'\n'"%F{gray}%*%f %F{white}%#%f "
 
 # ----------------------------------------------------------------------
 # ALIAS
@@ -185,6 +166,7 @@ ydlm() {
 ydlmch() {
     today=$(/bin/date +'%Y-%m-%d')
     /usr/local/bin/yt-dlp -f "m4a/aac/bestaudio" \
+        --replace-in-metadata "title,uploader,playlist" "[\/:\\\"|]" "" \
         --output-na-placeholder "" --embed-thumbnail --split-chapters \
         -o "$HOME/Downloads/ydl $today/audio/%(title)s/%(chapter)s.%(ext)s" \
         -o chapter:"$HOME/Downloads/ydl $today/audio/%(title)s/%(section_number)03d - %(section_title)s.%(ext)s" "$1"
@@ -197,6 +179,7 @@ ydlmk() {
     /usr/local/bin/yt-dlp -f "22/bv*[ext=mp4]+ba[ext=m4a]/HD/hd/b[ext=mp4]/bv*+ba/b" \
         -x -k --embed-thumbnail \
         --output-na-placeholder "" \
+        --replace-in-metadata "title,uploader,playlist" "[\/:\\\"|]" "" \
         -o "$HOME/Downloads/ydl $today/audio/%(uploader)s-%(title)s.%(ext)s" "$1"
 }
 
@@ -204,6 +187,7 @@ ydlpl() {
     /usr/local/bin/yt-dlp -f "22/bv*[ext=mp4]+ba[ext=m4a]/HD/hd/b[ext=mp4]/bv*+ba/b" \
         --embed-thumbnail --embed-chapters \
         --output-na-placeholder "" \
+        --replace-in-metadata "title,uploader,playlist" "[\/:\\\"|]" "" \
         -o "$HOME/Downloads/%(uploader)s/%(playlist)s/%(upload_date)s-%(playlist_index)s-%(title)s.%(ext)s" "$1"
 }
 
@@ -211,6 +195,7 @@ ydlpla() {
     /usr/local/bin/yt-dlp -f "22/bv*[ext=mp4]+ba[ext=m4a]/HD/hd/b[ext=mp4]/bv*+ba/b" \
         --embed-thumbnail --embed-chapters \
         --output-na-placeholder "" \
+        --replace-in-metadata "title,uploader,playlist" "[\/:\\\"|]" "" \
         -o "$HOME/Downloads/%(uploader)s/%(playlist)s/%(upload_date)s-%(playlist_index)s-%(title)s.%(ext)s" -a "$1"
 }
 
@@ -219,6 +204,7 @@ ydlu() {
     /usr/local/bin/yt-dlp -f "22/bv*[ext=mp4]+ba[ext=m4a]/HD/hd/b[ext=mp4]/bv*+ba/b" \
         --embed-thumbnail --embed-chapters \
         --output-na-placeholder "" \
+        --replace-in-metadata "title,uploader,playlist" "[\/:\\\"|]" "" \
         -o "$HOME/Downloads/ydl $today/%(uploader)s/%(release_date>%Y-%m-%d,upload_date>%Y-%m-%d|Unknown)s-%(title)s.%(ext)s" "$1"
 }
 
@@ -262,18 +248,6 @@ bindkey '^?' backward-delete-char
 
 alias gam="/Users/ryan/bin/gamadv-xtd3/gam"
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/ryan/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/Users/ryan/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/ryan/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/Users/ryan/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
