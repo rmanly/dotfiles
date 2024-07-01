@@ -227,6 +227,10 @@ bindkey -M vicmd '?' history-incremental-search-forward
 autoload edit-command-line; zle -N edit-command-line
 bindkey -M vicmd "^V" edit-command-line
 
+# ----------------------------------------------------------------------
+# Misc
+# ----------------------------------------------------------------------
+
 # https://github.com/rothgar/mastering-zsh/blob/master/docs/helpers/widgets.md
 # Prepend sudo to a command and put your cursor back to the previous location with esc,s
 function prepend-sudo {
@@ -251,3 +255,15 @@ alias gam="/Users/ryan/bin/gamadv-xtd3/gam"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# ----------------------------------------------------------------------
+# Path
+# ----------------------------------------------------------------------
+
+# https://stackoverflow.com/questions/11530090/adding-a-new-entry-to-the-path-variable-in-zsh
+# append
+# path+=('/home/david/pear/bin')
+# or prepend
+path=('/Users/ryan/Library/Python/3.9/bin' $path)
+# export to sub-processes (make it inherited by child processes)
+export PATH
