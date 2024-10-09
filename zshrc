@@ -264,6 +264,8 @@ export NVM_DIR="$HOME/.nvm"
 # append
 # path+=('/home/david/pear/bin')
 # or prepend
-path=('/Users/ryan/Library/Python/3.9/bin' $path)
+# path=('/Users/rmanly/Library/Python/3.9/bin' $path)
 # export to sub-processes (make it inherited by child processes)
 export PATH
+
+alias gam="/Users/rmanly/bin/gamadv-xtd3/gam"

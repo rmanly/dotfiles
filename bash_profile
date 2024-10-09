@@ -23,3 +23,5 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+
+alias gam="/Users/rmanly/bin/gamadv-xtd3/gam"
