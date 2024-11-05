@@ -267,3 +267,6 @@ export NVM_DIR="$HOME/.nvm"
 path=('/Users/ryan/Library/Python/3.9/bin' $path)
 # export to sub-processes (make it inherited by child processes)
 export PATH
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/ryan/.cache/lm-studio/bin"
