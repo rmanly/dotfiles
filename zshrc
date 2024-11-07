@@ -139,6 +139,9 @@ s128() {
     sips -s format png --resampleHeight 128 "$1" --out $HOME/Desktop/"${name}-128.png";
 }
 
+# TODO: test and read about switching to '-S vcodec:h264,res,acodec:m4a'
+# not seeing 22 too much anymore and VP09 is messing with my quicklook
+
 ydl() {
     today=$(/bin/date +'%Y-%m-%d')
     /usr/local/bin/yt-dlp -f "22/bv*[ext=mp4]+ba[ext=m4a]/HD/hd/b[ext=mp4]/bv*+ba/b" \
@@ -269,3 +272,6 @@ export NVM_DIR="$HOME/.nvm"
 export PATH
 
 alias gam="/Users/rmanly/bin/gamadv-xtd3/gam"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/rmanly/.cache/lm-studio/bin"
