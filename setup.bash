@@ -28,4 +28,18 @@ if [[ $(uname) == Darwin ]]; then
     /usr/bin/killall Finder
 fi
 
+ytdlp_user_conf=(
+    $HOME/yt-dlp.conf
+    $HOME/yt-dlp.conf.txt
+    $HOME/.yt-dlp/config
+    $HOME/.yt-dlp/config.txt
+)
+
+for conf in "${yt-dlp_user_conf[@]}"; do
+    [[ -e $conf ]] && /bin/rm $conf
+done 
+
+/bin/mkdir -p $HOME/.yt-dlp
+/bin/ln -s $HOME/src/dotfiles/yt-dlp_config $HOME/.yt-dlp/config
+
 printf "%s\n" "Don't forget to source your shell rc!"
