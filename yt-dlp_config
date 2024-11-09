@@ -1,0 +1,12 @@
+# User Config Locations
+# ~/yt-dlp.conf
+# ~/yt-dlp.conf.txt
+# ~/.yt-dlp/config
+# ~/.yt-dlp/config.txt
+
+-f "bv*[ext=mp4]+ba[ext=m4a]/HD/hd/b[ext=mp4]/bv*+ba/b"
+-S vcodec:h264,res,acodec:m4a
+--embed-thumbnail
+--embed-chapters
+--output-na-placeholder ""
+--replace-in-metadata "title,uploader,playlist" "[\/:\\\"|｜]" ""

@@ -17,6 +17,8 @@ export LESS=FiWX
 
 # [[ -d /Volumes/Ministack/.vagrant.d ]] && export VAGRANT_HOME=/Volumes/Ministack/.vagrant.d
 
+today=$(/bin/date +'%Y-%m-%d')
+
 # ----------------------------------------------------------------------
 # PROMPT
 # ----------------------------------------------------------------------
@@ -139,33 +141,25 @@ s128() {
     sips -s format png --resampleHeight 128 "$1" --out $HOME/Desktop/"${name}-128.png";
 }
 
+# TODO: test and read about switching to '-S vcodec:h264,res,acodec:m4a'
+# not seeing 22 too much anymore and VP09 is messing with my quicklook
+
 ydl() {
-    today=$(/bin/date +'%Y-%m-%d')
-    /usr/local/bin/yt-dlp -f "22/bv*[ext=mp4]+ba[ext=m4a]/HD/hd/b[ext=mp4]/bv*+ba/b" \
-        --embed-thumbnail --embed-chapters --output-na-placeholder "" \
-        --replace-in-metadata "title,uploader,playlist" "[\/:\\\"|]" "" \
-        -o "$HOME/Downloads/ydl $today/%(uploader)s-%(title)s.%(ext)s" "$1"
+    /usr/local/bin/yt-dlp -o "$HOME/Downloads/ydl $today/%(uploader)s-%(title)s.%(ext)s" "$1"
 }
 
 ydla() {
-    today=$(/bin/date +'%Y-%m-%d')
-    /usr/local/bin/yt-dlp -f "22/bv*[ext=mp4]+ba[ext=m4a]/HD/hd/b[ext=mp4]/bv*+ba/b" \
-        --embed-thumbnail --embed-chapters --output-na-placeholder "" \
-        --replace-in-metadata "title,uploader,playlist" "[\/:\\\"|]" "" \
-        -a "$1" -o "$HOME/Downloads/ydl $today/%(uploader)s-%(title)s.%(ext)s"
+    /usr/local/bin/yt-dlp -a "$1" -o "$HOME/Downloads/ydl $today/%(uploader)s-%(title)s.%(ext)s"
 }
 
 ydlm() {
-    today=$(/bin/date +'%Y-%m-%d')
     /usr/local/bin/yt-dlp -f "m4a/aac/bestaudio" \
-        --embed-metadata --embed-thumbnail \
-        --replace-in-metadata "title,uploader,playlist" "[\/:\\\"|]" "" \
         -o "$HOME/Downloads/ydl $today/audio/%(uploader)s-%(title)s.%(ext)s" "$1"
 }
 
 ydlmch() {
-    today=$(/bin/date +'%Y-%m-%d')
-    /usr/local/bin/yt-dlp -f "m4a/aac/bestaudio" \
+    /usr/local/bin/yt-dlp --ignore-config \
+        -f "m4a/aac/bestaudio" \
         --replace-in-metadata "title,uploader,playlist" "[\/:\\\"|]" "" \
         --output-na-placeholder "" --embed-thumbnail --split-chapters \
         -o "$HOME/Downloads/ydl $today/audio/%(title)s/%(chapter)s.%(ext)s" \
@@ -173,38 +167,24 @@ ydlmch() {
 }
 
 ydlmk() {
-    today=$(/bin/date +'%Y-%m-%d')
     # download multiple formats using ',' default method and then audio in preferred order -- UPDATE: doesnt work if no format available
     # /usr/local/bin/yt-dlp -f "bestvideo*+bestaudio/best,m4a/aac/bestaudio" -o "$HOME/Downloads/ydl $today/audio/%(title)s.%(ext)s" "$1"
-    /usr/local/bin/yt-dlp -f "22/bv*[ext=mp4]+ba[ext=m4a]/HD/hd/b[ext=mp4]/bv*+ba/b" \
-        -x -k --embed-thumbnail \
-        --output-na-placeholder "" \
-        --replace-in-metadata "title,uploader,playlist" "[\/:\\\"|]" "" \
+    /usr/local/bin/yt-dlp -x -k \
         -o "$HOME/Downloads/ydl $today/audio/%(uploader)s-%(title)s.%(ext)s" "$1"
 }
 
 ydlpl() {
-    /usr/local/bin/yt-dlp -f "22/bv*[ext=mp4]+ba[ext=m4a]/HD/hd/b[ext=mp4]/bv*+ba/b" \
-        --embed-thumbnail --embed-chapters \
-        --output-na-placeholder "" \
-        --replace-in-metadata "title,uploader,playlist" "[\/:\\\"|]" "" \
+    /usr/local/bin/yt-dlp \
         -o "$HOME/Downloads/%(uploader)s/%(playlist)s/%(upload_date)s-%(playlist_index)s-%(title)s.%(ext)s" "$1"
 }
 
 ydlpla() {
-    /usr/local/bin/yt-dlp -f "22/bv*[ext=mp4]+ba[ext=m4a]/HD/hd/b[ext=mp4]/bv*+ba/b" \
-        --embed-thumbnail --embed-chapters \
-        --output-na-placeholder "" \
-        --replace-in-metadata "title,uploader,playlist" "[\/:\\\"|]" "" \
+    /usr/local/bin/yt-dlp \
         -o "$HOME/Downloads/%(uploader)s/%(playlist)s/%(upload_date)s-%(playlist_index)s-%(title)s.%(ext)s" -a "$1"
 }
 
 ydlu() {
-    today=$(/bin/date +'%Y-%m-%d')
-    /usr/local/bin/yt-dlp -f "22/bv*[ext=mp4]+ba[ext=m4a]/HD/hd/b[ext=mp4]/bv*+ba/b" \
-        --embed-thumbnail --embed-chapters \
-        --output-na-placeholder "" \
-        --replace-in-metadata "title,uploader,playlist" "[\/:\\\"|]" "" \
+    /usr/local/bin/yt-dlp \
         -o "$HOME/Downloads/ydl $today/%(uploader)s/%(release_date>%Y-%m-%d,upload_date>%Y-%m-%d|Unknown)s-%(title)s.%(ext)s" "$1"
 }
 
@@ -264,9 +244,16 @@ export NVM_DIR="$HOME/.nvm"
 # append
 # path+=('/home/david/pear/bin')
 # or prepend
-path=('/Users/ryan/Library/Python/3.9/bin' $path)
+# path=('/Users/rmanly/Library/Python/3.9/bin' $path)
 # export to sub-processes (make it inherited by child processes)
 export PATH
 
+<<<<<<< HEAD
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/Users/ryan/.cache/lm-studio/bin"
+=======
+alias gam="/Users/rmanly/bin/gamadv-xtd3/gam"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/rmanly/.cache/lm-studio/bin"
+>>>>>>> origin

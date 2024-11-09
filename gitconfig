@@ -5,7 +5,8 @@
 	clean = git-media-clean %f
 	smudge = git-media-smudge %f
 [core]
-	excludesfile = /Users/ryan/.gitignore
+# I should figure out how to have this work with whatever my username is
+	excludesfile = /Users/rmanly/.gitignore
 	pager = less -r
 [credential]
 	help = osxkeychain

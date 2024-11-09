@@ -190,4 +190,8 @@ ydlu() {
 [[ -e $HOME/.bash_private ]] && source $HOME/.bash_private
 
 # Added by LM Studio CLI (lms)
+<<<<<<< HEAD
 export PATH="$PATH:/Users/ryan/.cache/lm-studio/bin"
+=======
+export PATH="$PATH:/Users/rmanly/.cache/lm-studio/bin"
+>>>>>>> origin

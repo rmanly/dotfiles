@@ -24,5 +24,12 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 
+<<<<<<< HEAD
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/Users/ryan/.cache/lm-studio/bin"
+=======
+alias gam="/Users/rmanly/bin/gamadv-xtd3/gam"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/rmanly/.cache/lm-studio/bin"
+>>>>>>> origin
