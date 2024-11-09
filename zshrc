@@ -240,20 +240,9 @@ export NVM_DIR="$HOME/.nvm"
 # Path
 # ----------------------------------------------------------------------
 
-# https://stackoverflow.com/questions/11530090/adding-a-new-entry-to-the-path-variable-in-zsh
-# append
-# path+=('/home/david/pear/bin')
-# or prepend
-# path=('/Users/rmanly/Library/Python/3.9/bin' $path)
-# export to sub-processes (make it inherited by child processes)
-export PATH
-
-<<<<<<< HEAD
 # Added by LM Studio CLI (lms)
-export PATH="$PATH:/Users/ryan/.cache/lm-studio/bin"
-=======
-alias gam="/Users/rmanly/bin/gamadv-xtd3/gam"
-
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:/Users/rmanly/.cache/lm-studio/bin"
->>>>>>> origin
+# export PATH="$PATH:/Users/ryan/.cache/lm-studio/bin"
+# export PATH="$PATH:/Users/rmanly/.cache/lm-studio/bin"
+# 
+# alias gam="/Users/ryan/bin/gamadv-xtd3/gam"
+# alias gam="/Users/rmanly/bin/gamadv-xtd3/gam"
