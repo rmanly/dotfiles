@@ -9,4 +9,4 @@
 --embed-thumbnail
 --embed-chapters
 --output-na-placeholder ""
---replace-in-metadata "title,uploader,playlist" "[\/:\\\"|｜]" ""
+--replace-in-metadata "title,uploader,playlist" "[\/:\\\"|｜？?]" ""
