@@ -154,7 +154,7 @@ ydla() {
 
 ydlm() {
     /usr/local/bin/yt-dlp -f "m4a/aac/bestaudio" \
-        -o "$HOME/Downloads/ydl $today/audio/%(uploader)s-%(title)s.%(ext)s" "$1"
+        -o "$HOME/Downloads/ydlm $today/audio/%(uploader)s-%(title)s.%(ext)s" "$1"
 }
 
 ydlmch() {
@@ -162,15 +162,15 @@ ydlmch() {
         -f "m4a/aac/bestaudio" \
         --replace-in-metadata "title,uploader,playlist" "[\/:\\\"|]" "" \
         --output-na-placeholder "" --embed-thumbnail --split-chapters \
-        -o "$HOME/Downloads/ydl $today/audio/%(title)s/%(chapter)s.%(ext)s" \
-        -o chapter:"$HOME/Downloads/ydl $today/audio/%(title)s/%(section_number)03d - %(section_title)s.%(ext)s" "$1"
+        -o "$HOME/Downloads/ydlmch $today/audio/%(title)s/%(chapter)s.%(ext)s" \
+        -o chapter:"$HOME/Downloads/ydlmch $today/audio/%(title)s/%(section_number)03d - %(section_title)s.%(ext)s" "$1"
 }
 
 ydlmk() {
     # download multiple formats using ',' default method and then audio in preferred order -- UPDATE: doesnt work if no format available
     # /usr/local/bin/yt-dlp -f "bestvideo*+bestaudio/best,m4a/aac/bestaudio" -o "$HOME/Downloads/ydl $today/audio/%(title)s.%(ext)s" "$1"
     /usr/local/bin/yt-dlp -x -k \
-        -o "$HOME/Downloads/ydl $today/audio/%(uploader)s-%(title)s.%(ext)s" "$1"
+        -o "$HOME/Downloads/ydlmk $today/audio/%(uploader)s-%(title)s.%(ext)s" "$1"
 }
 
 ydlpl() {
