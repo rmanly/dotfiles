@@ -1,0 +1,9 @@
+# Solarized Base03
+background = 002b36
+
+font-family = "Source Code Pro"
+font-size = 14
+
+# https://github.com/ghostty-org/ghostty/discussions/3610
+keybind = global:cmd+grave_accent=toggle_quick_terminal
+quick-terminal-position = center
