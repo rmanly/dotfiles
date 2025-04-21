@@ -246,3 +246,8 @@ export NVM_DIR="$HOME/.nvm"
 # 
 # alias gam="/Users/ryan/bin/gamadv-xtd3/gam"
 # alias gam="/Users/rmanly/bin/gamadv-xtd3/gam"
+
+# zsh-nvm for using openai codex
+# https://github.com/lukechilds/zsh-nvm
+export NVM_LAZY_LOAD=true
+source ~/.zsh-nvm/zsh-nvm.plugin.zsh
