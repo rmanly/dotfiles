@@ -6,7 +6,6 @@ if [[ -f $HOME/.bash_private ]]; then
     source $HOME/.bash_private ]]
 fi
 
-alias gam="/Users/ryan/bin/gamadv-xtd3/gam"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -28,8 +27,9 @@ unset __conda_setup
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/Users/ryan/.cache/lm-studio/bin"
 =======
-alias gam="/Users/rmanly/bin/gamadv-xtd3/gam"
 
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/Users/rmanly/.cache/lm-studio/bin"
 >>>>>>> origin
+
+alias gam="/Users/rmanly/bin/gam7/gam"
