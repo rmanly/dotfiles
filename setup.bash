@@ -25,6 +25,8 @@ fi
 if [[ $(uname) == Darwin ]]; then
     [[ -e $HOME/Library/Application\ Support/com.mitchellh.ghostty/config ]] && /bin/rm $HOME/Library/Application\ Support/com.mitchellh.ghostty/config
     /bin/ln -s $HOME/src/dotfiles/ghostty $HOME/Library/Application\ Support/com.mitchellh.ghostty/config
+    /bin/mkdir -p "$HOME/Library/Fonts"
+    /usr/bin/find "$HOME/src/dotfiles" -type f \( -iname "*.ttf" -o -iname "*.otf" \) -exec cp "{}" "$HOME/Library/Fonts/" \;
     /usr/bin/defaults write com.apple.Safari AutoOpenSafeDownloads -boolean NO
     /usr/bin/defaults write com.apple.finder _FXShowPosixPathInTitle -bool TRUE
     /usr/bin/killall Finder
