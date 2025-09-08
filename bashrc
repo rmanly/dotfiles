@@ -29,7 +29,7 @@ bind '\C-l':clear-screen
 # quit if fits on one screen, case insensitive search, don't clear on quit, highlight new line
 export LESS=FiWX
 
-[[ -d /Volumes/Ministack/.vagrant.d ]] && export VAGRANT_HOME=/Volumes/Ministack/.vagrant.d
+# [[ -d /Volumes/Ministack/.vagrant.d ]] && export VAGRANT_HOME=/Volumes/Ministack/.vagrant.d
 
 
 # ----------------------------------------------------------------------
@@ -188,7 +188,3 @@ ydlu() {
 # ----------------------------------------------------------------------
 
 [[ -e $HOME/.bash_private ]] && source $HOME/.bash_private
-
-# Added by LM Studio CLI (lms)
-# export PATH="$PATH:/Users/ryan/.cache/lm-studio/bin"
-# export PATH="$PATH:/Users/rmanly/.cache/lm-studio/bin"

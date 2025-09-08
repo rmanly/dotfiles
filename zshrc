@@ -190,7 +190,7 @@ ydlu() {
 
 
 # ----------------------------------------------------------------------
-# Vi-Mode Testing
+# Vi-Mode
 # ----------------------------------------------------------------------
 
 # fix for error on Ubuntu when typing up & down arrow for the history bindings below
@@ -235,9 +235,7 @@ bindkey '^?' backward-delete-char
 # Path
 # ----------------------------------------------------------------------
 
-# Added by LM Studio CLI (lms)
-# export PATH="$PATH:/Users/ryan/.cache/lm-studio/bin"
-# export PATH="$PATH:/Users/rmanly/.cache/lm-studio/bin"
+export PATH="$PATH:$HOME/.cache/lm-studio/bin:$HOME//Library/Python/3.9/bin:$HOME/.local/bin"
 
 # zsh-nvm for using openai codex
 # https://github.com/lukechilds/zsh-nvm
@@ -249,3 +247,4 @@ bindkey '^?' backward-delete-char
 # source ~/.zsh-nvm/zsh-nvm.plugin.zsh
 
 alias gam="/Users/rmanly/bin/gam7/gam"
+
