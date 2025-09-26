@@ -188,3 +188,8 @@ ydlu() {
 # ----------------------------------------------------------------------
 
 [[ -e $HOME/.bash_private ]] && source $HOME/.bash_private
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/rmanly/.lmstudio/bin"
+# End of LM Studio CLI section
+

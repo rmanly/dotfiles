@@ -145,20 +145,20 @@ s128() {
 # not seeing 22 too much anymore and VP09 is messing with my quicklook
 
 ydl() {
-    /usr/local/bin/yt-dlp -o "$HOME/Downloads/ydl $today/%(uploader)s-%(title)s.%(ext)s" "$1"
+    yt-dlp -o "$HOME/Downloads/ydl $today/%(uploader)s-%(title)s.%(ext)s" "$1"
 }
 
 ydla() {
-    /usr/local/bin/yt-dlp -a "$1" -o "$HOME/Downloads/ydl $today/%(uploader)s-%(title)s.%(ext)s"
+    yt-dlp -a "$1" -o "$HOME/Downloads/ydl $today/%(uploader)s-%(title)s.%(ext)s"
 }
 
 ydlm() {
-    /usr/local/bin/yt-dlp -f "m4a/aac/bestaudio" \
+    yt-dlp -f "m4a/aac/bestaudio" \
         -o "$HOME/Downloads/ydlm $today/audio/%(uploader)s-%(title)s.%(ext)s" "$1"
 }
 
 ydlmch() {
-    /usr/local/bin/yt-dlp --ignore-config \
+    yt-dlp --ignore-config \
         -f "m4a/aac/bestaudio" \
         --replace-in-metadata "title,uploader,playlist" "[\/:\\\"|]" "" \
         --output-na-placeholder "" --embed-thumbnail --split-chapters \
@@ -168,23 +168,23 @@ ydlmch() {
 
 ydlmk() {
     # download multiple formats using ',' default method and then audio in preferred order -- UPDATE: doesnt work if no format available
-    # /usr/local/bin/yt-dlp -f "bestvideo*+bestaudio/best,m4a/aac/bestaudio" -o "$HOME/Downloads/ydl $today/audio/%(title)s.%(ext)s" "$1"
-    /usr/local/bin/yt-dlp -x -k \
+    # yt-dlp -f "bestvideo*+bestaudio/best,m4a/aac/bestaudio" -o "$HOME/Downloads/ydl $today/audio/%(title)s.%(ext)s" "$1"
+    yt-dlp -x -k \
         -o "$HOME/Downloads/ydlmk $today/audio/%(uploader)s-%(title)s.%(ext)s" "$1"
 }
 
 ydlpl() {
-    /usr/local/bin/yt-dlp \
+    yt-dlp \
         -o "$HOME/Downloads/%(uploader)s/%(playlist)s/%(upload_date)s-%(playlist_index)s-%(title)s.%(ext)s" "$1"
 }
 
 ydlpla() {
-    /usr/local/bin/yt-dlp \
+    yt-dlp \
         -o "$HOME/Downloads/%(uploader)s/%(playlist)s/%(upload_date)s-%(playlist_index)s-%(title)s.%(ext)s" -a "$1"
 }
 
 ydlu() {
-    /usr/local/bin/yt-dlp \
+    yt-dlp \
         -o "$HOME/Downloads/ydl $today/%(uploader)s/%(release_date>%Y-%m-%d,upload_date>%Y-%m-%d|Unknown)s-%(title)s.%(ext)s" "$1"
 }
 
@@ -247,4 +247,9 @@ export PATH="$PATH:$HOME/.cache/lm-studio/bin:$HOME//Library/Python/3.9/bin:$HOM
 # source ~/.zsh-nvm/zsh-nvm.plugin.zsh
 
 alias gam="/Users/rmanly/bin/gam7/gam"
+
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/rmanly/.lmstudio/bin"
+# End of LM Studio CLI section
 
