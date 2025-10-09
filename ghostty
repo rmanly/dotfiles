@@ -3,8 +3,24 @@ theme = "Solarized Dark Higher Contrast"
 # background = 002b36
 
 font-family = "Hack"
+Font-family = "Source Code Pro"
 font-size = 14
+
+# lengthen this to make it a bit more useful without being crazy
+undo-timeout = 12h
+
+# this doesn't appear to be working, perhaps because of the warning in docs
+shell-integration-features = no-cursor
+cursor-style = block
+
+# allow to launch for access to quick term without initial window
+initial-window=false
+
+# don't appear in Dock
+macos-hidden=always
 
 # https://github.com/ghostty-org/ghostty/discussions/3610
 keybind = global:cmd+grave_accent=toggle_quick_terminal
 quick-terminal-position = center
+
+clipboard-trim-trailing-spaces
