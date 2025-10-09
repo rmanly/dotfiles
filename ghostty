@@ -3,7 +3,7 @@ theme = "Solarized Dark Higher Contrast"
 # background = 002b36
 
 font-family = "Hack"
-Font-family = "Source Code Pro"
+font-family = "Source Code Pro"
 font-size = 14
 
 # lengthen this to make it a bit more useful without being crazy
