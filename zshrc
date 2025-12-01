@@ -239,12 +239,8 @@ export PATH="$PATH:$HOME/.cache/lm-studio/bin:$HOME//Library/Python/3.9/bin:$HOM
 
 # zsh-nvm for using openai codex
 # https://github.com/lukechilds/zsh-nvm
-# export NVM_DIR="$HOME/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
- 
-# export NVM_LAZY_LOAD=true
-# source ~/.zsh-nvm/zsh-nvm.plugin.zsh
+export NVM_LAZY_LOAD=true
+source ~/.zsh-nvm/zsh-nvm.plugin.zsh
 
 alias gam="/Users/rmanly/bin/gam7/gam"
 
