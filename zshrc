@@ -235,7 +235,7 @@ bindkey '^?' backward-delete-char
 # Path
 # ----------------------------------------------------------------------
 
-export PATH="$PATH:$HOME/.cache/lm-studio/bin:$HOME//Library/Python/3.9/bin:$HOME/.local/bin"
+export PATH="$PATH:$HOME/.cache/lm-studio/bin:$HOME//Library/Python/3.14/bin:$HOME/.local/bin"
 
 # zsh-nvm for using openai codex
 # https://github.com/lukechilds/zsh-nvm
@@ -246,7 +246,11 @@ alias gam="/Users/rmanly/bin/gam7/gam"
 
 
 # Added by LM Studio CLI (lms)
-export PATH="$PATH:/Users/rmanly/.lmstudio/bin"
+export PATH="$PATH:$HOME/.lmstudio/bin"
 # End of LM Studio CLI section
 
-. "/Users/rmanly/.deno/env"
+[[ -e $HOME/.deno ]] && source $HOME/.deno/env
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
