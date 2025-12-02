@@ -254,3 +254,18 @@ export PATH="$PATH:$HOME/.lmstudio/bin"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Auto-activate Python venv when entering a directory containing .venv
+function auto_venv() {
+  if [[ -n "$VIRTUAL_ENV" && ! -d "$PWD/.venv" ]]; then
+    deactivate
+  elif [[ -z "$VIRTUAL_ENV" && -d "$PWD/.venv" ]]; then
+    source "$PWD/.venv/bin/activate"
+  fi
+}
+
+autoload -U add-zsh-hook
+add-zsh-hook chpwd auto_venv
+
+# run once on shell start
+auto_venv
