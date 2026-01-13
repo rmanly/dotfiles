@@ -12,6 +12,9 @@ fi
 [[ -e $HOME/.bash_prompt ]] && /bin/rm $HOME/.bash_prompt
 [[ -e $HOME/.vimrc ]] && /bin/rm $HOME/.vimrc
 [[ -e $HOME/.zshrc ]] && /bin/rm $HOME/.zshrc
+[[ -e $HOME/.gitconfig ]] && /bin/rm $HOME/.gitconfig
+[[ -e $HOME/.gitignore ]] && /bin/rm $HOME/.gitignore
+[[ -e $HOME/.inputrc ]] && /bin/rm $HOME/.inputrc
 
 /bin/ln -s $HOME/src/dotfiles/bash_profile $HOME/.bash_profile
 /bin/ln -s $HOME/src/dotfiles/bash_prompt $HOME/.bash_prompt
@@ -39,7 +42,7 @@ ytdlp_user_conf=(
     $HOME/.yt-dlp/config.txt
 )
 
-for conf in "${yt-dlp_user_conf[@]}"; do
+for conf in "${ytdlp_user_conf[@]}"; do
     [[ -e $conf ]] && /bin/rm $conf
 done 
 
