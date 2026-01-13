@@ -242,8 +242,7 @@ export PATH="$PATH:$HOME/.cache/lm-studio/bin:$HOME//Library/Python/3.14/bin:$HO
 export NVM_LAZY_LOAD=true
 source ~/.zsh-nvm/zsh-nvm.plugin.zsh
 
-alias gam="/Users/rmanly/bin/gam7/gam"
-
+[[ -e /Users/rmanly/bin/gam7 ]] && alias gam="/Users/rmanly/bin/gam7/gam"
 
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:$HOME/.lmstudio/bin"
@@ -251,9 +250,9 @@ export PATH="$PATH:$HOME/.lmstudio/bin"
 
 [[ -e $HOME/.deno ]] && source $HOME/.deno/env
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Auto-activate Python venv when entering a directory containing .venv
 function auto_venv() {
