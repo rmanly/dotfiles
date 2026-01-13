@@ -5,8 +5,7 @@
 	clean = git-media-clean %f
 	smudge = git-media-smudge %f
 [core]
-# I should figure out how to have this work with whatever my username is
-	excludesfile = /Users/rmanly/.gitignore
+	excludesfile = ~/.gitignore
 	pager = less -r
 [credential]
 	help = osxkeychain
@@ -25,7 +24,7 @@
 	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 [commit]
-	template = /Users/ryan/.stCommitMsg
+	template = ~/.stCommitMsg
 [filter "lfs"]
 	process = git-lfs filter-process
 	required = true
