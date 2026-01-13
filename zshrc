@@ -235,14 +235,14 @@ bindkey '^?' backward-delete-char
 # Path
 # ----------------------------------------------------------------------
 
-export PATH="$PATH:$HOME/.cache/lm-studio/bin:$HOME//Library/Python/3.14/bin:$HOME/.local/bin"
+export PATH="$PATH:$HOME/.cache/lm-studio/bin:$HOME/Library/Python/3.14/bin:$HOME/.local/bin"
 
 # zsh-nvm for using openai codex
 # https://github.com/lukechilds/zsh-nvm
 export NVM_LAZY_LOAD=true
-source ~/.zsh-nvm/zsh-nvm.plugin.zsh
+[[ -f ~/.zsh-nvm/zsh-nvm.plugin.zsh ]] && source ~/.zsh-nvm/zsh-nvm.plugin.zsh
 
-[[ -e /Users/rmanly/bin/gam7 ]] && alias gam="/Users/rmanly/bin/gam7/gam"
+[[ -e $HOME/bin/gam7 ]] && alias gam="$HOME/bin/gam7/gam"
 
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:$HOME/.lmstudio/bin"
