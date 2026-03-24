@@ -49,4 +49,6 @@ done
 /bin/mkdir -p $HOME/.yt-dlp
 /bin/ln -s $HOME/src/dotfiles/yt-dlp_config $HOME/.yt-dlp/config
 
+git clone https://github.com/lukechilds/zsh-nvm.git ~/.zsh-nvm
+
 printf "%s\n" "Don't forget to source your shell rc!"
