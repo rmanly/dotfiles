@@ -1,3 +1,5 @@
+# Add deno completions to search path
+if [[ ":$FPATH:" != *":/Users/ryan/.zsh/completions:"* ]]; then export FPATH="/Users/ryan/.zsh/completions:$FPATH"; fi
 bindkey -v
 
 CORRECT_IGNORE_FILE='.*'
@@ -268,3 +270,9 @@ add-zsh-hook chpwd auto_venv
 
 # run once on shell start
 auto_venv
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/ryan/.cache/lm-studio/bin"
+# End of LM Studio CLI section
+
+. "/Users/ryan/.deno/env"
