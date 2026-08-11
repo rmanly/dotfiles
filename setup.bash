@@ -10,6 +10,7 @@ fi
 [[ -e $HOME/.bashrc ]] && /bin/rm $HOME/.bashrc
 [[ -e $HOME/.bash_profile ]] && /bin/rm $HOME/.bash_profile
 [[ -e $HOME/.bash_prompt ]] && /bin/rm $HOME/.bash_prompt
+[[ -e $HOME/.shell_functions ]] && /bin/rm $HOME/.shell_functions
 [[ -e $HOME/.vimrc ]] && /bin/rm $HOME/.vimrc
 [[ -e $HOME/.zshrc ]] && /bin/rm $HOME/.zshrc
 [[ -e $HOME/.gitconfig ]] && /bin/rm $HOME/.gitconfig
@@ -18,6 +19,7 @@ fi
 
 /bin/ln -s $HOME/src/dotfiles/bash_profile $HOME/.bash_profile
 /bin/ln -s $HOME/src/dotfiles/bash_prompt $HOME/.bash_prompt
+/bin/ln -s $HOME/src/dotfiles/shell_functions $HOME/.shell_functions
 /bin/ln -s $HOME/src/dotfiles/bashrc $HOME/.bashrc
 /bin/ln -s $HOME/src/dotfiles/gitconfig $HOME/.gitconfig
 /bin/ln -s $HOME/src/dotfiles/gitignore $HOME/.gitignore
