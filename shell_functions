@@ -4,6 +4,18 @@ export EDITOR="${EDITOR:-/usr/bin/vim}"
 
 alias grep='grep --color=auto'
 
+box() {
+	c=${2-=}; l=$c$c${1//?/$c}$c$c;
+    echo -e "$l\n$c $1 $c\n$l";
+    unset c l;
+}
+
+pre() {
+    for filename in ./*; do
+        mv -- "$filename" "$1-${filename#*/}";
+    done
+}
+
 if [[ $(uname) == Darwin ]]; then
     alias chimeon='nvram StartupMute=%00'
     alias chimeoff='nvram StartupMute=%01'
@@ -31,6 +43,10 @@ if [[ $(uname) == Darwin ]]; then
         printf '%s\n' 'Use the following command to connect to this computer.'
         box "nc ${address} ${port}" -
         /usr/bin/nc -l "$port"
+    }
+
+    profix() {
+        /usr/bin/xmllint -format "$1" > "${1%.*}".plist
     }
 
     recover() {

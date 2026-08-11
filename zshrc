@@ -53,10 +53,6 @@ if [[ $(uname) == Darwin ]]; then
         /bin/ls -G;
     }
 
-    profix() {
-        /usr/bin/xmllint -format "$1" > "${1%.*}".plist
-    }
-
 else
     cd() {
         builtin cd "${@:-$HOME}" && /bin/ls --color;
@@ -66,18 +62,6 @@ fi
 # ----------------------------------------------------------------------
 # FUNCTIONS
 # ----------------------------------------------------------------------
-
-box() {
-	c=${2-=}; l=$c$c${1//?/$c}$c$c;
-    echo -e "$l\n$c $1 $c\n$l";
-    unset c l;
-}
-
-pre() {
-    for filename in ./*; do
-        mv -- "$filename" "$1-${filename#*/}";
-    done
-}
 
 # ----------------------------------------------------------------------
 # Vi-Mode
