@@ -1,6 +1,7 @@
 # Add deno completions to search path
 if [[ ":$FPATH:" != *":$HOME/.zsh/completions:"* ]]; then export FPATH="$HOME/.zsh/completions:$FPATH"; fi
 bindkey -v
+KEYTIMEOUT=10
 
 CORRECT_IGNORE_FILE='.*'
 DIRSTACKSIZE=4
@@ -8,7 +9,7 @@ HISTFILE=${ZDOTDIR:-$HOME}/.zsh_history
 HISTSIZE=10500
 SAVEHIST=10000
 
-setopt auto_cd auto_pushd brace_ccl correct_all extended_history hist_expire_dups_first hist_find_no_dups hist_ignore_space hist_reduce_blanks pushd_ignore_dups share_history
+setopt always_to_end auto_cd auto_pushd brace_ccl complete_in_word correct extended_history hist_expire_dups_first hist_find_no_dups hist_ignore_space hist_reduce_blanks hist_save_no_dups hist_verify numeric_glob_sort pushd_ignore_dups share_history
 unsetopt beep
 
 autoload -Uz compinit && compinit

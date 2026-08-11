@@ -7,6 +7,8 @@ shopt -s extglob
 shopt -s failglob
 shopt -s histappend
 shopt -s histreedit
+shopt -s histverify
+shopt -s lithist
 
 if [[ ${BASH_VERSINFO[0]} -ge 4 ]]; then
     shopt -s checkjobs
@@ -16,8 +18,9 @@ fi
 export HISTCONTROL=ignorespace:erasedups
 export HISTIGNORE='fg:bg:ls:pwd:cd ..:cd -:cd:jobs:set -x:ls -l:history:'
 export HISTSIZE=2500
+export HISTFILESIZE=10000
 export HISTTIMEFORMAT="%Y-%m-%d %T "
-export PROMPT_COMMAND='history -a; history -r'
+export PROMPT_COMMAND='history -a; history -n'
 
 # http://cnswww.cns.cwru.edu/php/chet/readline/readline.html#SEC13
 # zsh style tab completions...kinda
