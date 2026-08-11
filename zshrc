@@ -1,5 +1,5 @@
 # Add deno completions to search path
-if [[ ":$FPATH:" != *":/Users/ryan/.zsh/completions:"* ]]; then export FPATH="/Users/ryan/.zsh/completions:$FPATH"; fi
+if [[ ":$FPATH:" != *":$HOME/.zsh/completions:"* ]]; then export FPATH="$HOME/.zsh/completions:$FPATH"; fi
 bindkey -v
 
 CORRECT_IGNORE_FILE='.*'
@@ -8,7 +8,7 @@ HISTFILE=${ZDOTDIR:-$HOME}/.zsh_history
 HISTSIZE=10500
 SAVEHIST=10000
 
-setopt append_history auto_cd auto_pushd brace_ccl correct_all extended_history hist_expire_dups_first hist_find_no_dups hist_ignore_space hist_no_store hist_reduce_blanks pushd_ignore_dups share_history
+setopt auto_cd auto_pushd brace_ccl correct_all extended_history hist_expire_dups_first hist_find_no_dups hist_ignore_space hist_reduce_blanks pushd_ignore_dups share_history
 unsetopt beep
 
 autoload -Uz compinit && compinit
@@ -18,8 +18,6 @@ autoload -Uz colors && colors
 export LESS=FiWX
 
 # [[ -d /Volumes/Ministack/.vagrant.d ]] && export VAGRANT_HOME=/Volumes/Ministack/.vagrant.d
-
-today=$(/bin/date +'%Y-%m-%d')
 
 # ----------------------------------------------------------------------
 # PROMPT
@@ -49,60 +47,17 @@ PS1=""$'\n'"${userStyle}%n%f %F{white}at%f ${hostStyle}%m%f%F{white}:%f %F{green
 
 alias -s pkginfo=vim
 alias -s plist=vim
-alias grep='grep --color=auto'
-
 if [[ $(uname) == Darwin ]]; then
-    alias chimeon='nvram StartupMute=%00'
-    alias chimeoff='nvram StartupMute=%01'
-    alias ls='ls -G'
-    alias ll='ls -G -la'
-    alias readmunki='/usr/bin/defaults read /Library/Preferences/ManagedInstalls'
-    alias sha256='/usr/bin/shasum -a 256'
-
     chpwd() {
         emulate -L zsh;
         /bin/ls -G;
-    }
-
-    ip() {
-        devices=($(networksetup -listnetworkserviceorder | awk -F': ' '/Port/{ gsub(/\)$/,""); print $3 }'))
-
-        for iface in "${devices[@]}"; do
-            if ! ipconfig getifaddr "$iface"; then
-                continue
-            else
-                break
-            fi
-        done
-    }
-
-    ncl() {
-        port=9999
-        ip=$(ip);
-        printf "%s\n" "Use the following command to connect to this computer." 
-        box "nc ${ip} ${1:-$port}" -
-        /usr/bin/nc -l "${1:-$port}";
     }
 
     profix() {
         /usr/bin/xmllint -format "$1" > "${1%.*}".plist
     }
 
-    recover() {
-        box "TYPE THIS!"
-        printf "%s\n" 'sudo nvram "recovery-boot-mode=unused"'
-    }
-
-    rmds() {
-        /usr/bin/find . -name \.DS_Store -delete
-    }
-
-    writemunki() {
-        /usr/bin/sudo /usr/bin/defaults write /Library/Preferences/ManagedInstalls "$1" "$2"
-    }
 else
-    alias ls='ls --color'
-
     cd() {
         builtin cd "${@:-$HOME}" && /bin/ls --color;
     }
@@ -112,23 +67,10 @@ fi
 # FUNCTIONS
 # ----------------------------------------------------------------------
 
-md() {
-	mkdir -p $1 && cd $1;
-}
-
 box() {
 	c=${2-=}; l=$c$c${1//?/$c}$c$c;
     echo -e "$l\n$c $1 $c\n$l";
     unset c l;
-}
-
-dirperm() {
-	dir=$(pwd);
-	while [ ! -z "$dir" ]; do
-		ls -led "$dir";
-		dir=${dir%/*};
-	done;
-    ls -led /;
 }
 
 pre() {
@@ -137,67 +79,9 @@ pre() {
     done
 }
 
-s128() {
-    filename="${1##*/}";
-    name="${filename%.*}";
-    sips -s format png --resampleHeight 128 "$1" --out $HOME/Desktop/"${name}-128.png";
-}
-
-# TODO: test and read about switching to '-S vcodec:h264,res,acodec:m4a'
-# not seeing 22 too much anymore and VP09 is messing with my quicklook
-
-ydl() {
-    yt-dlp -o "$HOME/Downloads/ydl $today/%(uploader)s-%(title)s.%(ext)s" "$1"
-}
-
-ydla() {
-    yt-dlp -a "$1" -o "$HOME/Downloads/ydl $today/%(uploader)s-%(title)s.%(ext)s"
-}
-
-ydlm() {
-    yt-dlp -f "m4a/aac/bestaudio" \
-        -o "$HOME/Downloads/ydlm $today/audio/%(uploader)s-%(title)s.%(ext)s" "$1"
-}
-
-ydlmch() {
-    yt-dlp --ignore-config \
-        -f "m4a/aac/bestaudio" \
-        --replace-in-metadata "title,uploader,playlist" "[\/:\\\"|]" "" \
-        --output-na-placeholder "" --embed-thumbnail --split-chapters \
-        -o "$HOME/Downloads/ydlmch $today/audio/%(title)s/%(chapter)s.%(ext)s" \
-        -o chapter:"$HOME/Downloads/ydlmch $today/audio/%(title)s/%(section_number)03d - %(section_title)s.%(ext)s" "$1"
-}
-
-ydlmk() {
-    # download multiple formats using ',' default method and then audio in preferred order -- UPDATE: doesnt work if no format available
-    # yt-dlp -f "bestvideo*+bestaudio/best,m4a/aac/bestaudio" -o "$HOME/Downloads/ydl $today/audio/%(title)s.%(ext)s" "$1"
-    yt-dlp -x -k \
-        -o "$HOME/Downloads/ydlmk $today/audio/%(uploader)s-%(title)s.%(ext)s" "$1"
-}
-
-ydlpl() {
-    yt-dlp \
-        -o "$HOME/Downloads/%(uploader)s/%(playlist)s/%(upload_date)s-%(playlist_index)s-%(title)s.%(ext)s" "$1"
-}
-
-ydlpla() {
-    yt-dlp \
-        -o "$HOME/Downloads/%(uploader)s/%(playlist)s/%(upload_date)s-%(playlist_index)s-%(title)s.%(ext)s" -a "$1"
-}
-
-ydlu() {
-    yt-dlp \
-        -o "$HOME/Downloads/ydl $today/%(uploader)s/%(release_date>%Y-%m-%d,upload_date>%Y-%m-%d|Unknown)s-%(title)s.%(ext)s" "$1"
-}
-
-
 # ----------------------------------------------------------------------
 # Vi-Mode
 # ----------------------------------------------------------------------
-
-# fix for error on Ubuntu when typing up & down arrow for the history bindings below
-[[ ! -f ~/.zshenv || -z $(grep DEBIAN_PREVENT_KEYBOARD_CHANGES ~/.zshenv) ]] &&
-	print "DEBIAN_PREVENT_KEYBOARD_CHANGES=yes" >> ~/.zshenv
 
 # http://stratus3d.com/blog/2017/10/26/better-vi-moden-zshell/
 # Better searching in command mode
@@ -250,14 +134,26 @@ export NVM_LAZY_LOAD=true
 
 [[ -e $HOME/bin/gam7 ]] && alias gam="$HOME/bin/gam7/gam"
 
-[[ -e $HOME/.deno ]] && source $HOME/.deno/env
+[[ -r "$HOME/.deno/env" ]] && source "$HOME/.deno/env"
+
+_dotfiles_zsh_dir=${${(%):-%N}:A:h}
+source "$_dotfiles_zsh_dir/shell_functions"
+unset _dotfiles_zsh_dir
 
 # Auto-activate Python venv when entering a directory containing .venv
+typeset -g _dotfiles_auto_venv=''
+
 function auto_venv() {
-  if [[ -n "$VIRTUAL_ENV" && ! -d "$PWD/.venv" ]]; then
+  local target="$PWD/.venv"
+
+  if [[ -n "$_dotfiles_auto_venv" && "$VIRTUAL_ENV" == "$_dotfiles_auto_venv" && "$target" != "$_dotfiles_auto_venv" ]]; then
     deactivate
-  elif [[ -z "$VIRTUAL_ENV" && -d "$PWD/.venv" ]]; then
-    source "$PWD/.venv/bin/activate"
+    _dotfiles_auto_venv=''
+  fi
+
+  if [[ -z "$VIRTUAL_ENV" && -r "$target/bin/activate" ]]; then
+    source "$target/bin/activate"
+    _dotfiles_auto_venv="$VIRTUAL_ENV"
   fi
 }
 

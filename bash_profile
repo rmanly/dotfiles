@@ -1,9 +1,1 @@
-if [[ -f $HOME/.bashrc ]]; then
-   source $HOME/.bashrc
-fi
-
-if [[ -f $HOME/.bash_private ]]; then
-    source $HOME/.bash_private ]]
-fi
-
-. "/Users/rmanly/.deno/env"
+[[ -r "$HOME/.bashrc" ]] && source "$HOME/.bashrc"

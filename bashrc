@@ -13,7 +13,6 @@ if [[ ${BASH_VERSINFO[0]} -ge 4 ]]; then
     shopt -s globstar
 fi
 
-export EDITOR=/usr/bin/vim
 export HISTCONTROL=ignorespace:erasedups
 export HISTIGNORE='fg:bg:ls:pwd:cd ..:cd -:cd:jobs:set -x:ls -l:history:'
 export HISTSIZE=2500
@@ -53,54 +52,16 @@ export PS4='+(${BASH_SOURCE}:${LINENO}): ${FUNCNAME[0]:+${FUNCNAME[0]}(): }'
 # ALIAS & OS-SPECIFIC FUNCTIONS
 # ----------------------------------------------------------------------
 
-alias grep='grep --color=auto'
-
 if [[ $(uname) == Darwin ]]; then
-    alias ls='ls -G'
-    alias ll='ls -G -la'
-    alias readmunki='/usr/bin/defaults read /Library/Preferences/ManagedInstalls'
-    alias sha256='/usr/bin/shasum -a 256'
-    alias snapshot='/usr/bin/tmutil snapshot'
-
     cd() {
         builtin cd "${@:-$HOME}" && /bin/ls -G;
-    }
-
-    ip() {
-        devices=($(networksetup -listnetworkserviceorder | awk -F': ' '/Port/{ gsub(/\)$/,""); print $3 }'))
-
-        for iface in "${devices[@]}"; do
-            if ! ipconfig getifaddr "$iface"; then
-                continue
-            else
-                break
-            fi
-        done
-    }
-
-    ncl() {
-        port=9999
-        ip=$(ip);
-        printf "%s\n" "Use the following command to connect to this computer." 
-        box "nc ${ip} ${1:-$port}" -
-        /usr/bin/nc -l "${1:-$port}";
     }
 
     profix() {
         /usr/bin/xmllint -format "$1" > "${1%.*}".plist
     }
 
-    recover() {
-        box "TYPE THIS!"
-        printf "%s\n" 'sudo nvram "recovery-boot-mode=unused"'
-    }
-
-    writemunki() {
-        /usr/bin/sudo /usr/bin/defaults write /Library/Preferences/ManagedInstalls "$1" "$2"
-    }
 else
-    alias ls='ls --color'
-
     cd() {
         builtin cd "${@:-$HOME}" && /bin/ls --color;
     }
@@ -111,23 +72,10 @@ fi
 # FUNCTIONS
 # ----------------------------------------------------------------------
 
-md() {
-    /bin/mkdir -p "$1" && builtin cd "$1";
-}
-
 box() {
     c=${2-#}; l=$c$c${1//?/$c}$c$c;
     echo -e "$l\n$c $1 $c\n$l";
     unset c l;
-}
-
-dirperm() {
-    dir=$PWD;
-    while [[ ! -z "$dir" ]]; do
-        ls -led "$dir";
-        dir=${dir%/*};
-    done;
-    ls -led /;
 }
 
 pre() {
@@ -136,46 +84,18 @@ pre() {
     done
 }
 
-s128() {
-    filename="${1##*/}"
-    name="${filename%.*}"
-    sips -s format png --resampleHeight 128 "$1" --out $HOME/Desktop/"${name}-128.png"
-}
+[[ -r "$HOME/.bash_private" ]] && source "$HOME/.bash_private"
+[[ -r "$HOME/.deno/env" ]] && source "$HOME/.deno/env"
 
-ydl() {
-    /usr/local/bin/youtube-dl -i -o "$HOME/Downloads/ydl/%(uploader)s-%(title)s.%(ext)s" "$1"
-}
-
-ydlasmr() {
-    /usr/local/bin/youtube-dl -i -o "$HOME/Downloads/ydl/ASMR/%(uploader)s-%(title)s.%(ext)s" "$1"
-}
-
-ydla() {
-    /usr/local/bin/youtube-dl -i -a "$1" -o "$HOME/Downloads/ydl/%(title)s.%(ext)s"
-}
-
-ydlm() {
-    /usr/local/bin/youtube-dl -i -x --audio-format "mp3" -o "$HOME/Downloads/ydl/audio/%(title)s.%(ext)s" "$1"
-}
-
-ydlmk() {
-    /usr/local/bin/youtube-dl -i -k -x --audio-format "mp3" -o "$HOME/Downloads/ydl/audio/%(title)s.%(ext)s" "$1"
-}
-
-ydlmasmr() {
-    /usr/local/bin/youtube-dl -i -x --audio-format "mp3" -o "$HOME/Downloads/ydl/audio/ASMR/%(uploader)s-%(title)s.%(ext)s" "$1"
-}
-
-ydlpl() {
-    /usr/local/bin/youtube-dl -i -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]' -o "$HOME/Downloads/ydl/%(playlist_title)s/%(playlist_index)s-%(title)s.%(ext)s"
-}
-
-ydlu() {
-    /usr/local/bin/youtube-dl -i -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]' -o "$HOME/Downloads/ydl/%(uploader)s/%(upload_date)s-%(title)s.%(ext)s" "$1"
-}
-
-[[ -e $HOME/.bash_private ]] && source $HOME/.bash_private
-
-[[ -e $HOME/.deno/env ]] && . "$HOME/.deno/env"
-
-. "/Users/ryan/.deno/env"
+_dotfiles_bash_source=${BASH_SOURCE[0]}
+while [[ -h "$_dotfiles_bash_source" ]]; do
+    _dotfiles_bash_link=$(readlink "$_dotfiles_bash_source")
+    if [[ $_dotfiles_bash_link == /* ]]; then
+        _dotfiles_bash_source=$_dotfiles_bash_link
+    else
+        _dotfiles_bash_source=$(dirname "$_dotfiles_bash_source")/$_dotfiles_bash_link
+    fi
+done
+_dotfiles_bash_dir=$(builtin cd -- "$(dirname -- "$_dotfiles_bash_source")" && pwd -P)
+source "$_dotfiles_bash_dir/shell_functions"
+unset _dotfiles_bash_dir _dotfiles_bash_link _dotfiles_bash_source

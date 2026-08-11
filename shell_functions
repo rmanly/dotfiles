@@ -1,0 +1,136 @@
+# Shared interactive-shell helpers. This file is sourced by both bashrc and zshrc.
+
+export EDITOR="${EDITOR:-/usr/bin/vim}"
+
+alias grep='grep --color=auto'
+
+if [[ $(uname) == Darwin ]]; then
+    alias chimeon='nvram StartupMute=%00'
+    alias chimeoff='nvram StartupMute=%01'
+    alias ll='ls -G -la'
+    alias ls='ls -G'
+    alias readmunki='/usr/bin/defaults read /Library/Preferences/ManagedInstalls'
+    alias sha256='/usr/bin/shasum -a 256'
+    alias snapshot='/usr/bin/tmutil snapshot'
+
+    ip() {
+        local iface
+
+        while IFS= read -r iface; do
+            /usr/sbin/ipconfig getifaddr "$iface" && return 0
+        done < <(/usr/sbin/networksetup -listnetworkserviceorder | /usr/bin/awk -F': ' '/Port/{ gsub(/\)$/, ""); print $3 }')
+
+        return 1
+    }
+
+    ncl() {
+        local port="${1:-9999}"
+        local address
+
+        address=$(ip) || return 1
+        printf '%s\n' 'Use the following command to connect to this computer.'
+        box "nc ${address} ${port}" -
+        /usr/bin/nc -l "$port"
+    }
+
+    recover() {
+        box 'TYPE THIS!'
+        printf '%s\n' 'sudo nvram "recovery-boot-mode=unused"'
+    }
+
+    rmds() {
+        /usr/bin/find . -name .DS_Store -delete
+    }
+
+    s128() {
+        local filename name
+        filename="${1##*/}"
+        name="${filename%.*}"
+        /usr/bin/sips -s format png --resampleHeight 128 "$1" --out "$HOME/Desktop/${name}-128.png"
+    }
+
+    writemunki() {
+        /usr/bin/sudo /usr/bin/defaults write /Library/Preferences/ManagedInstalls "$1" "$2"
+    }
+else
+    alias ls='ls --color'
+fi
+
+md() {
+    mkdir -p "$1" && cd "$1"
+}
+
+dirperm() {
+    local dir="$PWD"
+
+    while [[ -n "$dir" ]]; do
+        if [[ $(uname) == Darwin ]]; then
+            command ls -led "$dir"
+        else
+            command ls -ld "$dir"
+        fi
+        dir=${dir%/*}
+    done
+    command ls -ld /
+}
+
+ydl() {
+    local today
+    today=$(/bin/date +'%Y-%m-%d')
+    yt-dlp -o "$HOME/Downloads/ydl $today/%(uploader)s-%(title)s.%(ext)s" "$@"
+}
+
+ydlasmr() {
+    local today
+    today=$(/bin/date +'%Y-%m-%d')
+    yt-dlp -o "$HOME/Downloads/ydl $today/ASMR/%(uploader)s-%(title)s.%(ext)s" "$@"
+}
+
+ydla() {
+    local today
+    today=$(/bin/date +'%Y-%m-%d')
+    yt-dlp -a "$1" -o "$HOME/Downloads/ydl $today/%(uploader)s-%(title)s.%(ext)s"
+}
+
+ydlm() {
+    local today
+    today=$(/bin/date +'%Y-%m-%d')
+    yt-dlp -f 'm4a/aac/bestaudio' -o "$HOME/Downloads/ydlm $today/audio/%(uploader)s-%(title)s.%(ext)s" "$@"
+}
+
+ydlmch() {
+    local today
+    today=$(/bin/date +'%Y-%m-%d')
+    yt-dlp --ignore-config \
+        -f 'm4a/aac/bestaudio' \
+        --replace-in-metadata 'title,uploader,playlist' '[\\/:\\"|]' '' \
+        --output-na-placeholder '' --embed-thumbnail --split-chapters \
+        -o "$HOME/Downloads/ydlmch $today/audio/%(title)s/%(chapter)s.%(ext)s" \
+        -o chapter:"$HOME/Downloads/ydlmch $today/audio/%(title)s/%(section_number)03d - %(section_title)s.%(ext)s" "$@"
+}
+
+ydlmk() {
+    local today
+    today=$(/bin/date +'%Y-%m-%d')
+    yt-dlp -x -k -o "$HOME/Downloads/ydlmk $today/audio/%(uploader)s-%(title)s.%(ext)s" "$@"
+}
+
+ydlmasmr() {
+    local today
+    today=$(/bin/date +'%Y-%m-%d')
+    yt-dlp -f 'm4a/aac/bestaudio' -o "$HOME/Downloads/ydlm $today/audio/ASMR/%(uploader)s-%(title)s.%(ext)s" "$@"
+}
+
+ydlpl() {
+    yt-dlp -o "$HOME/Downloads/%(uploader)s/%(playlist)s/%(upload_date)s-%(playlist_index)s-%(title)s.%(ext)s" "$@"
+}
+
+ydlpla() {
+    yt-dlp -a "$1" -o "$HOME/Downloads/%(uploader)s/%(playlist)s/%(upload_date)s-%(playlist_index)s-%(title)s.%(ext)s"
+}
+
+ydlu() {
+    local today
+    today=$(/bin/date +'%Y-%m-%d')
+    yt-dlp -o "$HOME/Downloads/ydl $today/%(uploader)s/%(release_date>%Y-%m-%d,upload_date>%Y-%m-%d|Unknown)s-%(title)s.%(ext)s" "$@"
+}
