@@ -174,28 +174,8 @@ ydlu() {
     /usr/local/bin/youtube-dl -i -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]' -o "$HOME/Downloads/ydl/%(uploader)s/%(upload_date)s-%(title)s.%(ext)s" "$1"
 }
 
-
-# ----------------------------------------------------------------------
-# VIRTUALENV
-# ----------------------------------------------------------------------
-
-# export WORKON_HOME="$HOME/virtual_py"
-# source $(which virtualenvwrapper.sh)
-
-
-# ----------------------------------------------------------------------
-# OTHER
-# ----------------------------------------------------------------------
-
 [[ -e $HOME/.bash_private ]] && source $HOME/.bash_private
 
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:$HOME/.lmstudio/bin"
-# End of LM Studio CLI section
-
 [[ -e $HOME/.deno/env ]] && . "$HOME/.deno/env"
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:/Users/ryan/.cache/lm-studio/bin"
-# End of LM Studio CLI section
 
 . "/Users/ryan/.deno/env"

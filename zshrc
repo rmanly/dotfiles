@@ -237,7 +237,11 @@ bindkey '^?' backward-delete-char
 # Path
 # ----------------------------------------------------------------------
 
-export PATH="$PATH:$HOME/.cache/lm-studio/bin:$HOME/Library/Python/3.14/bin:$HOME/.local/bin"
+export PATH="$PATH:$HOME/Library/Python/3.14/bin:$HOME/.local/bin"
+
+# Bun (required by gstack)
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
 
 # zsh-nvm for using openai codex
 # https://github.com/lukechilds/zsh-nvm
@@ -246,15 +250,7 @@ export NVM_LAZY_LOAD=true
 
 [[ -e $HOME/bin/gam7 ]] && alias gam="$HOME/bin/gam7/gam"
 
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:$HOME/.lmstudio/bin"
-# End of LM Studio CLI section
-
 [[ -e $HOME/.deno ]] && source $HOME/.deno/env
-
-# export NVM_DIR="$HOME/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Auto-activate Python venv when entering a directory containing .venv
 function auto_venv() {
@@ -270,9 +266,3 @@ add-zsh-hook chpwd auto_venv
 
 # run once on shell start
 auto_venv
-
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:/Users/ryan/.cache/lm-studio/bin"
-# End of LM Studio CLI section
-
-. "/Users/ryan/.deno/env"
