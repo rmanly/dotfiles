@@ -15,6 +15,10 @@ unsetopt beep
 autoload -Uz compinit && compinit
 autoload -Uz colors && colors
 
+# Keep Python's generic environment name out of the prompt. A project-aware
+# virtualenv segment is added to PS1 below instead.
+export VIRTUAL_ENV_DISABLE_PROMPT=1
+
 # quit if fits on one screen, case insensitive search, don't clear on quit, highlight new line
 export LESS=FiWX
 
@@ -40,7 +44,19 @@ else
 	hostStyle='%F{yellow}';
 fi;
 
-PS1=""$'\n'"${userStyle}%n%f %F{white}at%f ${hostStyle}%m%f%F{white}:%f %F{green}%~%f"$'\n'"%F{gray}%*%f %F{white}%#%f "
+function virtualenv_prompt() {
+	[[ -z "$VIRTUAL_ENV" ]] && return
+
+	local environment_name="${VIRTUAL_ENV:t}"
+	if [[ "$environment_name" == '.venv' || "$environment_name" == 'venv' ]]; then
+		environment_name="${VIRTUAL_ENV:h:t}"
+	fi
+
+	print -n -- " %F{cyan}[py:${environment_name}]%f"
+}
+
+setopt prompt_subst
+PS1=""$'\n'"${userStyle}%n%f %F{white}at%f ${hostStyle}%m%f%F{white}:%f %F{green}%~%f"'$(virtualenv_prompt)'$'\n'"%F{gray}%*%f %F{white}%#%f "
 
 # ----------------------------------------------------------------------
 # ALIAS
