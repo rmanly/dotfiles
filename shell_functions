@@ -138,7 +138,34 @@ ydlmasmr() {
 }
 
 ydlpl() {
-    yt-dlp -o "$HOME/Downloads/%(uploader)s/%(playlist)s/%(upload_date)s-%(playlist_index)s-%(title)s.%(ext)s" "$@"
+    if (( $# == 0 )); then
+        printf '%s\n' 'Usage: ydlpl PLAYLIST_URL [OPTIONS...]' >&2
+        return 2
+    fi
+
+    local base="$HOME/Downloads"
+    local url="$1"
+    local folder
+
+    folder=$(yt-dlp \
+        --quiet \
+        --no-warnings \
+        --skip-download \
+        --playlist-items 1 \
+        --print '%(uploader)S/%(playlist)S' \
+        "$url") || return 1
+
+    if [[ -z "$folder" || "$folder" == /* ]]; then
+        printf '%s\n' 'Could not determine the uploader/playlist folder' >&2
+        return 1
+    fi
+
+    mkdir -p "$base/$folder" || return 1
+
+    yt-dlp \
+        --download-archive "$base/$folder/yt-dlp-archive.txt" \
+        -o "$base/%(uploader)S/%(playlist)S/%(upload_date)s-%(playlist_index)s-%(title)s.%(ext)s" \
+        "$@"
 }
 
 ydlpla() {
