@@ -86,3 +86,8 @@ done
 _dotfiles_bash_dir=$(builtin cd -- "$(dirname -- "$_dotfiles_bash_source")" && pwd -P)
 source "$_dotfiles_bash_dir/shell_functions"
 unset _dotfiles_bash_dir _dotfiles_bash_link _dotfiles_bash_source
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/ryan/.lmstudio/bin"
+# End of LM Studio CLI section
+

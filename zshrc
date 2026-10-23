@@ -122,7 +122,7 @@ bindkey '^?' backward-delete-char
 # Path
 # ----------------------------------------------------------------------
 
-export PATH="$PATH:$HOME/Library/Python/3.14/bin:$HOME/.local/bin"
+export PATH="$HOME/Library/Python/3.15/bin:$PATH:$HOME/.local/bin"
 
 # Bun (required by gstack)
 export BUN_INSTALL="$HOME/.bun"
@@ -163,3 +163,12 @@ add-zsh-hook chpwd auto_venv
 
 # run once on shell start
 auto_venv
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/ryan/.lmstudio/bin"
+# End of LM Studio CLI section
+
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
