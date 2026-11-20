@@ -93,25 +93,25 @@ dirperm() {
 ydl() {
     local today
     today=$(/bin/date +'%Y-%m-%d')
-    yt-dlp -o "$HOME/Downloads/ydl $today/%(uploader)s-%(title)s.%(ext)s" "$@"
+    yt-dlp -o "$HOME/Downloads/Video, audio, and captions/ydl $today/%(uploader)s-%(title)s.%(ext)s" "$@"
 }
 
 ydlasmr() {
     local today
     today=$(/bin/date +'%Y-%m-%d')
-    yt-dlp -o "$HOME/Downloads/ydl $today/ASMR/%(uploader)s-%(title)s.%(ext)s" "$@"
+    yt-dlp -o "$HOME/Downloads/Video, audio, and captions/ydl $today/ASMR/%(uploader)s-%(title)s.%(ext)s" "$@"
 }
 
 ydla() {
     local today
     today=$(/bin/date +'%Y-%m-%d')
-    yt-dlp -a "$1" -o "$HOME/Downloads/ydl $today/%(uploader)s-%(title)s.%(ext)s"
+    yt-dlp -a "$1" -o "$HOME/Downloads/Video, audio, and captions/ydl $today/%(uploader)s-%(title)s.%(ext)s"
 }
 
 ydlm() {
     local today
     today=$(/bin/date +'%Y-%m-%d')
-    yt-dlp -f 'm4a/aac/bestaudio' -o "$HOME/Downloads/ydlm $today/audio/%(uploader)s-%(title)s.%(ext)s" "$@"
+    yt-dlp -f 'm4a/aac/bestaudio' -o "$HOME/Downloads/Video, audio, and captions/ydlm $today/audio/%(uploader)s-%(title)s.%(ext)s" "$@"
 }
 
 ydlmch() {
@@ -121,20 +121,20 @@ ydlmch() {
         -f 'm4a/aac/bestaudio' \
         --replace-in-metadata 'title,uploader,playlist' '[\\/:\\"|]' '' \
         --output-na-placeholder '' --embed-thumbnail --split-chapters \
-        -o "$HOME/Downloads/ydlmch $today/audio/%(title)s/%(chapter)s.%(ext)s" \
-        -o chapter:"$HOME/Downloads/ydlmch $today/audio/%(title)s/%(section_number)03d - %(section_title)s.%(ext)s" "$@"
+        -o "$HOME/Downloads/Video, audio, and captions/ydlmch $today/audio/%(title)s/%(chapter)s.%(ext)s" \
+        -o chapter:"$HOME/Downloads/Video, audio, and captions/ydlmch $today/audio/%(title)s/%(section_number)03d - %(section_title)s.%(ext)s" "$@"
 }
 
 ydlmk() {
     local today
     today=$(/bin/date +'%Y-%m-%d')
-    yt-dlp -x -k -o "$HOME/Downloads/ydlmk $today/audio/%(uploader)s-%(title)s.%(ext)s" "$@"
+    yt-dlp -x -k -o "$HOME/Downloads/Video, audio, and captions/ydlmk $today/audio/%(uploader)s-%(title)s.%(ext)s" "$@"
 }
 
 ydlmasmr() {
     local today
     today=$(/bin/date +'%Y-%m-%d')
-    yt-dlp -f 'm4a/aac/bestaudio' -o "$HOME/Downloads/ydlm $today/audio/ASMR/%(uploader)s-%(title)s.%(ext)s" "$@"
+    yt-dlp -f 'm4a/aac/bestaudio' -o "$HOME/Downloads/Video, audio, and captions/ydlm $today/audio/ASMR/%(uploader)s-%(title)s.%(ext)s" "$@"
 }
 
 ydlpl() {
@@ -143,7 +143,7 @@ ydlpl() {
         return 2
     fi
 
-    local base="$HOME/Downloads"
+    local base="$HOME/Downloads/Video, audio, and captions"
     local url="$1"
     local folder
 
@@ -169,11 +169,11 @@ ydlpl() {
 }
 
 ydlpla() {
-    yt-dlp -a "$1" -o "$HOME/Downloads/%(uploader)s/%(playlist)s/%(upload_date)s-%(playlist_index)s-%(title)s.%(ext)s"
+    yt-dlp -a "$1" -o "$HOME/Downloads/Video, audio, and captions/%(uploader)s/%(playlist)s/%(upload_date)s-%(playlist_index)s-%(title)s.%(ext)s"
 }
 
 ydlu() {
     local today
     today=$(/bin/date +'%Y-%m-%d')
-    yt-dlp -o "$HOME/Downloads/ydl $today/%(uploader)s/%(release_date>%Y-%m-%d,upload_date>%Y-%m-%d|Unknown)s-%(title)s.%(ext)s" "$@"
+    yt-dlp -o "$HOME/Downloads/Video, audio, and captions/ydl $today/%(uploader)s/%(release_date>%Y-%m-%d,upload_date>%Y-%m-%d|Unknown)s-%(title)s.%(ext)s" "$@"
 }

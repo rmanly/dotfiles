@@ -133,8 +133,6 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 export NVM_LAZY_LOAD=true
 [[ -f ~/.zsh-nvm/zsh-nvm.plugin.zsh ]] && source ~/.zsh-nvm/zsh-nvm.plugin.zsh
 
-[[ -e $HOME/bin/gam7 ]] && alias gam="$HOME/bin/gam7/gam"
-
 [[ -r "$HOME/.deno/env" ]] && source "$HOME/.deno/env"
 
 _dotfiles_zsh_dir=${${(%):-%N}:A:h}
@@ -167,8 +165,3 @@ auto_venv
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/Users/ryan/.lmstudio/bin"
 # End of LM Studio CLI section
-
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
